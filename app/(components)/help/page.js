@@ -20,7 +20,7 @@ export default function Help() {
                 </div>
                 <div className="mb-3">
                   <p className="fw-bold mb-2">Where can I find past question papers?</p>
-                  <p>Click on the "QPs" button on any subject page to access previous year question papers.</p>
+                  <p>Click on the &quot;QPs&quot; button on any subject page to access previous year question papers.</p>
                 </div>
               </div>
               
@@ -28,7 +28,7 @@ export default function Help() {
                 <h4 className="mb-3" style={{ color: "#4ECDC4" }}>Assignments & Submissions</h4>
                 <div className="mb-3">
                   <p className="fw-bold mb-2">How do I submit assignments?</p>
-                  <p>Click on the "ASSIGNMENTS" button on the subject page, select the relevant assignment, and follow the submission instructions.</p>
+                  <p>Click on the &quot;ASSIGNMENTS&quot; button on the subject page, select the relevant assignment, and follow the submission instructions.</p>
                 </div>
                 <div className="mb-3">
                   <p className="fw-bold mb-2">What is the assignment submission deadline?</p>
@@ -39,7 +39,7 @@ export default function Help() {
               <div className="mb-4">
                 <h4 className="mb-3" style={{ color: "#4ECDC4" }}>Technical Support</h4>
                 <div className="mb-3">
-                  <p className="fw-bold mb-2">What should I do if I can't access a page?</p>
+                  <p className="fw-bold mb-2">What should I do if I can&apos;t access a page?</p>
                   <p>Try refreshing the page or clearing your browser cache. If the issue persists, contact technical support.</p>
                 </div>
                 <div className="mb-3">
@@ -63,7 +63,7 @@ export default function Help() {
           <div className="card shadow-sm mb-4">
             <div className="card-body">
               <h2 className="mb-4" style={{ color: "#4ECDC4" }}>Need More Help?</h2>
-              <p>If you couldn't find the answer to your question, feel free to reach out to us:</p>
+              <p>If you couldn&apos;t find the answer to your question, feel free to reach out to us:</p>
               <ul className="mb-4">
                 <li>Technical Support: support@indusuni.ac.in</li>
                 <li>Academic Support: academic@indusuni.ac.in</li>
