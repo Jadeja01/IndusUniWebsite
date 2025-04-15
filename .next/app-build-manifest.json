@@ -1,0 +1,85 @@
+{
+  "pages": {
+    "/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/page.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
+    ],
+    "/(components)/(subjects)/eg/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(components)/(subjects)/eg/page.js"
+    ],
+    "/(components)/(subjects)/es/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(components)/(subjects)/es/page.js"
+    ],
+    "/(components)/(subjects)/calculus/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(components)/(subjects)/calculus/page.js"
+    ],
+    "/(components)/(subjects)/iks/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(components)/(subjects)/iks/page.js"
+    ],
+    "/(components)/(subjects)/tcss/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(components)/(subjects)/tcss/page.js"
+    ],
+    "/(components)/(subjects)/ec/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(components)/(subjects)/ec/page.js"
+    ],
+    "/(components)/(subjects)/boe/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(components)/(subjects)/boe/page.js"
+    ],
+    "/(components)/(subjects)/automobile/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(components)/(subjects)/automobile/page.js"
+    ],
+    "/(components)/(subjects)/eg/sheets/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(components)/(subjects)/eg/sheets/page.js"
+    ],
+    "/(components)/(subjects)/eg/sheets/sheet6/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(components)/(subjects)/eg/sheets/sheet6/page.js"
+    ],
+    "/(components)/(subjects)/eg/assignments/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(components)/(subjects)/eg/assignments/page.js"
+    ],
+    "/(components)/(subjects)/eg/assignments/assignment1/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(components)/(subjects)/eg/assignments/assignment1/page.js"
+    ],
+    "/(components)/about/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(components)/about/page.js"
+    ],
+    "/(components)/contact/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(components)/contact/page.js"
+    ]
+  }
+}

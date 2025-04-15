@@ -1,0 +1,9 @@
+{
+  "/(components)/(subjects)/eg/sheets/sheet6/page": "app/(components)/(subjects)/eg/sheets/sheet6/page.js",
+  "/(components)/(subjects)/eg/assignments/page": "app/(components)/(subjects)/eg/assignments/page.js",
+  "/(components)/(subjects)/eg/assignments/assignment1/page": "app/(components)/(subjects)/eg/assignments/assignment1/page.js",
+  "/page": "app/page.js",
+  "/(components)/about/page": "app/(components)/about/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/(components)/contact/page": "app/(components)/contact/page.js"
+}
