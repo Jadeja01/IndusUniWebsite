@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
 import Image from 'next/image';
+import sidebarLinks from './(components)/(commoncomponents)/(sidebarlinks)/page';
 
 export default function Home() {
   return (
@@ -80,18 +81,25 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="col-lg-3">
-            <div className="bg-white rounded p-3">
-              <h3 className="mb-3">Course Plan:</h3>
-              <div className="d-flex flex-column">
-                <Link className="text-secondary text-uppercase text-decoration-none border-bottom pb-2 mb-3" href="/calculus">Engineering Calculus</Link>
-                <Link className="text-secondary text-uppercase text-decoration-none border-bottom pb-2 mb-3" href="/ec">Engineering chemistry</Link>
-                <Link className="text-secondary text-uppercase text-decoration-none border-bottom pb-2 mb-3" href="/es">Environmental Science</Link>
-                <Link className="text-secondary text-uppercase text-decoration-none border-bottom pb-2 mb-3" href="/boe">basic of energy</Link>
-                <Link className="text-secondary text-uppercase text-decoration-none border-bottom pb-2 mb-3" href="/tcss">technical Communication</Link>
-                <Link className="text-secondary text-uppercase text-decoration-none border-bottom pb-2 mb-3" href="/eg">Engineering graphics</Link>
-                <Link className="text-secondary text-uppercase text-decoration-none border-bottom pb-2 mb-3" href="/iks">indian knowledge System</Link>
-                <Link className="text-secondary text-uppercase text-decoration-none border-bottom pb-2 mb-3" href="/automobile">Automobile engineering</Link>
+          {/* Sidebar */}
+          <div className="col-lg-3 px-0 order-2 order-lg-1">
+            <div
+              className="card h-100 rounded-0 border-end"
+              style={{ position: "sticky", top: "0" }}
+            >
+              <div className="card-body d-flex flex-column align-items-center">
+                <h3 className="card-title text-center mb-4">Course Plan:</h3>
+                <div className="d-flex flex-column w-100">
+                  {sidebarLinks.map((link, index) => (
+                    <Link
+                      key={index}
+                      href={link.href}
+                      className="nav-link py-3 border-bottom text-center"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

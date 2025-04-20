@@ -11,60 +11,10 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/(components)/welcome/page": [
+    "/(components)/(subjects)/de/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(components)/welcome/page.js"
-    ],
-    "/(components)/(subjects)/eg/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(components)/(subjects)/eg/page.js"
-    ],
-    "/(components)/(subjects)/eg/assignments/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(components)/(subjects)/eg/assignments/page.js"
-    ],
-    "/(components)/(subjects)/eg/assignments/assignment1/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(components)/(subjects)/eg/assignments/assignment1/page.js"
-    ],
-    "/(components)/(subjects)/eg/assignments/assignment2/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(components)/(subjects)/eg/assignments/assignment2/page.js"
-    ],
-    "/(components)/(subjects)/eg/assignments/assignment6/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(components)/(subjects)/eg/assignments/assignment6/page.js"
-    ],
-    "/(components)/(subjects)/eg/assignments/assignment8/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(components)/(subjects)/eg/assignments/assignment8/page.js"
-    ],
-    "/(components)/(subjects)/eg/assignments/assignment7/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(components)/(subjects)/eg/assignments/assignment7/page.js"
-    ],
-    "/(components)/about/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(components)/about/page.js"
-    ],
-    "/(components)/contact/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(components)/contact/page.js"
-    ],
-    "/(components)/help/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(components)/help/page.js"
+      "static/chunks/app/(components)/(subjects)/de/page.js"
     ]
   }
 }

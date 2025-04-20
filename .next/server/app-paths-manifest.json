@@ -1,7 +1,4 @@
 {
   "/page": "app/page.js",
-  "/(components)/(subjects)/eg/assignments/page": "app/(components)/(subjects)/eg/assignments/page.js",
-  "/(components)/contact/page": "app/(components)/contact/page.js",
-  "/(components)/about/page": "app/(components)/about/page.js",
-  "/(components)/help/page": "app/(components)/help/page.js"
+  "/(components)/(subjects)/de/page": "app/(components)/(subjects)/de/page.js"
 }
