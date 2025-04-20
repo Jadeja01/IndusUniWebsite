@@ -42,10 +42,8 @@ export default function About() {
               </p>
               <ul>
                 <li>Computer Science Engineering</li>
-                <li>Mechanical Engineering</li>
-                <li>Electrical Engineering</li>
-                <li>Civil Engineering</li>
-                <li>Chemical Engineering</li>
+                <li>Computer Engineering</li>
+                <li>Information Technology Engineering</li>
               </ul>
             </div>
           </div>

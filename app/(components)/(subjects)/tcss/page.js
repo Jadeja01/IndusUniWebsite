@@ -8,8 +8,6 @@ export default function TechnicalCommunication() {
     <>
       <div className="text-center py-4" style={{ background: "linear-gradient(45deg, #FF6B6B, #4ECDC4)" }}>
         <h1 className="text-white mb-3">SWN | Technical Communication</h1>
-        <h4 className="text-white my-2">Indus University</h4>
-        <p className="text-white mb-0">CSE Section</p>
       </div>
 
       <div className="container-fluid">

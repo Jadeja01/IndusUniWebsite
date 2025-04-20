@@ -44,8 +44,6 @@ export default function Home() {
 
       <div className="firstyear text-center py-4 mb-5" style={{backgroundImage: 'linear-gradient(to right, #764ba2, #667eea)'}}>
         <h1 className="text-white">SWN | First Year</h1>
-        <h4 className="indus mt-2">Indus University</h4>
-        <p className="text-light mt-2">CSE Section</p>
       </div>
 
       <div className="container mb-5">

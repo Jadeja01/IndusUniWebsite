@@ -1,8 +1,7 @@
 {
+  "/page": "app/page.js",
   "/(components)/(subjects)/eg/assignments/page": "app/(components)/(subjects)/eg/assignments/page.js",
-  "/(components)/(subjects)/eg/assignments/assignment1/page": "app/(components)/(subjects)/eg/assignments/assignment1/page.js",
-  "/(components)/(subjects)/eg/assignments/assignment2/page": "app/(components)/(subjects)/eg/assignments/assignment2/page.js",
-  "/(components)/(subjects)/eg/assignments/assignment6/page": "app/(components)/(subjects)/eg/assignments/assignment6/page.js",
-  "/(components)/(subjects)/eg/assignments/assignment8/page": "app/(components)/(subjects)/eg/assignments/assignment8/page.js",
-  "/(components)/(subjects)/eg/assignments/assignment7/page": "app/(components)/(subjects)/eg/assignments/assignment7/page.js"
+  "/(components)/contact/page": "app/(components)/contact/page.js",
+  "/(components)/about/page": "app/(components)/about/page.js",
+  "/(components)/help/page": "app/(components)/help/page.js"
 }
