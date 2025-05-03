@@ -35,3 +35,51 @@ a {
   color: inherit;
   text-decoration: none;
 }
+.min-vh-85 {
+  min-height: 85vh;
+}
+.hover-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.hover-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+}
+.feature-icon-bg {
+  width: 50px;
+  height: 50px;
+  background-color: rgba(78, 205, 196, 0.1);
+  border-radius: 10px;
+}
+.bottom-40 {
+  bottom: 40px;
+}
+.end-20 {
+  right: -20px;
+}
+.rotate-3 {
+  transform: rotate(3deg);
+}
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+.hover-text:hover {
+  color: #4ECDC4 !important;
+  text-decoration: none;
+}

@@ -1,8 +1,8 @@
 {
   "/page": "app/page.js",
+  "/[year]/page": "app/[year]/page.js",
   "/api/files/route": "app/api/files/route.js",
-  "/[subject]/page": "app/[subject]/page.js",
-  "/[subject]/pyqs/page": "app/[subject]/pyqs/page.js",
-  "/[subject]/assignments/page": "app/[subject]/assignments/page.js",
-  "/[subject]/tutorials/page": "app/[subject]/tutorials/page.js"
+  "/[year]/[subject]/page": "app/[year]/[subject]/page.js",
+  "/[year]/[subject]/pyqs/page": "app/[year]/[subject]/pyqs/page.js",
+  "/[year]/[subject]/assignments/page": "app/[year]/[subject]/assignments/page.js"
 }

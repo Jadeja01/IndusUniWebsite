@@ -33,7 +33,7 @@ export function SubjectProvider({ subject, children }) {
     }
     
     fetchData();
-  }, []);
+  }, [subject]);
 
   return (
     <SubjectContext.Provider value={{ data }}>

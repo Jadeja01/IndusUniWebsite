@@ -11,30 +11,45 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/[subject]/page": [
+    "/[year]/[subject]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/[subject]/page.js"
+      "static/chunks/app/[year]/[subject]/page.js"
     ],
-    "/[subject]/layout": [
+    "/[year]/[subject]/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/[subject]/layout.js"
+      "static/chunks/app/[year]/[subject]/layout.js"
     ],
-    "/[subject]/pyqs/page": [
+    "/[year]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/[subject]/pyqs/page.js"
+      "static/chunks/app/[year]/page.js"
     ],
-    "/[subject]/assignments/page": [
+    "/(components)/about/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/[subject]/assignments/page.js"
+      "static/chunks/app/(components)/about/page.js"
     ],
-    "/[subject]/tutorials/page": [
+    "/(components)/contact/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/[subject]/tutorials/page.js"
+      "static/chunks/app/(components)/contact/page.js"
+    ],
+    "/(components)/help/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(components)/help/page.js"
+    ],
+    "/[year]/[subject]/pyqs/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/[year]/[subject]/pyqs/page.js"
+    ],
+    "/[year]/[subject]/assignments/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/[year]/[subject]/assignments/page.js"
     ]
   }
 }
