@@ -1,6 +1,6 @@
 const buttons = [
-    { href: "/es/qps", label: "QPs" },
-    { href: "/es/assignments", label: "ASSIGNMENTS" },
-    { href: "/es/tutorials", label: "TUTORIALS" },
+    { href: "/pyqs", label: "PYQs" },
+    { href: "/assignments", label: "ASSIGNMENTS" },
+    { href: "/tutorials", label: "TUTORIALS" },
 ];
 export default buttons

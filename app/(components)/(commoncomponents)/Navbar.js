@@ -1,11 +1,9 @@
 'use client';
 import Link from 'next/link';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import sidebarLinks from './(sidebarlinks)/page';
 
 export default function Navigation() {
-  
-
-
   return (
     <nav className="navbar navbar-expand-lg bg-white fixed-top shadow-sm">
       <div className="container">
@@ -42,16 +40,21 @@ export default function Navigation() {
               >
                 Subjects
               </a>
-              <ul className="dropdown-menu">
-                <li><Link className="dropdown-item" href="/eg">Engineering Graphics</Link></li>
-                <li><Link className="dropdown-item" href="/es">Environmental Science</Link></li>
-                <li><Link className="dropdown-item" href="/iks">Indian Knowledge System</Link></li>
-                <li><Link className="dropdown-item" href="/tcss">Technical Communication</Link></li>
-                <li><Link className="dropdown-item" href="/calculus">Calculus</Link></li>
-                <li><Link className="dropdown-item" href="/ec">Chemistry</Link></li>
-                <li><Link className="dropdown-item" href="/boe">Basic of Energy</Link></li>
-                <li><Link className="dropdown-item" href="/automobile">Automobile Engineering</Link></li>
-              </ul>
+              <ul 
+  className="dropdown-menu" 
+  style={{
+    maxHeight: '300px', 
+    overflowY: 'auto'
+  }}
+>
+  {sidebarLinks.map((link, index) => (
+    <li key={index}>
+      <Link className="dropdown-item" href={link.href}>
+        {link.label}
+      </Link>
+    </li>
+  ))}
+</ul>
             </li>
             <li className="nav-item">
               <Link className="nav-link text-uppercase" href="/contact">Contact Us</Link>

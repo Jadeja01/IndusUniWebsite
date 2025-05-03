@@ -11,10 +11,30 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/(components)/(subjects)/de/page": [
+    "/[subject]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(components)/(subjects)/de/page.js"
+      "static/chunks/app/[subject]/page.js"
+    ],
+    "/[subject]/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/[subject]/layout.js"
+    ],
+    "/[subject]/pyqs/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/[subject]/pyqs/page.js"
+    ],
+    "/[subject]/assignments/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/[subject]/assignments/page.js"
+    ],
+    "/[subject]/tutorials/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/[subject]/tutorials/page.js"
     ]
   }
 }

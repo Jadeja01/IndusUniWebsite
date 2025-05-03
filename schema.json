@@ -1,0 +1,148 @@
+[
+  
+  {
+    "_id": "4MFE",
+    "subject": "mfe",
+    "pyqs": [
+      {
+        "title": "PYQ1",
+        "fileUrl": "https://drive.google.com/file/d/1qWIfWKe1GUVI95Cqu-larYEiqSuV1Umq/preview?usp=drivesdk",
+        "year": 2025
+      },
+      {
+        "title": "PYQ2",
+        "fileUrl": "https://drive.google.com/file/d/1qWIfWKe1GUVI95Cqu-larYEiqSuV1Umq/preview?usp=drivesdk",
+        "year": 2025
+      }
+    ],
+    "assignments": [
+      {
+        "title": "Assignment1",
+        "fileUrl": "https://drive.google.com/file/d/1qxzP-V8T-687_F4Is9KrEpl-WmdIX5VA/preview?usp=drive_link"
+      },
+      {
+        "title": "Assignment2",
+        "fileUrl": "https://drive.google.com/file/d/1qzS9xr6gIUoyeYm7Y8RTWvDP68ZB-Dw9/preview?usp=drive_link"
+      }
+    ],
+    "fileType": "pdf",
+    "semester": 4,
+    "syllabus": "https://drive.google.com/file/d/1r7f8lWSmbi3sJ_ju13aTPLuMhh18uo9L/preview?usp=drive_link"
+  },
+  {
+    "_id": "4CJP",
+    "subject": "cjp",
+    "pyqs": [
+      {
+        "title": "PYQ1",
+        "fileUrl": "https://drive.google.com/file/d/1qWIfWKe1GUVI95Cqu-larYEiqSuV1Umq/preview?usp=drivesdk",
+        "year": 2025
+      },
+      {
+        "title": "PYQ2",
+        "fileUrl": "https://drive.google.com/file/d/1qWIfWKe1GUVI95Cqu-larYEiqSuV1Umq/preview?usp=drivesdk",
+        "year": 2025
+      }
+    ],
+    "assignments": [
+      {
+        "title": "Assignment1",
+        "fileUrl": "https://drive.google.com/file/d/1qxzP-V8T-687_F4Is9KrEpl-WmdIX5VA/preview?usp=drive_link"
+      },
+      {
+        "title": "Assignment2",
+        "fileUrl": "https://drive.google.com/file/d/1qzS9xr6gIUoyeYm7Y8RTWvDP68ZB-Dw9/preview?usp=drive_link"
+      }
+    ],
+    "fileType": "pdf",
+    "semester": 4,
+    "syllabus": "https://drive.google.com/file/d/1r7f8lWSmbi3sJ_ju13aTPLuMhh18uo9L/preview?usp=drive_link"
+  },
+  {
+    "_id": "4DSA",
+    "subject": "dsa",
+    "pyqs": [
+      {
+        "title": "PYQ1",
+        "fileUrl": "https://drive.google.com/file/d/1qWIfWKe1GUVI95Cqu-larYEiqSuV1Umq/preview?usp=drivesdk",
+        "year": 2025
+      },
+      {
+        "title": "PYQ2",
+        "fileUrl": "https://drive.google.com/file/d/1qWIfWKe1GUVI95Cqu-larYEiqSuV1Umq/preview?usp=drivesdk",
+        "year": 2025
+      }
+    ],
+    "assignments": [
+      {
+        "title": "Assignment1",
+        "fileUrl": "https://drive.google.com/file/d/1qxzP-V8T-687_F4Is9KrEpl-WmdIX5VA/preview?usp=drive_link"
+      },
+      {
+        "title": "Assignment2",
+        "fileUrl": "https://drive.google.com/file/d/1qzS9xr6gIUoyeYm7Y8RTWvDP68ZB-Dw9/preview?usp=drive_link"
+      }
+    ],
+    "fileType": "pdf",
+    "semester": 4,
+    "syllabus": "https://drive.google.com/file/d/1r7f8lWSmbi3sJ_ju13aTPLuMhh18uo9L/preview?usp=drive_link"
+  },
+  {
+    "_id": "4OS",
+    "subject": "os",
+    "pyqs": [
+      {
+        "title": "PYQ1",
+        "fileUrl": "https://drive.google.com/file/d/1qWIfWKe1GUVI95Cqu-larYEiqSuV1Umq/preview?usp=drivesdk",
+        "year": 2025
+      },
+      {
+        "title": "PYQ2",
+        "fileUrl": "https://drive.google.com/file/d/1qWIfWKe1GUVI95Cqu-larYEiqSuV1Umq/preview?usp=drivesdk",
+        "year": 2025
+      }
+    ],
+    "assignments": [
+      {
+        "title": "Assignment1",
+        "fileUrl": "https://drive.google.com/file/d/1qxzP-V8T-687_F4Is9KrEpl-WmdIX5VA/preview?usp=drive_link"
+      },
+      {
+        "title": "Assignment2",
+        "fileUrl": "https://drive.google.com/file/d/1qzS9xr6gIUoyeYm7Y8RTWvDP68ZB-Dw9/preview?usp=drive_link"
+      }
+    ],
+    "fileType": "pdf",
+    "semester": 4,
+    "syllabus": "https://drive.google.com/file/d/1r7f8lWSmbi3sJ_ju13aTPLuMhh18uo9L/preview?usp=drive_link"
+  },
+  {
+    "_id": "4COA",
+    "subject": "coa",
+    "pyqs": [
+      {
+        "title": "PYQ1",
+        "fileUrl": "https://drive.google.com/file/d/1qWIfWKe1GUVI95Cqu-larYEiqSuV1Umq/preview?usp=drivesdk",
+        "year": 2025
+      },
+      {
+        "title": "PYQ2",
+        "fileUrl": "https://drive.google.com/file/d/1qWIfWKe1GUVI95Cqu-larYEiqSuV1Umq/preview?usp=drivesdk",
+        "year": 2025
+      }
+    ],
+    "assignments": [
+      {
+        "title": "Assignment1",
+        "fileUrl": "https://drive.google.com/file/d/1qxzP-V8T-687_F4Is9KrEpl-WmdIX5VA/preview?usp=drive_link"
+      },
+      {
+        "title": "Assignment2",
+        "fileUrl": "https://drive.google.com/file/d/1qzS9xr6gIUoyeYm7Y8RTWvDP68ZB-Dw9/preview?usp=drive_link"
+      }
+    ],
+    "fileType": "pdf",
+    "semester": 4,
+    "syllabus": "https://drive.google.com/file/d/1r7f8lWSmbi3sJ_ju13aTPLuMhh18uo9L/preview?usp=drive_link"
+  }
+]

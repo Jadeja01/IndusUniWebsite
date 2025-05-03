@@ -1,4 +1,8 @@
 {
   "/page": "app/page.js",
-  "/(components)/(subjects)/de/page": "app/(components)/(subjects)/de/page.js"
+  "/api/files/route": "app/api/files/route.js",
+  "/[subject]/page": "app/[subject]/page.js",
+  "/[subject]/pyqs/page": "app/[subject]/pyqs/page.js",
+  "/[subject]/assignments/page": "app/[subject]/assignments/page.js",
+  "/[subject]/tutorials/page": "app/[subject]/tutorials/page.js"
 }

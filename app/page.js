@@ -108,9 +108,14 @@ export default function Home() {
 
       <div className="bg-secondary py-5 mt-5"></div>
       
-      <a className="btn btn-success d-block w-auto mx-auto my-4 px-4 py-2 fw-bold" href="https://chat.whatsapp.com/Fq1P6DdGipgD2DNClxMlIX">
-        Join WhatsApp Group
-      </a>
+      <a
+  className="btn btn-success d-block w-auto mx-auto my-4 px-4 py-2 fw-bold"
+  href="https://chat.whatsapp.com/Fq1P6DdGipgD2DNClxMlIX" // full link here
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  Join Our WhatsApp Group
+</a>
       
     </>
   );
