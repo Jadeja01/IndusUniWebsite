@@ -4,10 +4,10 @@ import buttons from "@/app/(components)/(commoncomponents)/(buttons)/page";
 import SidebarLinks from "@/app/(components)/(commoncomponents)/(sidebarlinks)/page";
 import { useParams } from "next/navigation";
 
-export default function SubjectContent({subject}) {
+export default function SubjectContent({ subject }) {
   const { data } = useSubject();
-  const {year} = useParams()
-    console.log('Year(subjectSontent)', year)
+  const { year } = useParams();
+  console.log("Year(subjectSontent)", year);
   console.log("Context value in component:", data);
   console.log("SyllabusURL", data);
 
@@ -40,6 +40,24 @@ export default function SubjectContent({subject}) {
                   {btn.label}
                 </Link>
               ))}
+              {subject === "eg" && (
+                <>
+                  <Link
+                    href={`/1st-year/eg/sheets-sol`}
+                    className="btn btn-info text-white px-4"
+                    style={{ backgroundColor: "#4ECDC4" }}
+                  >
+                    Sheets solution
+                  </Link>
+                  <Link
+                    href={`/1st-year/eg/assignments-sol`}
+                    className="btn btn-info text-white px-4"
+                    style={{ backgroundColor: "#4ECDC4" }}
+                  >
+                    Assignments solution
+                  </Link>
+                </>
+              )}
             </div>
 
             {/* Syllabus */}
@@ -60,8 +78,7 @@ export default function SubjectContent({subject}) {
 
           {/* Sidebar */}
 
-          <SidebarLinks/>
-
+          <SidebarLinks />
         </div>
       </div>
     </>

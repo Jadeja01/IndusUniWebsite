@@ -55,8 +55,6 @@ export default function Navigation() {
     { sub: "mfe", year: "2nd-year", label: "Management for Engineers" },
     { sub: "cjp", year: "2nd-year", label: "Core Java Programming" },
   ];
-  const {year} = useParams();
-  console.log('Navigation(year)=',year);
   const [scrolled, setScrolled] = useState(false);
   
   useEffect(() => {

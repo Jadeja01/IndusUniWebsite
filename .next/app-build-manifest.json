@@ -1,15 +1,15 @@
 {
   "pages": {
-    "/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
-    ],
     "/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
+    ],
+    "/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/page.js"
     ],
     "/[year]/[subject]/page": [
       "static/chunks/webpack.js",
@@ -21,35 +21,25 @@
       "static/chunks/main-app.js",
       "static/chunks/app/[year]/[subject]/layout.js"
     ],
-    "/[year]/page": [
+    "/[year]/[subject]/assignments-sol/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/[year]/page.js"
+      "static/chunks/app/[year]/[subject]/assignments-sol/page.js"
     ],
-    "/(components)/about/page": [
+    "/[year]/[subject]/assignments-sol/[assignment]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(components)/about/page.js"
+      "static/chunks/app/[year]/[subject]/assignments-sol/[assignment]/page.js"
     ],
-    "/(components)/contact/page": [
+    "/[year]/[subject]/sheets-sol/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(components)/contact/page.js"
+      "static/chunks/app/[year]/[subject]/sheets-sol/page.js"
     ],
-    "/(components)/help/page": [
+    "/[year]/[subject]/sheets-sol/[sheet]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(components)/help/page.js"
-    ],
-    "/[year]/[subject]/pyqs/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/[year]/[subject]/pyqs/page.js"
-    ],
-    "/[year]/[subject]/assignments/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/[year]/[subject]/assignments/page.js"
+      "static/chunks/app/[year]/[subject]/sheets-sol/[sheet]/page.js"
     ]
   }
 }
