@@ -23,7 +23,7 @@ export default function SidebarLinks() {
     { sub: "psnm",year: "2nd-year", label: "Probability, Statistics & Numerical Methods", },
     { sub: "ict", year: "2nd-year", label: "ICT Tools & Technology" },
     { sub: "de", year: "2nd-year", label: "Digital Electronics" },
-    { sub: "oops", year: "2nd-year", label: "Object Oriented concept with UML", },
+    { sub: "oocu", year: "2nd-year", label: "Object Oriented Concept with UML", },
     { sub: "dbms", year: "2nd-year", label: "Database Management System" },
     { sub: "hvpe", year: "2nd-year", label: "Humana Values & Professional Ethics", },
     //Sem4

@@ -1,1 +1,19 @@
 node_modules
+dist
+coverage
+*.log
+*.env
+*.tsbuildinfo
+*.tgz
+*.zip
+*.tgz
+*.tgz
+*.tgz
+
+
+# Ignore all .env files
+
+
+.next
+schema.json
+file.json

@@ -33,9 +33,9 @@ const filterSubjects = [
     { sub: "ict", year: "2nd-year", label: "ICT Tools & Technology" },
     { sub: "de", year: "2nd-year", label: "Digital Electronics" },
     {
-      sub: "oops",
+      sub: "oocu",
       year: "2nd-year",
-      label: "Object Oriented concept with UML",
+      label: "Object Oriented Concept with UML",
     },
     { sub: "dbms", year: "2nd-year", label: "Database Management System" },
     {

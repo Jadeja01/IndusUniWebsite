@@ -1,9 +1,4 @@
 {
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/api/files/route": "app/api/files/route.js",
-  "/[year]/[subject]/page": "app/[year]/[subject]/page.js",
-  "/[year]/[subject]/assignments-sol/page": "app/[year]/[subject]/assignments-sol/page.js",
-  "/[year]/[subject]/assignments-sol/[assignment]/page": "app/[year]/[subject]/assignments-sol/[assignment]/page.js",
-  "/[year]/[subject]/sheets-sol/page": "app/[year]/[subject]/sheets-sol/page.js",
-  "/[year]/[subject]/sheets-sol/[sheet]/page": "app/[year]/[subject]/sheets-sol/[sheet]/page.js"
+  "/page": "app/page.js",
+  "/[year]/[subject]/page": "app/[year]/[subject]/page.js"
 }

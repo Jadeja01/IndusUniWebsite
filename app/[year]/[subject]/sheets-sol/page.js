@@ -33,24 +33,6 @@ export default function EGSheetsSolution() {
               </Link>
             </div>
             <div className="row g-4">
-              {/* Introduction Sheet */}
-              <div className="col-md-4 col-sm-6">
-                <div className="card shadow-sm h-100 sheet-card">
-                  <div className="card-body text-center">
-                    <Link href="/eg/sheets/introduction" className="text-decoration-none">
-                      <Image
-                        src="/images/introduction.png"
-                        alt="Introduction"
-                        width={200}
-                        height={200}
-                        className="img-fluid mb-3"
-                      />
-                      <h5 className="card-title text-info">Introduction</h5>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-
               {/* Sheet 1-8 */}
               {[1, 2, 3, 4, 5, 6, 7, 8].map((sheetNumber) => (
                 <div key={sheetNumber} className="col-md-4 col-sm-6">

@@ -11,6 +11,11 @@
       "static/chunks/main-app.js",
       "static/chunks/app/page.js"
     ],
+    "/[year]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/[year]/page.js"
+    ],
     "/[year]/[subject]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -20,26 +25,6 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/[year]/[subject]/layout.js"
-    ],
-    "/[year]/[subject]/assignments-sol/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/[year]/[subject]/assignments-sol/page.js"
-    ],
-    "/[year]/[subject]/assignments-sol/[assignment]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/[year]/[subject]/assignments-sol/[assignment]/page.js"
-    ],
-    "/[year]/[subject]/sheets-sol/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/[year]/[subject]/sheets-sol/page.js"
-    ],
-    "/[year]/[subject]/sheets-sol/[sheet]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/[year]/[subject]/sheets-sol/[sheet]/page.js"
     ]
   }
 }

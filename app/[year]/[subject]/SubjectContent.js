@@ -3,6 +3,7 @@ import { useSubject } from "@/app/(components)/context/SubjectContext";
 import buttons from "@/app/(components)/(commoncomponents)/(buttons)/page";
 import SidebarLinks from "@/app/(components)/(commoncomponents)/(sidebarlinks)/page";
 import { useParams } from "next/navigation";
+import Buttons from "@/app/(components)/(commoncomponents)/(buttons)/page";
 
 export default function SubjectContent({ subject }) {
   const { data } = useSubject();
@@ -29,45 +30,16 @@ export default function SubjectContent({ subject }) {
           {/* Main Content */}
           <div className="col-lg-9 py-4 order-1 order-lg-2">
             {/* Buttons */}
-            <div className="d-flex flex-wrap gap-3 mb-4">
-              {buttons.map((btn, index) => (
-                <Link
-                  key={index}
-                  href={`/${year}/${subject}/${btn.info}`}
-                  className="btn btn-info text-white px-4"
-                  style={{ backgroundColor: "#4ECDC4" }}
-                >
-                  {btn.label}
-                </Link>
-              ))}
-              {subject === "eg" && (
-                <>
-                  <Link
-                    href={`/1st-year/eg/sheets-sol`}
-                    className="btn btn-info text-white px-4"
-                    style={{ backgroundColor: "#4ECDC4" }}
-                  >
-                    Sheets solution
-                  </Link>
-                  <Link
-                    href={`/1st-year/eg/assignments-sol`}
-                    className="btn btn-info text-white px-4"
-                    style={{ backgroundColor: "#4ECDC4" }}
-                  >
-                    Assignments solution
-                  </Link>
-                </>
-              )}
-            </div>
+            <Buttons/>
 
             {/* Syllabus */}
-            <div className="mb-4">
+            <div className="d-flex justify-content-center align-items-center mb-4">
               {isLoading ? (
                 <div className="text-center py-5">Loading...</div>
               ) : data.files && data.files[0]?.syllabus ? (
                 <iframe
                   src={data.files[0].syllabus}
-                  style={{ width: "100%", height: "600px", border: "none" }}
+                  style={{ width: "95%", height: "900px", border: "none" }}
                   title="Syllabus PDF"
                 />
               ) : (
