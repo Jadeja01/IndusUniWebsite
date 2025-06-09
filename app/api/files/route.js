@@ -1,6 +1,8 @@
 import connectDB from "@/backend/dbConnect";
 import dataSchema from "@/backend/schema";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req) {
   try {
     await connectDB();
