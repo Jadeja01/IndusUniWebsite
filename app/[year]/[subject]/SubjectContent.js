@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { useSubject } from "@/app/(components)/context/SubjectContext";
-import buttons from "@/app/(components)/(commoncomponents)/(buttons)/page";
-import SidebarLinks from "@/app/(components)/(commoncomponents)/(sidebarlinks)/page";
+import buttons from "@/app/(components)/(commoncomponents)/(buttons)/btn";
+import SidebarLinks from "@/app/(components)/(commoncomponents)/(sidebarlinks)/sbl";
 import { useParams } from "next/navigation";
-import Buttons from "@/app/(components)/(commoncomponents)/(buttons)/page";
+import Buttons from "@/app/(components)/(commoncomponents)/(buttons)/btn";
 
 export default function SubjectContent({ subject }) {
   const { data } = useSubject();

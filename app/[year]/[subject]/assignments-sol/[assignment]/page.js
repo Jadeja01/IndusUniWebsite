@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import SidebarLinks from "@/app/(components)/(commoncomponents)/(sidebarlinks)/page";
+import SidebarLinks from "@/app/(components)/(commoncomponents)/(sidebarlinks)/sbl";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import assignmentsData from "@/egcontent/assignmentscontent";

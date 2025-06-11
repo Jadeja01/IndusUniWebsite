@@ -1,4 +1,3 @@
-'use client';
 import { SubjectProvider } from "@/app/(components)/context/SubjectContext";
 
 export default function SubjectLayout({ children,params }) {

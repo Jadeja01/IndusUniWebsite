@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import SidebarLinks from '../(components)/(commoncomponents)/(sidebarlinks)/page';
+import SidebarLinks from '../(components)/(commoncomponents)/(sidebarlinks)/sbl';
 import { useEffect, useState } from 'react';
 import filterSubjects from '../(components)/(commoncomponents)/filterSubjects';
 

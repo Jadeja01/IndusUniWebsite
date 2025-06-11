@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useSubject } from "@/app/(components)/context/SubjectContext";
 import Link from "next/link";
-import SidebarLinks from "@/app/(components)/(commoncomponents)/(sidebarlinks)/page";
+import SidebarLinks from "@/app/(components)/(commoncomponents)/(sidebarlinks)/sbl";
 
 export default function AssignmnetsPage({ params }) {
   const { year,subject } = params;
