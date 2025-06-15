@@ -41,6 +41,18 @@ export default function Buttons({  }) {
           </Link>
         </>
       )}
+      {subject === "workshop" && (
+        <>
+          <Link
+            href={`/1st-year/workshop/ws-manual`}
+            className="btn btn-info text-white px-4"
+            style={{ backgroundColor: "#4ECDC4" }}
+          >
+            Workshop Manual
+          </Link>
+        </>
+      )}
+
     </div>
   );
 }

@@ -4,9 +4,8 @@ import { useSubject } from "@/app/(components)/context/SubjectContext";
 import Link from "next/link";
 import SidebarLinks from "@/app/(components)/(commoncomponents)/(sidebarlinks)/sbl";
 
-
 export default function PYQsPage({ params }) {
-  const { year,subject } = params;
+  const { year, subject } = params;
   const { data, loading } = useSubject();
   const [selectedPdf, setSelectedPdf] = useState(null);
 
@@ -62,7 +61,8 @@ export default function PYQsPage({ params }) {
               ) : !data.files || !data.files[0]?.pyqs?.length ? (
                 <div className="text-center py-5 w-100">No PYQs available</div>
               ) : (
-                data.files[0].pyqs.map((pyq, index) => (
+                <>
+                  {data.files[0].pyqs.map((pyq, index) => (
                   <div key={index} className="col-md-4 mb-4">
                     <div
                       className="card shadow-sm h-100"
@@ -76,7 +76,32 @@ export default function PYQsPage({ params }) {
                       </div>
                     </div>
                   </div>
-                ))
+                  ))} ,
+                  <div className="col-md-4 mb-4">
+                    <Link
+                      href="https://play.google.com/store/apps/details?id=com.nikk797edu.scoop"
+                      target="_blank"
+                      className="text-decoration-none"
+                    >
+                      <div
+                        className="card shadow-sm h-100"
+                        style={{
+                          cursor: "pointer",
+                          backgroundColor: "#f0f9ff",
+                        }}
+                      >
+                        <div className="card-body d-flex flex-column justify-content-center align-items-center text-center">
+                          <h5 className="card-title text-primary">
+                            Explore More PYQs
+                          </h5>
+                          <p className="text-muted mb-0">
+                            Tap here to browse more question papers.
+                          </p>
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+                </>
               )}
             </div>
 
@@ -119,9 +144,8 @@ export default function PYQsPage({ params }) {
           </div>
 
           {/* Sidebar */}
-          
-          <SidebarLinks/>
 
+          <SidebarLinks />
         </div>
       </div>
     </>
