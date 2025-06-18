@@ -7,7 +7,7 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'Educational Portal',
+  title: 'IUhub | Educational Resources',
   description: 'Your comprehensive educational resource platform',
 };
 

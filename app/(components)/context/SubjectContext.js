@@ -4,7 +4,6 @@ import { createContext, useContext, useState, useEffect } from "react";
 const SubjectContext = createContext();
 
 export function SubjectProvider({ subject, children }) {
-  console.log('Subject(SubjectProvider)',subject);
   
   const [data, setData] = useState(null);
 

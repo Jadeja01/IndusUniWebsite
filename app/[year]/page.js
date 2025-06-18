@@ -7,12 +7,13 @@ import filterSubjects from '../(components)/(commoncomponents)/filterSubjects';
 export default function Year({ params }) {
   const [filteredSubject, setFilteredSubject] = useState([]);
   const { year } = params;
-  console.log('Year[year]',year);
+  const [brand, setBrand] = useState('');
   
 
   useEffect(() => {
     const filteredSubjects = filterSubjects.filter((e) => e.year === year);
     setFilteredSubject(filteredSubjects);
+    setBrand(process.env.NEXT_PUBLIC_WEBSITE_NAME);
   }, [year]);
 
 
@@ -23,7 +24,7 @@ export default function Year({ params }) {
         className="text-center py-4 mb-5"
         style={{ backgroundImage: 'linear-gradient(to right, #764ba2, #667eea)' }}
       >
-        <h1 className="text-white">SWN | {year?.toUpperCase()}</h1>
+        <h1 className="text-white">{brand} | {year?.toUpperCase()}</h1>
       </div>
 
       {/* Content */}

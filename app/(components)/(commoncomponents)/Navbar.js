@@ -55,8 +55,10 @@ export default function Navigation() {
     { sub: "cjp", year: "2nd-year", label: "Core Java Programming" },
   ];
   const [scrolled, setScrolled] = useState(false);
-  
-  useEffect(() => {
+   const [brand,setBrand] = useState('');
+    
+    useEffect(() => {
+    setBrand(process.env.NEXT_PUBLIC_WEBSITE_NAME);
     const handleScroll = () => {
       if (window.scrollY > 50) {
         setScrolled(true);
@@ -79,7 +81,7 @@ export default function Navigation() {
       <div className="container">
         <Link href="/" className="navbar-brand d-flex align-items-center">
           <i className="bi bi-journal-text me-2 fs-4" style={{ color: scrolled ? "#4ECDC4" : "#ffffff" }}></i>
-          <span className="fw-bold" style={{ color: scrolled ? "#333" : "#ffffff" }}>StudyWithNotes</span>
+          <span className="fw-bold" style={{ color: scrolled ? "#333" : "#ffffff" }}>{brand}</span>
         </Link>
         <button 
           className="navbar-toggler" 

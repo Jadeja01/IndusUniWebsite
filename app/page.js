@@ -1,19 +1,21 @@
 "use client"
 import Link from 'next/link';
 import Navigation from './(components)/(commoncomponents)/Navbar';
-import { useEffect } from 'react';
-
-export const dynamic = 'force-dynamic'; // forces SSR
+import { useEffect, useState } from 'react';
 
 // Hero Section Component
 const HeroSection = () => {
+  const [brand,setBrand] = useState('');
+          useEffect(()=>{
+              setBrand(process.env.NEXT_PUBLIC_WEBSITE_NAME);
+          },[])
   return (
     <div className="bg-primary bg-gradient py-5 d-flex align-items-center min-vh-85">
       <div className="container py-5">
         <div className="row align-items-center">
           <div className="col-lg-6 text-white">
             <h1 className="display-3 fw-bold mb-4">
-              Welcome to StudyWithNotes
+              Welcome to <br/>{brand}
             </h1>
             <h4 className="mb-4 opacity-75">
               Your Complete Academic Resource Hub for Engineering Studies
@@ -310,7 +312,7 @@ export default function Home() {
     };
 
     window.addEventListener('scroll', animateOnScroll);
-    animateOnScroll(); // Initial check
+    animateOnScroll(); 
 
     return () => {
       window.removeEventListener('scroll', animateOnScroll);

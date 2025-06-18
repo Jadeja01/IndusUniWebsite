@@ -3,19 +3,24 @@ import Link from 'next/link';
 import Image from 'next/image';
 import SidebarLinks from '@/app/(components)/(commoncomponents)/(sidebarlinks)/sbl';
 import { useParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 export default function EGAssignmentsSolution() {
     const { year, subject } = useParams(); 
     console.log("Year(eg/assignments)", year);
     console.log("Subject(eg/assignments)", subject);
     const formattedSubject = subject.toUpperCase();
+     const [brand,setBrand] = useState('');
+        useEffect(()=>{
+            setBrand(process.env.NEXT_PUBLIC_WEBSITE_NAME);
+        },[])
   return (
     <>
       <div
         className="text-center py-4"
         style={{ background: "linear-gradient(45deg, #FF6B6B, #4ECDC4)" }}
       >
-        <h1 className="text-white mb-3">SWN | {formattedSubject}-Assignments </h1>
+        <h1 className="text-white mb-3">{brand} | {formattedSubject}-Assignments </h1>
       </div>
 
       <div className="container-fluid">

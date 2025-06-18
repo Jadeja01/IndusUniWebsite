@@ -11,8 +11,10 @@ export default function Year({ params }) {
   const { assignment } = params;
   const [assignmentData, setAssignmentData] = useState([]);
   const formattedSubject = subject.toUpperCase();
-
-  useEffect(() => {
+   const [brand,setBrand] = useState('');
+    
+    useEffect(() => {
+    setBrand(process.env.NEXT_PUBLIC_WEBSITE_NAME);
     const filteredAssignments = assignmentsData.filter(
       (e) => e.id === assignment
     );
@@ -26,7 +28,7 @@ export default function Year({ params }) {
         style={{ background: "linear-gradient(45deg, #FF6B6B, #4ECDC4)" }}
       >
         <h1 className="text-white mb-3">
-          SWN | {formattedSubject}-
+          {brand} | {formattedSubject}-
           {assignment.charAt(0).toUpperCase() + assignment.slice(1)}
         </h1>
       </div>

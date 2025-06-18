@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSubject } from "@/app/(components)/context/SubjectContext";
 import Link from "next/link";
 import SidebarLinks from "@/app/(components)/(commoncomponents)/(sidebarlinks)/sbl";
@@ -8,6 +8,10 @@ export default function AssignmnetsPage({ params }) {
   const { year,subject } = params;
   const { data, loading } = useSubject();
   const [selectedPdf, setSelectedPdf] = useState(null);
+   const [brand,setBrand] = useState('');
+      useEffect(()=>{
+          setBrand(process.env.NEXT_PUBLIC_WEBSITE_NAME);
+      },[])
 
   const handleCardClick = (fileUrl) => {
     setSelectedPdf(fileUrl);
@@ -35,7 +39,7 @@ export default function AssignmnetsPage({ params }) {
         style={{ background: "linear-gradient(45deg, #FF6B6B, #4ECDC4)" }}
       >
         <h1 className="text-white mb-3">
-          SWN | {subject.toUpperCase()} - Assignmnets
+          {brand} | {subject.toUpperCase()} - Assignmnets
         </h1>
       </div>
 

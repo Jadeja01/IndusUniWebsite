@@ -11,9 +11,10 @@ export default function Year({ params }) {
   const { sheet } = params;
   const [sheetData, setSheetData] = useState([]);
   const formattedSubject = subject.toUpperCase();
-
-  useEffect(() => {
-    const filteredSheets = sheetsData.filter(
+ const [brand,setBrand] = useState('');
+    useEffect(() => {
+      setBrand(process.env.NEXT_PUBLIC_WEBSITE_NAME);
+      const filteredSheets = sheetsData.filter(
       (e) => e.id === sheet
     );
     setSheetData(filteredSheets);
@@ -26,7 +27,7 @@ export default function Year({ params }) {
         style={{ background: "linear-gradient(45deg, #FF6B6B, #4ECDC4)" }}
       >
         <h1 className="text-white mb-3">
-          SWN | {formattedSubject}-
+          {brand} | {formattedSubject}-
           {sheet.charAt(0).toUpperCase() + sheet.slice(1)}
         </h1>
       </div>

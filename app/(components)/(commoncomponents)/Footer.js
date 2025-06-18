@@ -1,10 +1,17 @@
 'use client';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
+
 
 export default function Footer() {
+  const [brand,setBrand] = useState('');
+          useEffect(()=>{
+              setBrand(process.env.NEXT_PUBLIC_WEBSITE_NAME);
+          },[])
+
   return (
     <>
-      {/* WhatsApp CTA Button */}
+      {/* WhatsApp group Button */}
       <div className="text-center mt-5 mb-4">
         <a
           className="btn btn-success px-5 py-2 fw-semibold shadow-sm"
@@ -24,7 +31,7 @@ export default function Footer() {
             <div className="col-lg-5 col-md-12">
               <div className="d-flex align-items-center mb-3">
                 <i className="bi bi-journal-text fs-3 me-2 text-info"></i>
-                <h5 className="fw-bold mb-0">StudyWithNotes</h5>
+                <h5 className="fw-bold mb-0">{brand}</h5>
               </div>
               <p className="text-white-50 pe-lg-5">
                 Your complete academic resource hub providing comprehensive study materials for engineering students.
@@ -99,7 +106,7 @@ export default function Footer() {
           {/* Bottom Footer */}
           <div className="d-flex flex-column flex-md-row justify-content-between align-items-center">
             <p className="mb-2 mb-md-0 text-white-50 small">
-              &copy; {new Date().getFullYear()} StudyWithNotes. All rights reserved.
+              &copy; {new Date().getFullYear()} {brand}. All rights reserved.
             </p>
             {/* <div>
               <a href="#" className="text-white-50 text-decoration-none small me-3">Privacy Policy</a>

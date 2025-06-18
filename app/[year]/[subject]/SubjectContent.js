@@ -1,19 +1,18 @@
-import Link from "next/link";
+"use client"
 import { useSubject } from "@/app/(components)/context/SubjectContext";
-import buttons from "@/app/(components)/(commoncomponents)/(buttons)/btn";
 import SidebarLinks from "@/app/(components)/(commoncomponents)/(sidebarlinks)/sbl";
-import { useParams } from "next/navigation";
 import Buttons from "@/app/(components)/(commoncomponents)/(buttons)/btn";
+import { useEffect, useState } from "react";
 
 export default function SubjectContent({ subject }) {
   const { data } = useSubject();
-  const { year } = useParams();
-  console.log("Year(subjectSontent)", year);
-  console.log("Context value in component:", data);
-  console.log("SyllabusURL", data);
+  const [brand, setBrand] = useState('');
 
   const isLoading = !data;
   const formattedSubject = subject.toUpperCase();
+  useEffect(()=>{
+    setBrand(process.env.NEXT_PUBLIC_WEBSITE_NAME)
+  },[])
 
   return (
     <>
@@ -22,7 +21,7 @@ export default function SubjectContent({ subject }) {
         className="text-center py-4"
         style={{ background: "linear-gradient(45deg, #FF6B6B, #4ECDC4)" }}
       >
-        <h1 className="text-white mb-3">SWN | {formattedSubject}</h1>
+        <h1 className="text-white mb-3">{brand} | {formattedSubject}</h1>
       </div>
 
       <div className="container-fluid">
