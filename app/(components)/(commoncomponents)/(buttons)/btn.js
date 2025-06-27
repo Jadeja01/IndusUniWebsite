@@ -52,6 +52,17 @@ export default function Buttons({  }) {
           </Link>
         </>
       )}
+      {subject === "ec" && (
+        <>
+          <Link
+            href={`/1st-year/workshop/ec-practical`}
+            className="btn btn-info text-white px-4"
+            style={{ backgroundColor: "#4ECDC4" }}
+          >
+            Practical Solution
+          </Link>
+        </>
+      )}
 
     </div>
   );

@@ -4,12 +4,11 @@ import { useSubject } from "@/app/(components)/context/SubjectContext";
 import Link from "next/link";
 import SidebarLinks from "@/app/(components)/(commoncomponents)/(sidebarlinks)/sbl";
 
-export default function AssignmnetsPage({ params }) {
+export default function PYQsPage({ params }) {
   const { year, subject } = params;
   const { data, loading } = useSubject();
   const [selectedPdf, setSelectedPdf] = useState(null);
   const [brand, setBrand] = useState("");
-
   useEffect(() => {
     setBrand(process.env.NEXT_PUBLIC_WEBSITE_NAME);
   }, []);
@@ -40,7 +39,7 @@ export default function AssignmnetsPage({ params }) {
         style={{ background: "linear-gradient(45deg, #FF6B6B, #4ECDC4)" }}
       >
         <h1 className="text-white mb-3">
-          {brand} | {subject.toUpperCase()} - Assignments
+          {brand} | {subject.toUpperCase()} - Practical
         </h1>
       </div>
 
@@ -59,41 +58,32 @@ export default function AssignmnetsPage({ params }) {
               </Link>
             </div>
 
-            {/* Assignments Section */}
+            {/* PYQs Section */}
             <div className="row mb-4">
               {loading || !data ? (
                 <div className="text-center py-5 w-100">
-                  Loading assignments...
+                  Loading practical data...
+                </div>
+              ) : !data.files || !data.files[0].practical?.length ? (
+                <div className="text-center py-5 w-100">
+                  No practical available
                 </div>
               ) : (
-                (() => {
-                  const validAssignments =
-                    data.files?.[0]?.assignments?.filter(
-                      (a) => a?.fileUrl?.trim() !== ""
-                    ) || [];
-
-                  return validAssignments.length === 0 ? (
-                    <div className="text-center py-5 w-100">
-                      No assignments available
-                    </div>
-                  ) : (
-                    validAssignments.map((assignment, index) => (
-                      <div key={index} className="col-md-4 mb-4">
-                        <div
-                          className="card shadow-sm h-100"
-                          style={{ cursor: "pointer" }}
-                          onClick={() => handleCardClick(assignment.fileUrl)}
-                        >
-                          <div className="card-body d-flex flex-column justify-content-center align-items-center">
-                            <h5 className="card-title text-center">
-                              {assignment.title || "Untitled Assignment"}
-                            </h5>
-                          </div>
-                        </div>
+                <>
+                  (
+                  <div className="col-md-4 mb-4">
+                    <div
+                      className="card shadow-sm h-100"
+                      style={{ cursor: "pointer" }}
+                      onClick={() => handleCardClick(data.files[0].practical)}
+                    >
+                      <div className="card-body d-flex flex-column justify-content-center align-items-center">
+                        <h5 className="card-title text-center">practicalPDF</h5>
                       </div>
-                    ))
-                  );
-                })()
+                    </div>
+                  </div>
+                  )
+                </>
               )}
             </div>
 
@@ -109,7 +99,7 @@ export default function AssignmnetsPage({ params }) {
                 <div className="modal-content" style={{ height: "90vh" }}>
                   <div className="modal-header">
                     <h5 className="modal-title" id="pdfModalLabel">
-                      Assignment PDF
+                      Practical PDF
                     </h5>
                     <button
                       type="button"
@@ -126,7 +116,7 @@ export default function AssignmnetsPage({ params }) {
                           height: "100%",
                           border: "none",
                         }}
-                        title="Assignment PDF"
+                        title="practical PDF"
                       />
                     )}
                   </div>
@@ -136,6 +126,7 @@ export default function AssignmnetsPage({ params }) {
           </div>
 
           {/* Sidebar */}
+
           <SidebarLinks />
         </div>
       </div>

@@ -15,10 +15,11 @@ export default function SidebarLinks() {
     { sub: "dela", year: "1st-year",label: "Differential Equations & Linear Algrebra", },
     { sub: "ep", year: "1st-year", label: "Engineering Physics" },
     { sub: "bcps", year: "1st-year", label: "Business Communication & Presentation Skills", },
-    { sub: "op3", year: "1st-year", label: "Open Elective 3" },
     { sub: "workshop", year: "1st-year", label: "Workshop Practise" },
     { sub: "bst", year: "1st-year", label: "Bharatiya Science & Technology" },
     { sub: "pps", year: "1st-year", label: "Programming for Problem Solving" },
+    { sub: "acdc", year: "1st-year", label: "Introduction to AC-DC machine" },
+    { sub: "bac", year: "1st-year", label: "Basics of AC Circuits" },
     //Sem3
     { sub: "psnm",year: "2nd-year", label: "Probability, Statistics & Numerical Methods", },
     { sub: "ict", year: "2nd-year", label: "ICT Tools & Technology" },
@@ -31,6 +32,8 @@ export default function SidebarLinks() {
     { sub: "os", year: "2nd-year", label: "Operating System" },
     { sub: "mfe", year: "2nd-year", label: "Management for Engineers" },
     { sub: "cjp", year: "2nd-year", label: "Core Java Programming" },
+    { sub: "coa", year: "2nd-year", label: "Computer Organization and Architecture" }
+
   ];
   return (
     <>

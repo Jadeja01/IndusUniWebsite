@@ -2,17 +2,17 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-
 export default function Footer() {
-  const [brand,setBrand] = useState('');
-          useEffect(()=>{
-              setBrand(process.env.NEXT_PUBLIC_WEBSITE_NAME);
-          },[])
+  const [brand, setBrand] = useState('');
+
+  useEffect(() => {
+    setBrand(process.env.NEXT_PUBLIC_WEBSITE_NAME);
+  }, []);
 
   return (
     <>
       {/* WhatsApp group Button */}
-      <div className="text-center mt-5 mb-4">
+      <div className="d-flex flex-column justify-content-around align-items-center text-center mt-5 mb-4">
         <a
           className="btn btn-success px-5 py-2 fw-semibold shadow-sm"
           href="https://chat.whatsapp.com/Fq1P6DdGipgD2DNClxMlIX"
@@ -39,21 +39,13 @@ export default function Footer() {
 
               {/* Social Icons */}
               <div className="d-flex gap-3 mt-3">
-                {[
-                  // { href: '#', icon: 'facebook' },
-                  // { href: '#', icon: 'twitter-x' },
-                  // { href: '#', icon: 'instagram' },
-                  { href: 'https://www.linkedin.com/in/tirthrajsinh-jadeja-36a0b72a9?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app', icon: 'linkedin' }
-                ].map(({ href, icon }) => (
-                  <a
-                    key={icon}
-                    href={href}
-                    className="text-white-50"
-                    style={{ fontSize: '1.2rem', transition: 'color 0.2s' }}
-                  >
-                    <i className={`bi bi-${icon}`}></i>
-                  </a>
-                ))}
+                <a
+                  href="https://www.linkedin.com/in/tirthrajsinh-jadeja-36a0b72a9?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                  className="text-white-50"
+                  style={{ fontSize: '1.2rem', transition: 'color 0.2s' }}
+                >
+                  <i className="bi bi-linkedin"></i>
+                </a>
               </div>
             </div>
 
@@ -75,29 +67,6 @@ export default function Footer() {
                 </li>
               </ul>
             </div>
-
-            {/* Contact Info */}
-            {/* <div className="col-lg-4 col-sm-6">
-              <h6 className="text-uppercase text-info fw-bold mb-3">Contact Info</h6>
-              <ul className="list-unstyled">
-                <li className="mb-2 text-white-50">
-                  <i className="bi bi-geo-alt me-2"></i>
-                  123 University Ave, Tech City
-                </li>
-                <li className="mb-2">
-                  <a href="mailto:info@studywithnotes.com" className="text-white-50 text-decoration-none">
-                    <i className="bi bi-envelope me-2"></i>
-                    info@studywithnotes.com
-                  </a>
-                </li>
-                <li className="mb-2">
-                  <a href="tel:+1234567890" className="text-white-50 text-decoration-none">
-                    <i className="bi bi-telephone me-2"></i>
-                    +123 456 7890
-                  </a>
-                </li>
-              </ul>
-            </div> */}
           </div>
 
           {/* Divider */}
@@ -108,10 +77,6 @@ export default function Footer() {
             <p className="mb-2 mb-md-0 text-white-50 small">
               &copy; {new Date().getFullYear()} {brand}. All rights reserved.
             </p>
-            {/* <div>
-              <a href="#" className="text-white-50 text-decoration-none small me-3">Privacy Policy</a>
-              <a href="#" className="text-white-50 text-decoration-none small">Terms of Service</a>
-            </div> */}
           </div>
         </div>
       </footer>

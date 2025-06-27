@@ -8,10 +8,11 @@ export default function PYQsPage({ params }) {
   const { year, subject } = params;
   const { data, loading } = useSubject();
   const [selectedPdf, setSelectedPdf] = useState(null);
-   const [brand,setBrand] = useState('');
-      useEffect(()=>{
-          setBrand(process.env.NEXT_PUBLIC_WEBSITE_NAME);
-      },[])
+  const [brand, setBrand] = useState('');
+
+  useEffect(() => {
+    setBrand(process.env.NEXT_PUBLIC_WEBSITE_NAME);
+  }, []);
 
   const handleCardClick = (fileUrl) => {
     setSelectedPdf(fileUrl);
@@ -23,9 +24,7 @@ export default function PYQsPage({ params }) {
 
   const handleCloseModal = () => {
     setTimeout(() => {
-      const myModal = bootstrap.Modal.getInstance(
-        document.getElementById("pdfModal")
-      );
+      const myModal = bootstrap.Modal.getInstance(document.getElementById("pdfModal"));
       myModal.hide();
       setSelectedPdf(null);
     }, 0);
@@ -62,51 +61,82 @@ export default function PYQsPage({ params }) {
             <div className="row mb-4">
               {loading || !data ? (
                 <div className="text-center py-5 w-100">Loading PYQs...</div>
-              ) : !data.files || !data.files[0]?.pyqs?.length ? (
-                <div className="text-center py-5 w-100">No PYQs available</div>
-              ) : (
-                <>
-                  {data.files[0].pyqs.map((pyq, index) => (
-                  <div key={index} className="col-md-4 mb-4">
-                    <div
-                      className="card shadow-sm h-100"
-                      style={{ cursor: "pointer" }}
-                      onClick={() => handleCardClick(pyq.fileUrl)}
-                    >
-                      <div className="card-body d-flex flex-column justify-content-center align-items-center">
-                        <h5 className="card-title text-center">
-                          {pyq.title} - {pyq.year}
-                        </h5>
-                      </div>
-                    </div>
-                  </div>
-                  ))} ,
+              ) : (() => {
+                const validPYQs =
+                  data.files?.[0]?.pyqs?.filter(
+                    (pyq) => pyq?.fileUrl?.trim() !== ""
+                  ) || [];
+
+                return validPYQs.length === 0 ? (
+                  <>
+                  <div className="text-center py-5 w-100">No pyqs available</div>
                   <div className="col-md-4 mb-4">
-                    <Link
-                      href="https://play.google.com/store/apps/details?id=com.nikk797edu.scoop"
-                      target="_blank"
-                      className="text-decoration-none"
-                    >
-                      <div
-                        className="card shadow-sm h-100"
-                        style={{
-                          cursor: "pointer",
-                          backgroundColor: "#f0f9ff",
-                        }}
+                      <Link
+                        href="https://play.google.com/store/apps/details?id=com.nikk797edu.scoop"
+                        target="_blank"
+                        className="text-decoration-none"
                       >
-                        <div className="card-body d-flex flex-column justify-content-center align-items-center text-center">
-                          <h5 className="card-title text-primary">
-                            Explore More PYQs
-                          </h5>
-                          <p className="text-muted mb-0">
-                            Tap here to browse more question papers.
-                          </p>
+                        <div
+                          className="card shadow-sm h-100"
+                          style={{
+                            cursor: "pointer",
+                            backgroundColor: "#f0f9ff",
+                          }}
+                        >
+                          <div className="card-body d-flex flex-column justify-content-center align-items-center text-center">
+                            <h5 className="card-title text-primary">Explore More PYQs</h5>
+                            <p className="text-muted mb-0">
+                              Tap here to browse more question papers.
+                            </p>
+                          </div>
+                        </div>
+                      </Link>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    {validPYQs.map((pyq, index) => (
+                      <div key={index} className="col-md-4 mb-4">
+                        <div
+                          className="card shadow-sm h-100"
+                          style={{ cursor: "pointer" }}
+                          onClick={() => handleCardClick(pyq.fileUrl)}
+                        >
+                          <div className="card-body d-flex flex-column justify-content-center align-items-center">
+                            <h5 className="card-title text-center">
+                              {pyq.title} - {pyq.year}
+                            </h5>
+                          </div>
                         </div>
                       </div>
-                    </Link>
-                  </div>
-                </>
-              )}
+                    ))}
+
+                    {/* Extra link card */}
+                    <div className="col-md-4 mb-4">
+                      <Link
+                        href="https://play.google.com/store/apps/details?id=com.nikk797edu.scoop"
+                        target="_blank"
+                        className="text-decoration-none"
+                      >
+                        <div
+                          className="card shadow-sm h-100"
+                          style={{
+                            cursor: "pointer",
+                            backgroundColor: "#f0f9ff",
+                          }}
+                        >
+                          <div className="card-body d-flex flex-column justify-content-center align-items-center text-center">
+                            <h5 className="card-title text-primary">Explore More PYQs</h5>
+                            <p className="text-muted mb-0">
+                              Tap here to browse more question papers.
+                            </p>
+                          </div>
+                        </div>
+                      </Link>
+                    </div>
+                  </>
+                );
+              })()}
             </div>
 
             {/* PDF Modal */}
@@ -148,7 +178,6 @@ export default function PYQsPage({ params }) {
           </div>
 
           {/* Sidebar */}
-
           <SidebarLinks />
         </div>
       </div>
