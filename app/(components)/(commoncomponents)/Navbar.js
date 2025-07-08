@@ -1,10 +1,10 @@
-'use client';
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
+"use client";
+import { useState, useEffect } from "react";
+import Link from "next/link";
 
 export default function Navigation() {
   const sidebarLinks = [
-    //Sem1
+    // Sem 1
     { sub: "es", year: "1st-year", label: "Environmental Science" },
     { sub: "calculus", year: "1st-year", label: "Engineering Calculus" },
     { sub: "ec", year: "1st-year", label: "Engineering Chemistry" },
@@ -13,11 +13,11 @@ export default function Navigation() {
     { sub: "eg", year: "1st-year", label: "Engineering Graphics" },
     { sub: "iks", year: "1st-year", label: "Indian Knowledge System" },
     { sub: "automobile", year: "1st-year", label: "Automobile Engineering" },
-    //Sem2
+    // Sem 2
     {
       sub: "dela",
       year: "1st-year",
-      label: "Differential Equations & Linear Algrebra",
+      label: "Differential Equations & Linear Algebra",
     },
     { sub: "ep", year: "1st-year", label: "Engineering Physics" },
     {
@@ -26,10 +26,10 @@ export default function Navigation() {
       label: "Business Communication & Presentation Skills",
     },
     { sub: "op3", year: "1st-year", label: "Open Elective 3" },
-    { sub: "workshop", year: "1st-year", label: "Workshop Practise" },
+    { sub: "workshop", year: "1st-year", label: "Workshop Practice" },
     { sub: "bst", year: "1st-year", label: "Bharatiya Science & Technology" },
     { sub: "pps", year: "1st-year", label: "Programming for Problem Solving" },
-    //Sem3
+    // Sem 3
     {
       sub: "psnm",
       year: "2nd-year",
@@ -46,50 +46,55 @@ export default function Navigation() {
     {
       sub: "hvpe",
       year: "2nd-year",
-      label: "Humana Values & Professional Ethics",
+      label: "Human Values & Professional Ethics",
     },
-    //Sem4
+    // Sem 4
     { sub: "dsa", year: "2nd-year", label: "Data Structure and Algorithms" },
     { sub: "os", year: "2nd-year", label: "Operating System" },
     { sub: "mfe", year: "2nd-year", label: "Management for Engineers" },
     { sub: "cjp", year: "2nd-year", label: "Core Java Programming" },
   ];
+
   const [scrolled, setScrolled] = useState(false);
-   const [brand,setBrand] = useState('');
-    
-    useEffect(() => {
-    setBrand(process.env.NEXT_PUBLIC_WEBSITE_NAME);
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+  const [brand, setBrand] = useState("");
+
+  useEffect(() => {
+    setBrand(process.env.NEXT_PUBLIC_WEBSITE_NAME || "My Website");
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const linkColor = scrolled ? "#333" : "#ffffff";
+
   return (
-    <nav className={`navbar navbar-expand-lg fixed-top ${scrolled ? 'bg-white shadow-sm' : 'bg-gradient-primary'}`} 
-         style={{ 
-           backgroundColor: scrolled ? '#ffffff' : 'rgba(78, 205, 196, 0.9)',
-           padding: scrolled ? '0.5rem 1rem' : '1rem',
-           transition: 'all 0.3s ease'
-         }}>
-      <div className="container">
+    <nav
+      className={`navbar navbar-expand-lg fixed-top ${
+        scrolled ? "bg-white shadow-sm" : ""
+      }`}
+      style={{
+        backgroundColor: scrolled ? "#ffffff" : "rgba(78, 205, 196, 0.9)",
+        padding: scrolled ? "0.5rem 1rem" : "1rem",
+        transition: "all 0.3s ease",
+      }}
+    >
+      <div className="container-fluid">
         <Link href="/" className="navbar-brand d-flex align-items-center">
-          <i className="bi bi-journal-text me-2 fs-4" style={{ color: scrolled ? "#4ECDC4" : "#ffffff" }}></i>
-          <span className="fw-bold" style={{ color: scrolled ? "#333" : "#ffffff" }}>{brand}</span>
+          <i
+            className="bi bi-journal-text me-2 fs-4"
+            style={{ color: "#4ECDC4" }}
+          ></i>
+          <span className="fw-bold" style={{ color: linkColor }}>
+            {brand}
+          </span>
         </Link>
-        <button 
-          className="navbar-toggler" 
-          type="button" 
-          data-bs-toggle="collapse" 
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
           data-bs-target="#navbarContent"
-          aria-controls="navbarContent" 
-          aria-expanded="false" 
+          aria-controls="navbarContent"
+          aria-expanded="false"
           aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
@@ -99,46 +104,35 @@ export default function Navigation() {
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <Link className="nav-link fw-medium text-uppercase" href="/">
-                <span style={{ color: scrolled ? "#4ECDC4" : "#ffffff" }}>Home</span>
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link 
-                className="nav-link fw-medium text-uppercase" 
-                href="/about"
-                style={{ color: scrolled ? "#333" : "#ffffff" }}
-              >
-                About
+                <span style={{ color: linkColor }}>Home</span>
               </Link>
             </li>
             <li className="nav-item dropdown">
-              <a 
-                className="nav-link dropdown-toggle fw-medium text-uppercase" 
-                href="#" 
-                role="button" 
-                data-bs-toggle="dropdown" 
+              <a
+                className="nav-link dropdown-toggle fw-medium text-uppercase"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
                 aria-expanded="false"
-                style={{ color: scrolled ? "#333" : "#ffffff" }}
+                style={{ color: linkColor }}
               >
                 Subjects
               </a>
-              <ul 
-                className="dropdown-menu shadow" 
+              <ul
+                className="dropdown-menu dropdown-menu-end shadow"
                 style={{
-                  maxHeight: '300px', 
-                  overflowY: 'auto',
-                  border: '1px solid rgba(0,0,0,0.05)',
-                  borderRadius: '8px'
+                  maxHeight: "300px",
+                  overflowY: "auto",
+                  minWidth: "250px",
+                  right: 0,
+                  left: "auto",
                 }}
               >
                 {sidebarLinks.map((link, index) => (
                   <li key={index}>
-                    <Link 
-                      className="dropdown-item py-2" 
+                    <Link
+                      className="dropdown-item py-2"
                       href={`/${link.year}/${link.sub}`}
-                      style={{ transition: 'all 0.2s ease' }}
-                      onMouseOver={(e) => e.target.style.backgroundColor = 'rgba(78, 205, 196, 0.1)'}
-                      onMouseOut={(e) => e.target.style.backgroundColor = 'transparent'}
                     >
                       {link.label}
                     </Link>
@@ -147,21 +141,12 @@ export default function Navigation() {
               </ul>
             </li>
             <li className="nav-item">
-              <Link 
-                className="nav-link fw-medium text-uppercase" 
-                href="/contact"
-                style={{ color: scrolled ? "#333" : "#ffffff" }}
+              <Link
+                className="nav-link fw-medium text-uppercase"
+                href="/why"
+                style={{ color: linkColor }}
               >
-                Contact Us
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link 
-                className="nav-link fw-medium text-uppercase" 
-                href="/help"
-                style={{ color: scrolled ? "#333" : "#ffffff" }}
-              >
-                Help
+                WHY?
               </Link>
             </li>
           </ul>

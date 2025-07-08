@@ -1,9 +1,9 @@
-'use client';
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
+"use client";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function Footer() {
-  const [brand, setBrand] = useState('');
+  const [brand, setBrand] = useState("");
 
   useEffect(() => {
     setBrand(process.env.NEXT_PUBLIC_WEBSITE_NAME);
@@ -12,16 +12,19 @@ export default function Footer() {
   return (
     <>
       {/* WhatsApp group Button */}
-      <div className="d-flex flex-column justify-content-around align-items-center text-center mt-5 mb-4">
-        <a
-          className="btn btn-success px-5 py-2 fw-semibold shadow-sm"
-          href="https://chat.whatsapp.com/Fq1P6DdGipgD2DNClxMlIX"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          📱 Join Our WhatsApp Group
-        </a>
-      </div>
+      <div className="bg-light py-4 text-center">
+  <a
+    href="https://chat.whatsapp.com/Fq1P6DdGipgD2DNClxMlIX"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="btn btn-success d-inline-flex justify-content-center align-items-center gap-2 px-4 py-3 fw-bold fs-5"
+    style={{ width : "100%", borderRadius: "1.3px" }}
+  >
+    <i className="fa-brands fa-whatsapp fa-lg"></i>
+    Join Our WhatsApp Group
+  </a>
+</div>
+
 
       {/* Footer */}
       <footer className="bg-dark text-white pt-5 pb-4">
@@ -34,7 +37,8 @@ export default function Footer() {
                 <h5 className="fw-bold mb-0">{brand}</h5>
               </div>
               <p className="text-white-50 pe-lg-5">
-                Your complete academic resource hub providing comprehensive study materials for engineering students.
+                Your complete academic resource hub providing comprehensive
+                study materials for engineering students.
               </p>
 
               {/* Social Icons */}
@@ -42,7 +46,7 @@ export default function Footer() {
                 <a
                   href="https://www.linkedin.com/in/tirthrajsinh-jadeja-36a0b72a9?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
                   className="text-white-50"
-                  style={{ fontSize: '1.2rem', transition: 'color 0.2s' }}
+                  style={{ fontSize: "1.2rem", transition: "color 0.2s" }}
                 >
                   <i className="bi bi-linkedin"></i>
                 </a>
@@ -51,19 +55,22 @@ export default function Footer() {
 
             {/* Quick Links */}
             <div className="col-lg-3 col-sm-6">
-              <h6 className="text-uppercase text-info fw-bold mb-3">Quick Links</h6>
+              <h6 className="text-uppercase text-info fw-bold mb-3">
+                Quick Links
+              </h6>
               <ul className="list-unstyled">
                 <li className="mb-2">
-                  <Link href="/" className="text-white-50 text-decoration-none">Home</Link>
+                  <Link href="/" className="text-white-50 text-decoration-none">
+                    Home
+                  </Link>
                 </li>
                 <li className="mb-2">
-                  <Link href="/about" className="text-white-50 text-decoration-none">About</Link>
-                </li>
-                <li className="mb-2">
-                  <Link href="/contact" className="text-white-50 text-decoration-none">Contact Us</Link>
-                </li>
-                <li className="mb-2">
-                  <Link href="/help" className="text-white-50 text-decoration-none">Help</Link>
+                  <Link
+                    href="/why"
+                    className="text-white-50 text-decoration-none"
+                  >
+                    WHY?
+                  </Link>
                 </li>
               </ul>
             </div>

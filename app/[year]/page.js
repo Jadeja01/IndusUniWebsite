@@ -36,7 +36,7 @@ export default function Year({ params }) {
               <div className="row g-3">
                 {filteredSubject.map((s, index) => (
                   <div key={index} className="col-6 col-sm-4 col-md-3">
-                    <Link href={`/${year}/${s.sub}`}>
+                    <Link className="text-decoration-none" href={`/${year}/${s.sub}`}>
                       <div
                         className="text-white text-center p-3 d-flex flex-column align-items-center justify-content-center shadow"
                         style={{

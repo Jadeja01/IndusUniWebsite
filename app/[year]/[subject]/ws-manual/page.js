@@ -70,7 +70,7 @@ export default function PYQsPage({ params }) {
                 </div>
               ) : (
                 <>
-                  (
+                  
                   <div className="col-md-4 mb-4">
                     <div
                       className="card shadow-sm h-100"
@@ -82,7 +82,7 @@ export default function PYQsPage({ params }) {
                       </div>
                     </div>
                   </div>
-                  )
+                  
                 </>
               )}
             </div>
