@@ -14,7 +14,7 @@ export default function Footer() {
       {/* WhatsApp group Button */}
       <div className="bg-light py-4 text-center">
   <a
-    href="https://chat.whatsapp.com/Fq1P6DdGipgD2DNClxMlIX"
+    href="https://chat.whatsapp.com/EtMd7jf0gP0Gck9sbbe8jN"
     target="_blank"
     rel="noopener noreferrer"
     className="btn btn-success d-inline-flex justify-content-center align-items-center gap-2 px-4 py-3 fw-bold fs-5"
