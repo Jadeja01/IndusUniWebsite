@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎓 College Academic Resource Website
 
-## Getting Started
+A simple and responsive website to help engineering students easily access study material like notes, assignments, and diagrams — organized by year and subject.
 
-First, run the development server:
+## 🔗 Website
+
+[https://iuhub.vercel.app/](https://iuhub.vercel.app/)  
+
+## 🚀 Tech Stack
+
+- Next.js
+- React
+- Bootstrap 5
+- Node.js
+- Vercel
+
+## 📁 Features
+
+- Organized by 1st & 2nd-year subjects
+- Notes, diagrams, and assignments available
+- Mobile responsive and easy to use
+- Dynamic routing for subject pages
+- Buy Me a Coffee support section
+
+## 🧑‍💻 How to Run
 
 ```bash
+git clone https://github.com/Jadeja01/IndusUniWebsite.git
+cd IndusUniWebsite
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 in your browser.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 🌐 Pages
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `/` – Home  
+- `/buy-me-coffee` – Support the developer  
+- `/why` – Why this website exists  
+- `/1st-year/[subject]` – 1st year subjects  
+- `/2nd-year/[subject]` – 2nd year subjects  
 
-## Learn More
+## ☕ Support
 
-To learn more about Next.js, take a look at the following resources:
+If this project helped you, consider [buying me a coffee](https://buymeacoffee.com/jadejatirtv)!
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 👨‍💻 Author
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Tirthrajsinh Jadeja**  
+[GitHub Profile](https://github.com/Jadeja01)
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
