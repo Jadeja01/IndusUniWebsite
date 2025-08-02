@@ -44,9 +44,3 @@ Open http://localhost:3000 in your browser.
 ## ☕ Support
 
 If this project helped you, consider [buying me a coffee](https://buymeacoffee.com/jadejatirtv)!
-
-## 👨‍💻 Author
-
-**Tirthrajsinh Jadeja**  
-[GitHub Profile](https://github.com/Jadeja01)
-
