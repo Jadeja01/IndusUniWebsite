@@ -69,9 +69,8 @@ export default function Navigation() {
 
   return (
     <nav
-      className={`navbar navbar-expand-lg fixed-top ${
-        scrolled ? "bg-white shadow-sm" : ""
-      }`}
+      className={`navbar navbar-expand-lg fixed-top ${scrolled ? "bg-white shadow-sm" : ""
+        }`}
       style={{
         backgroundColor: scrolled ? "#ffffff" : "rgba(78, 205, 196, 0.9)",
         padding: scrolled ? "0.5rem 1rem" : "1rem",
@@ -147,6 +146,15 @@ export default function Navigation() {
                 style={{ color: linkColor }}
               >
                 WHY?
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                className="nav-link fw-medium text-uppercase"
+                href="/buy-me-coffee"
+                style={{ color: linkColor }}
+              >
+                ☕ Buy Me Coffee
               </Link>
             </li>
           </ul>
