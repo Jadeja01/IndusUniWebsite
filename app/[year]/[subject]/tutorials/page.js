@@ -5,38 +5,16 @@ import Link from "next/link";
 import SidebarLinks from "@/app/(components)/(commoncomponents)/(sidebarlinks)/sbl";
 
 export default function TutorialsPage({ params }) {
-  const { year,subject } = params;
-  const [brand,setBrand] = useState('');
+  const { year, subject } = params;
+  const [brand, setBrand] = useState('');
   const { data, loading } = useSubject();
-  const [selectedPdf, setSelectedPdf] = useState(null);
 
-   useEffect(()=>{
+  useEffect(() => {
     setBrand(process.env.NEXT_PUBLIC_WEBSITE_NAME);
-  },[])
+  }, [])
 
   if (loading || !data)
     return <div className="text-center py-5">Loading Tutorials...</div>;
-
-  const handleCardClick = (fileUrl) => {
-    setSelectedPdf(fileUrl);
-    setTimeout(() => {
-      const myModal = new bootstrap.Modal(document.getElementById("pdfModal"));
-      myModal.show();
-    }, 0);
-  };
-
-  const handleCloseModal = () => {
-    setTimeout(() => {
-      const myModal = bootstrap.Modal.getInstance(
-        document.getElementById("pdfModal")
-      );
-      myModal.hide();
-      setSelectedPdf(null);
-    }, 0);
-  };
- 
-
-  
 
   return (
     <>
@@ -65,13 +43,13 @@ export default function TutorialsPage({ params }) {
 
             {/* Assignmnets */}
             <div className="mb-4">
-            <div className="text-center py-5 w-100">No tutorials available</div>
+              <div className="text-center py-5 w-100">No tutorials available</div>
             </div>
           </div>
 
           {/* Sidebar */}
 
-          <SidebarLinks/>
+          <SidebarLinks />
 
         </div>
       </div>

@@ -11,17 +11,26 @@ export default function Footer() {
 
   return (
     <>
-      {/* WhatsApp group Button */}
       <div className="bg-light py-4 text-center">
   <a
-    href="https://chat.whatsapp.com/EtMd7jf0gP0Gck9sbbe8jN"
+    href="https://chat.whatsapp.com/JsQdQ3NWRp0F1pFI9chyLN"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="mb-2 btn btn-success d-inline-flex justify-content-center align-items-center gap-2 px-4 py-3 fw-bold fs-5"
+    style={{ width : "100%", borderRadius: "1.3px" }}
+  >
+    <i className="fa-brands fa-whatsapp fa-lg"></i>
+    First Year
+  </a>
+    <a
+    href="https://chat.whatsapp.com/FWlrWETGI5lHaopUfcMxBe"
     target="_blank"
     rel="noopener noreferrer"
     className="btn btn-success d-inline-flex justify-content-center align-items-center gap-2 px-4 py-3 fw-bold fs-5"
     style={{ width : "100%", borderRadius: "1.3px" }}
   >
     <i className="fa-brands fa-whatsapp fa-lg"></i>
-    Join Our WhatsApp Group
+    Second Year
   </a>
 </div>
 
@@ -33,7 +42,7 @@ export default function Footer() {
             {/* Branding */}
             <div className="col-lg-5 col-md-12">
               <div className="d-flex align-items-center mb-3">
-                <i className="bi bi-journal-text fs-3 me-2 text-info"></i>
+                <i className="bi bi-journal-text fs-3 me-2 text-info" style={{color:"#0015ffff !important"}}></i>
                 <h5 className="fw-bold mb-0">{brand}</h5>
               </div>
               <p className="text-white-50 pe-lg-5">
@@ -46,6 +55,7 @@ export default function Footer() {
                 <a
                   href="https://www.linkedin.com/in/tirthrajsinh-jadeja-36a0b72a9?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
                   className="text-white-50"
+                  target="_blank"
                   style={{ fontSize: "1.2rem", transition: "color 0.2s" }}
                 >
                   <i className="bi bi-linkedin"></i>

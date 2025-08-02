@@ -1,5 +1,3 @@
-// components/WhySection.jsx
-
 export default function WhySection() {
   return (
     <div className="container my-5 py-5 px-4 bg-light rounded shadow">
@@ -23,7 +21,7 @@ export default function WhySection() {
       <ul className="mt-3">
         <li><strong>Why</strong> are we doing this?</li>
         <li><strong>Why</strong> does this degree feel more like a burden than a path?</li>
-        <li><strong>Why</strong> does it feel like if we don't get placed, we don’t matter?</li>
+        <li><strong>Why</strong> does it feel like if we don&apos;t get placed, we don’t matter?</li>
       </ul>
 
       <p className="mt-4">

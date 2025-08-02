@@ -4,7 +4,6 @@ import { useParams } from "next/navigation";
 
 export default function Buttons({  }) {
     const { year,subject } = useParams();
-    console.log('Subject:(buttons)', subject);
     
     const buttons = [
   { info: "pyqs", label: "PYQs" },

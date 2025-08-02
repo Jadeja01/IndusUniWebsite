@@ -10,25 +10,17 @@ export function SubjectProvider({ subject, children }) {
   useEffect(() => {
     async function fetchData() {
       if (!subject) {
-        console.log("No subject provided");
         return;
       }
       
       try {
-        console.log("Fetching data for subject:", subject);
         const res = await fetch(`/api/files?subject=${subject}`);
-        console.log('res:',res);
         
         const result = await res.json();
-        console.log("API result:", result);
         setData(result);
       } catch (error) {
         console.error("Error fetching data:", error);
-      } finally {
-        console.log("Fetch completed");
       }
-      
-      
     }
     
     fetchData();

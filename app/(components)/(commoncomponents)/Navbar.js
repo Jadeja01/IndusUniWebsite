@@ -82,7 +82,7 @@ export default function Navigation() {
         <Link href="/" className="navbar-brand d-flex align-items-center">
           <i
             className="bi bi-journal-text me-2 fs-4"
-            style={{ color: "#4ECDC4" }}
+            style={{ color: "#0015ffff" }}
           ></i>
           <span className="fw-bold" style={{ color: linkColor }}>
             {brand}

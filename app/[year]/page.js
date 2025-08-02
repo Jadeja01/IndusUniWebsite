@@ -31,7 +31,7 @@ export default function Year({ params }) {
       <div className="container mb-5">
         <div className="row justify-content-between">
           {/* Subject Cards */}
-          <div className="col-lg-8">
+          <div className="col-lg-8" style={{marginBottom:"10px !important",padding:0}}>
             <div className="bg-white rounded p-3">
               <div className="row g-3">
                 {filteredSubject.map((s, index) => (

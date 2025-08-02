@@ -17,6 +17,11 @@ export default function RootLayout({ children }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Your comprehensive educational resource platform" />
+        <meta name="keywords" content="education, resources, engineering, study materials, eg, engineering graphics, iuhub, indus university, first year, second year, pyq, assignment " />
+        <meta name="author" content="IUhub team" />
+        <meta property="og:title" content="IUhub | Educational Resources" />
+        <meta property="og:description" content="Your comprehensive educational resource platform" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />

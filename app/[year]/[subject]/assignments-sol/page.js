@@ -7,8 +7,6 @@ import { useEffect, useState } from 'react';
 
 export default function EGAssignmentsSolution() {
     const { year, subject } = useParams(); 
-    console.log("Year(eg/assignments)", year);
-    console.log("Subject(eg/assignments)", subject);
     const formattedSubject = subject.toUpperCase();
      const [brand,setBrand] = useState('');
         useEffect(()=>{

@@ -33,8 +33,7 @@ export default function SidebarLinks() {
     { sub: "cjp", year: "2nd-year", label: "Core Java Programming" },
     { sub: "coa", year: "2nd-year", label: "Computer Organization and Architecture" },
   ];
-
-  // Group by year
+  
   const groupedLinks = sidebarLinks.reduce((acc, item) => {
     acc[item.year] = acc[item.year] || [];
     acc[item.year].push(item);
