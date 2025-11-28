@@ -3,6 +3,7 @@ import Navigation from './(components)/(commoncomponents)/Navbar';
 import Footer from './(components)/(commoncomponents)/Footer';
 import Script from 'next/script';
 import './globals.css';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -44,6 +45,7 @@ export default function RootLayout({ children }) {
         <Navigation />
         <main style={{ marginTop: '76px', minHeight: 'calc(100vh - 60px)' }}>
           {children}
+          <SpeedInsights/>
         </main>
         <Footer />
         <Script
