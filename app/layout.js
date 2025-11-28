@@ -1,15 +1,15 @@
-import { Inter } from 'next/font/google';
-import Navigation from './(components)/(commoncomponents)/Navbar';
-import Footer from './(components)/(commoncomponents)/Footer';
-import Script from 'next/script';
-import './globals.css';
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Inter } from "next/font/google";
+import Navigation from "./(components)/(commoncomponents)/Navbar";
+import Footer from "./(components)/(commoncomponents)/Footer";
+import Script from "next/script";
+import "./globals.css";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: 'IUhub | Educational Resources',
-  description: 'Your comprehensive educational resource platform',
+  title: "IUhub | Educational Resources",
+  description: "Your comprehensive educational resource platform",
 };
 
 export default function RootLayout({ children }) {
@@ -18,21 +18,42 @@ export default function RootLayout({ children }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Your comprehensive educational resource platform" />
-        <meta name="keywords" content="education, resources, engineering, study materials, eg, engineering graphics, iuhub, indus university, first year, second year, pyq, assignment " />
+        <meta
+          name="description"
+          content="Your comprehensive educational resource platform"
+        />
+        <meta
+          name="keywords"
+          content="education, resources, engineering, study materials, eg, engineering graphics, iuhub, indus university, first year, second year, pyq, assignment "
+        />
         <meta name="author" content="IUhub team" />
         <meta property="og:title" content="IUhub | Educational Resources" />
-        <meta property="og:description" content="Your comprehensive educational resource platform" />
+        <meta
+          property="og:description"
+          content="Your comprehensive educational resource platform"
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-        <link 
-          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
-          rel="stylesheet" 
-          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2684436410242774"
+     crossorigin="anonymous"></script>
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        />
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+        />
 
         <link
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -41,11 +62,11 @@ export default function RootLayout({ children }) {
           crossOrigin="anonymous"
         />
       </head>
-      <body className={inter.className} style={{ backgroundColor: '#e7e9eb' }}>
+      <body className={inter.className} style={{ backgroundColor: "#e7e9eb" }}>
         <Navigation />
-        <main style={{ marginTop: '76px', minHeight: 'calc(100vh - 60px)' }}>
+        <main style={{ marginTop: "76px", minHeight: "calc(100vh - 60px)" }}>
           {children}
-          <SpeedInsights/>
+          <SpeedInsights />
         </main>
         <Footer />
         <Script
