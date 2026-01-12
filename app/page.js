@@ -1,295 +1,406 @@
-"use client"
-import Link from 'next/link';
-import Navigation from './(components)/(commoncomponents)/Navbar';
-import { useEffect, useState } from 'react';
+"use client";
+import Link from "next/link";
 
-// Hero Section Component
-const HeroSection = () => {
-  const [brand, setBrand] = useState('');
-  useEffect(() => {
-    setBrand(process.env.NEXT_PUBLIC_WEBSITE_NAME);
-  }, [])
-  return (
-    <div className="bg-primary bg-gradient py-5 d-flex align-items-center min-vh-85">
-      <div className="container py-5">
-        <div className="row align-items-center">
-          <div className="col-lg-6 text-white">
-            <h1 className="display-3 fw-bold mb-4">
-              Welcome to <br />{brand}
-            </h1>
-            <h4 className="mb-4 opacity-75">
-              Your Complete Academic Resource Hub for Engineering Studies
-            </h4>
-            <p className="lead mb-4">
-              Access comprehensive study materials, previous year papers, and interactive resources to excel in your engineering journey.
-            </p>
-            <div className="d-flex gap-3">
-              <Link href="#year-selection" className="btn btn-light btn-lg rounded-pill px-4">
-                Get Started
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+const BRAND = process.env.NEXT_PUBLIC_WEBSITE_NAME || "IUHub";
 
-// Year Selection Component
-const YearSelection = () => {
-  const years = [
-    {
-      label: "1st Year",
-      href: "/1st-year",
-      icon: "bi-1-circle-fill",
-      description: "Foundational engineering subjects and fundamental concepts"
-    },
-    {
-      label: "2nd Year",
-      href: "/2nd-year",
-      icon: "bi-2-circle-fill",
-      description: "Advanced topics and specialized engineering domains"
-    }
-  ];
-
-  return (
-    <div id="year-selection" className="container py-5">
-      <div className="text-center mb-5">
-        <h2 className="display-5 mb-3 text-info">Select Your Year</h2>
-        <p className="lead text-muted">Choose your academic year to access relevant materials</p>
-      </div>
-      <div className="row justify-content-center g-4">
-        {years.map((year, index) => (
-          <div key={index} className="col-md-5">
-            <Link href={year.href} className="text-decoration-none">
-              <div className="card h-100 border-0 shadow-lg hover-card">
-                <div className="card-body text-center p-5">
-                  <div className="mb-4">
-                    <i className={`bi ${year.icon} fs-1 text-info`}></i>
-                  </div>
-                  <h3 className="card-title mb-3">{year.label}</h3>
-                  <p className="card-text text-muted">{year.description}</p>
-                  <div className="mt-4">
-                    <span className="btn btn-outline-info rounded-pill px-4">
-                      Explore Resources <i className="bi bi-arrow-right ms-2"></i>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </Link>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-// Quick Access Component
-const QuickAccess = () => {
-  return (
-    <div className="bg-light py-5">
-      <div className="container">
-        <div className="text-center mb-5">
-          <h2 className="display-5 mb-3 text-primary">Quick Access</h2>
-          <p className="lead text-muted">Directly jump to popular subjects</p>
-        </div>
-        <div className="row g-4">
-          {[
-            { title: "Engineering Graphics", href: "/1st-year/eg", icon: "bi-bezier" },
-            { title: "Environmental Science", href: "/1st-year/es", icon: "bi-tree" },
-            { title: "Engineering Calculus", href: "/1st-year/calculus", icon: "bi-calculator" },
-            { title: "Engineering Chemistry", href: "/1st-year/ec", icon: "bi-eyedropper" }
-          ].map((subject, index) => (
-            <div key={index} className="col-md-6 col-lg-3">
-              <Link href={subject.href} className="text-decoration-none">
-                <div className="card h-100 border-0 shadow-sm hover-card">
-                  <div className="card-body text-center p-4">
-                    <div className="rounded-circle bg-white shadow-sm d-inline-flex align-items-center justify-content-center p-3 mb-3" style={{ width: "60px", height: "60px" }}>
-                      <i className={`bi ${subject.icon} fs-3 text-primary`}></i>
-                    </div>
-                    <h4 className="card-title">{subject.title}</h4>
-                    <div className="mt-3">
-                      <span className="text-primary">Browse Materials <i className="bi bi-arrow-right ms-1"></i></span>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// Features Component
-const Features = () => {
-  return (
-    <div className="container py-5">
-      <div className="text-center mb-5">
-        <h2 className="display-5 mb-3 text-info">What We Offer</h2>
-        <p className="lead text-muted">Comprehensive resources to support your academic journey</p>
-      </div>
-      <div className="row g-4">
-        {[
-          {
-            icon: "bi-book-fill",
-            title: "Comprehensive Study Materials",
-            description: "Well-structured notes covering the entire syllabus with easy-to-understand explanations"
-          },
-          {
-            icon: "bi-file-text-fill",
-            title: "Previous Year Question Papers",
-            description: "Access to a wide collection of previous year papers with solutions to improve your exam preparation"
-          },
-          {
-            icon: "bi-pencil-fill",
-            title: "Practice Assignments",
-            description: "Topic-wise assignments to test your understanding and enhance your problem-solving skills"
-          },
-          {
-            icon: "bi-mortarboard-fill",
-            title: "Interactive Tutorials",
-            description: "Engaging tutorials with visual aids to help you grasp complex concepts more effectively"
-          }
-        ].map((feature, index) => (
-          <div key={index} className="col-md-6 col-lg-3">
-            <div className="card h-100 border-0 shadow-sm">
-              <div className="card-body p-4">
-                <div className="feature-icon-bg rounded p-3 d-inline-flex align-items-center justify-content-center mb-3">
-                  <i className={`bi ${feature.icon} fs-2 text-info`}></i>
-                </div>
-                <h4 className="card-title mb-3">{feature.title}</h4>
-                <p className="card-text text-muted">{feature.description}</p>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-     
-// Getting Started Component
-const GettingStarted = () => {
-  return (
-    <div className="container py-5">
-      <div className="text-center mb-5">
-        <h2 className="display-5 mb-3 text-info">Getting Started</h2>
-        <p className="lead text-muted">Follow these simple steps to begin your learning journey</p>
-      </div>
-      <div className="row g-4">
-        {[
-          {
-            step: "1",
-            title: "Choose Your Subject",
-            description: "Select from our wide range of engineering subjects based on your curriculum"
-          },
-          {
-            step: "2",
-            title: "Access Resources",
-            description: "Find study materials, assignments, and question papers for your selected subject"
-          },
-          {
-            step: "3",
-            title: "Start Learning",
-            description: "Begin your learning journey with our comprehensive materials and interactive content"
-          }
-        ].map((item, index) => (
-          <div key={index} className="col-md-4">
-            <div className="card h-100 border-0 shadow-sm">
-              <div className="card-body p-4 text-center">
-                <div className="mb-4">
-                  <div className="d-inline-flex align-items-center justify-content-center rounded-circle bg-info text-white" style={{ width: "60px", height: "60px" }}>
-                    <span className="h4 mb-0">{item.step}</span>
-                  </div>
-                </div>
-                <h4 className="card-title mb-3">{item.title}</h4>
-                <p className="card-text text-muted">{item.description}</p>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="text-center mt-5">
-        <Link href="#year-selection" className="btn btn-info btn-lg rounded-pill px-4">
-          Start Now <i className="bi bi-arrow-right ms-2"></i>
-        </Link>
-      </div>
-    </div>
-  );
-};
-
-
-
-// Main Home Component
 export default function Home() {
-  useEffect(() => {
-    const animateOnScroll = () => {
-      const elements = document.querySelectorAll('.animate-on-scroll');
-      elements.forEach(element => {
-        const elementPosition = element.getBoundingClientRect().top;
-        const viewportHeight = window.innerHeight;
+  return (
+    <>
+      {/* HERO SECTION - Enhanced with better hierarchy and visual appeal */}
+      <section className="hero-section bg-gradient position-relative overflow-hidden py-5">
+        <div className="container py-5">
+          <div className="row align-items-center min-vh-50">
+            <div className="col-lg-9 mx-auto text-center">
+              {/* Platform badge */}
+              <div className="mb-4">
+                <span className="badge bg-primary bg-opacity-10 text-primary px-4 py-2 rounded-pill fs-6 fw-medium">
+                  Academic Resource Platform
+                </span>
+              </div>
 
-        if (elementPosition < viewportHeight - 100) {
-          element.classList.add('visible');
-        }
-      });
-    };
+              {/* Main heading */}
+              <h1 className="display-3 fw-bold mb-3 lh-sm">
+                Engineering Resources for{" "}
+                <span className="text-primary position-relative d-inline-block">
+                  Indus University
+                  <svg
+                    className="position-absolute start-0 bottom-0 w-100"
+                    height="10"
+                    viewBox="0 0 200 12"
+                    fill="none"
+                  >
+                    <path
+                      d="M2 10C50 2 150 2 198 10"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </span>
+              </h1>
 
-    window.addEventListener('scroll', animateOnScroll);
-    animateOnScroll();
+              {/* Courses list */}
+              <div className="mb-4">
+                <p className="fw-medium text-muted mb-0">
+                  CE <span className="mx-2">·</span>
+                  CSE <span className="mx-2">·</span>
+                  IT
+                </p>
+              </div>
 
-    return () => {
-      window.removeEventListener('scroll', animateOnScroll);
-    };
-  }, []);
+              {/* Feature highlights */}
+              <div className="d-flex flex-wrap justify-content-center gap-2 mb-5">
+                <span className="badge bg-light text-dark px-3 py-2 rounded-pill">
+                  Notes
+                </span>
+                <span className="badge bg-light text-dark px-3 py-2 rounded-pill">
+                  Assignments
+                </span>
+                <span className="badge bg-light text-dark px-3 py-2 rounded-pill">
+                  Diagrams
+                </span>
+                <span className="badge bg-light text-dark px-3 py-2 rounded-pill">
+                  Previous Papers
+                </span>
+              </div>
 
-  return (<>
-    <header className="py-4 bg-white border-bottom border-dark">
-      <div className="container">
-        <div className="row justify-content-evenly align-items-center">
-          <div className="col-md-5">
-            <div className="slok1 p-3">
-              <p className="text-secondary">Bhagavad Gita: Adhyay 2, Slok 47</p>
-              <h2 className="my-3">
-                कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।<br />
-                मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥
-              </h2>
-              <p className="text-secondary">
-                <span className="text-danger">अर्थ:</span> तुम्हें अपने निश्चित कर्मों का
-                पालन करने का अधिकार है लेकिन तुम अपने कर्मों का फल प्राप्त करने के
-                अधिकारी नहीं हो, तुम स्वयं को अपने कर्मों के फलों का कारण मत मानो और न
-                ही अकर्मा रहने में आसक्ति रखो।
-              </p>
-            </div>
-          </div>
-          <div className="col-md-5">
-            <div className="slok2 p-3">
-              <p className="text-secondary">Bhagavad Gita: Adhyay 6, Slok 35</p>
-              <h2 className="my-3">
-                असंशयं महाबाहो मनो दुर्निग्रहं चलम् ।<br />
-                अभ्यासेन तु कौन्तेय वैराग्येण च गृह्यते
-              </h2>
-              <p className="text-secondary">
-                <span className="text-danger">अर्थ:</span>
-                भगवान् श्रीकृष्ण ने कहा-हे महाबाहु कुन्तीपुत्र! जो तुमने कहा वह सत्य
-                है, मन को नियंत्रित करना वास्तव में कठिन है। किन्तु अभ्यास और विरक्ति
-                द्वारा इसे नियंत्रित किया जा सकता है।
-              </p>
+{/* Direct access search
+<div className="d-flex justify-content-center mb-5">
+  <div className="w-100" style={{ maxWidth: "64%" }}>
+    <input
+      type="text"
+      className="form-control form-control-lg rounded-pill px-4 shadow-sm"
+      placeholder="Search subjects, notes, assignments..."
+      aria-label="Search academic resources"
+    />
+  </div>
+</div> */}
+
+              {/* CTA buttons */}
+              <div className="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                <Link
+                  href="#year-selection"
+                  className="btn btn-primary btn-lg px-5 py-3 rounded-pill shadow-sm"
+                >
+                  Browse by Year
+                </Link>
+
+                <Link
+                  href="/1st-year/eg"
+                  className="btn btn-outline-primary btn-lg px-5 py-3 rounded-pill"
+                >
+                  Engineering Graphics
+                </Link>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </header>
-    <main>
-      <Navigation />
-      <HeroSection />
-      <YearSelection />
-      <QuickAccess />
-      <Features />
-      <GettingStarted />
 
-    </main></>
+        {/* Decorative background elements */}
+        <div
+          className="position-absolute top-0 start-0 w-100 h-100 opacity-25"
+          style={{ zIndex: -1 }}
+        >
+          <div
+            className="position-absolute"
+            style={{
+              top: "10%",
+              left: "5%",
+              width: "100px",
+              height: "100px",
+              background:
+                "radial-gradient(circle, rgba(13,110,253,0.1) 0%, transparent 70%)",
+            }}
+          ></div>
+          <div
+            className="position-absolute"
+            style={{
+              bottom: "10%",
+              right: "5%",
+              width: "150px",
+              height: "150px",
+              background:
+                "radial-gradient(circle, rgba(13,110,253,0.1) 0%, transparent 70%)",
+            }}
+          ></div>
+        </div>
+      </section>
+
+      {/* YEAR SELECTION - Enhanced cards with better visual hierarchy */}
+      <section id="year-selection" className="py-5 bg-white">
+        <div className="container py-5">
+          <div className="row mb-5">
+            <div className="col-lg-8 mx-auto text-center">
+              <h2 className="display-5 fw-bold mb-3">
+                Choose Your Academic Year
+              </h2>
+              <p className="lead text-muted">
+                Resources structured exactly as per your syllabus with easy
+                navigation
+              </p>
+            </div>
+          </div>
+
+          <div className="row g-4 justify-content-center">
+            {[
+              {
+                label: "1st Year",
+                href: "/1st-year",
+                desc: "Fundamental engineering subjects including mathematics, physics, and core concepts",
+                badge: null,
+                icon: "1-circle-fill",
+                color: "primary",
+              },
+              {
+                label: "2nd Year",
+                href: "/2nd-year",
+                desc: "Core and applied subjects building on foundational knowledge",
+                badge: null,
+                icon: "2-circle-fill",
+                color: "success",
+              },
+            ].map((year, idx) => (
+              <div key={idx} className="col-md-6 col-lg-5">
+                <Link href={year.href} className="text-decoration-none">
+                  <div
+                    className={`card h-100 border-0 shadow-sm hover-shadow-lg transition-all position-relative overflow-hidden`}
+                  >
+                    {year.badge && (
+                      <div className="position-absolute top-0 end-0 m-3">
+                        <span className="badge bg-warning text-dark">
+                          <i className="bi bi-star-fill me-1"></i>
+                          {year.badge}
+                        </span>
+                      </div>
+                    )}
+
+                    <div className="card-body p-4">
+                      <div className="d-flex align-items-start mb-3">
+                        <div
+                          className={`bg-${year.color} bg-opacity-10 rounded-circle p-3 me-3`}
+                        >
+                          <i
+                            className={`bi bi-${year.icon} fs-1 text-${year.color}`}
+                          ></i>
+                        </div>
+                        <div className="flex-grow-1">
+                          <h3 className="card-title h4 mb-2">{year.label}</h3>
+                          
+                        </div>
+                      </div>
+
+                      <p className="card-text text-muted mb-4">{year.desc}</p>
+
+                      <div className="d-flex align-items-center text-primary fw-semibold">
+                        View All Subjects
+                        <i className="bi bi-arrow-right ms-2"></i>
+                      </div>
+                    </div>
+
+                    {/* Hover effect gradient */}
+                    <div
+                      className={`position-absolute bottom-0 start-0 w-100 h-2 bg-${year.color}`}
+                    ></div>
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* QUICK ACCESS - Improved with better visual organization */}
+      <section className="py-5 bg-light">
+        <div className="container py-5">
+          <div className="row mb-5">
+            <div className="col-lg-8 mx-auto text-center">
+              <h2 className="display-5 fw-bold mb-3">Quick Access</h2>
+              <p className="lead text-muted">
+                Jump directly to the most popular subjects
+              </p>
+            </div>
+          </div>
+
+          <div className="row g-4">
+            {[
+              {
+                title: "Engineering Graphics",
+                href: "/1st-year/eg",
+                icon: "pencil-square",
+                desc: "Technical drawings & CAD",
+                color: "primary",
+              },
+              {
+                title: "Engineering Calculus",
+                href: "/1st-year/calculus",
+                icon: "calculator",
+                desc: "Differential & Integral",
+                color: "success",
+              },
+              {
+                title: "Environmental Science",
+                href: "/1st-year/es",
+                icon: "globe",
+                desc: "Sustainability & Ecology",
+                color: "info",
+              },
+              {
+                title: "Engineering Chemistry",
+                href: "/1st-year/ec",
+                icon: "flask",
+                desc: "Materials & Reactions",
+                color: "warning",
+              },
+            ].map((subject, idx) => (
+              <div key={idx} className="col-6 col-lg-3">
+                <Link href={subject.href} className="text-decoration-none">
+                  <div className="card h-100 border-0 shadow-sm hover-shadow-lg transition-all text-center">
+                    <div className="card-body p-4">
+                      <div
+                        className={`bg-${subject.color} bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3`}
+                        style={{ width: "64px", height: "64px" }}
+                      >
+                        <i
+                          className={`bi bi-${subject.icon} fs-3 text-${subject.color}`}
+                        ></i>
+                      </div>
+                      <h6 className="card-title mb-2 fw-bold">
+                        {subject.title}
+                      </h6>
+                      <p className="card-text text-muted small mb-3">
+                        {subject.desc}
+                      </p>
+                      <span
+                        className={`text-${subject.color} fw-semibold small`}
+                      >
+                        Browse <i className="bi bi-arrow-right ms-1"></i>
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FEATURES SECTION - New addition for better educational context */}
+      <section className="py-5 bg-white">
+        <div className="container py-5">
+          <div className="row mb-5">
+            <div className="col-lg-8 mx-auto text-center">
+              <h2 className="display-5 fw-bold mb-3">
+                Why Students Choose {BRAND}
+              </h2>
+              <p className="lead text-muted">
+                Everything you need to excel in your engineering studies
+              </p>
+            </div>
+          </div>
+
+          <div className="row g-4">
+            {[
+              {
+                icon: "check-circle-fill",
+                title: "Syllabus-Aligned",
+                desc: "All content matches your university curriculum exactly",
+                color: "success",
+              },
+              {
+                icon: "clock-fill",
+                title: "Always Updated",
+                desc: "Regular updates with the latest study materials",
+                color: "primary",
+              },
+              {
+                icon: "download",
+                title: "Easy Downloads",
+                desc: "Download PDFs and resources for offline studying",
+                color: "info",
+              },
+              {
+                icon: "search",
+                title: "Quick Search",
+                desc: "Find exactly what you need in seconds",
+                color: "warning",
+              },
+            ].map((feature, idx) => (
+              <div key={idx} className="col-md-6 col-lg-3">
+                <div className="text-center">
+                  <div
+                    className={`bg-${feature.color} bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3`}
+                    style={{ width: "80px", height: "80px" }}
+                  >
+                    <i
+                      className={`bi bi-${feature.icon} fs-1 text-${feature.color}`}
+                    ></i>
+                  </div>
+                  <h5 className="fw-bold mb-2">{feature.title}</h5>
+                  <p className="text-muted small">{feature.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA SECTION - Enhanced with better visual appeal */}
+      <section className="py-5 bg-primary text-white position-relative overflow-hidden">
+        <div className="container py-5 position-relative" style={{ zIndex: 1 }}>
+          <div className="row">
+            <div className="col-lg-8 mx-auto text-center">
+              <h2 className="display-4 fw-bold mb-4">
+                Ready to Start Learning?
+              </h2>
+              <p className="lead mb-5 opacity-90">
+                Join thousands of students who are already excelling with{" "}
+                {BRAND}
+              </p>
+              <div className="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                <Link
+                  href="#year-selection"
+                  className="btn btn-light btn-lg px-5 py-3 rounded-pill shadow"
+                >
+                  <i className="bi bi-rocket-takeoff me-2"></i>
+                  Get Started Now
+                </Link>
+                <Link
+                  href="/about"
+                  className="btn btn-outline-light btn-lg px-5 py-3 rounded-pill"
+                >
+                  Learn More
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Background pattern */}
+        <div className="position-absolute top-0 start-0 w-100 h-100 opacity-10">
+          <div
+            className="position-absolute"
+            style={{
+              top: "0",
+              left: "0",
+              width: "200px",
+              height: "200px",
+              background: "radial-gradient(circle, white 0%, transparent 70%)",
+            }}
+          ></div>
+          <div
+            className="position-absolute"
+            style={{
+              bottom: "0",
+              right: "0",
+              width: "300px",
+              height: "300px",
+              background: "radial-gradient(circle, white 0%, transparent 70%)",
+            }}
+          ></div>
+        </div>
+      </section>
+
+      
+    </>
   );
 }

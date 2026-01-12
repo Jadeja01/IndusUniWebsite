@@ -6,46 +6,33 @@ export default function Footer() {
   const [brand, setBrand] = useState("");
 
   useEffect(() => {
-    setBrand(process.env.NEXT_PUBLIC_WEBSITE_NAME);
+    setBrand(process.env.NEXT_PUBLIC_WEBSITE_NAME || "IUHub");
   }, []);
 
   return (
     <>
-      <div className="bg-light py-4 text-center">
-  <a
-    href="https://chat.whatsapp.com/JsQdQ3NWRp0F1pFI9chyLN"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="mb-2 btn btn-success d-inline-flex justify-content-center align-items-center gap-2 px-4 py-3 fw-bold fs-5"
-    style={{ width : "100%", borderRadius: "1.3px" }}
-  >
-    <i className="fa-brands fa-whatsapp fa-lg"></i>
-    First Year
-  </a>
-    <a
-    href="https://chat.whatsapp.com/FWlrWETGI5lHaopUfcMxBe"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="btn btn-success d-inline-flex justify-content-center align-items-center gap-2 px-4 py-3 fw-bold fs-5"
-    style={{ width : "100%", borderRadius: "1.3px" }}
-  >
-    <i className="fa-brands fa-whatsapp fa-lg"></i>
-    Second Year
-  </a>
-</div>
+      {/* Community Groups */}
 
 
       {/* Footer */}
-      <footer className="bg-dark text-white pt-5 pb-4">
+      <footer
+        className="text-white pt-5 pb-4"
+        style={{
+          background: "linear-gradient(180deg, #1a1a2e 0%, #0f0f1e 100%)",
+        }}
+      >
         <div className="container">
           <div className="row g-5">
-            {/* Branding */}
-            <div className="col-lg-5 col-md-12">
-              <div className="d-flex align-items-center mb-3">
-                <i className="bi bi-journal-text fs-3 me-2 text-info" style={{color:"#0015ffff !important"}}></i>
-                <h5 className="fw-bold mb-0">{brand}</h5>
+            {/* Brand */}
+            <div className="col-lg-5">
+              <div className="d-flex align-items-center mb-4">
+                <div className="bg-primary bg-opacity-10 rounded-circle p-2 me-2">
+              <i className="bi bi-mortarboard-fill text-primary fs-5"></i>
+            </div>
+                <h4 className="fw-bold mb-0">{brand}</h4>
               </div>
-              <p className="text-white-50 pe-lg-5">
+
+              <p className="text-white-50" style={{ lineHeight: "1.8" }}>
                 Your complete academic resource hub providing comprehensive
                 study materials for engineering students.
               </p>
@@ -65,35 +52,50 @@ export default function Footer() {
 
             {/* Quick Links */}
             <div className="col-lg-3 col-sm-6">
-              <h6 className="text-uppercase text-info fw-bold mb-3">
+              <h6
+                className="text-uppercase fw-bold mb-4"
+                style={{ color: "#667eea", letterSpacing: "1px" }}
+              >
                 Quick Links
               </h6>
+
               <ul className="list-unstyled">
-                <li className="mb-2">
-                  <Link href="/" className="text-white-50 text-decoration-none">
-                    Home
-                  </Link>
-                </li>
-                <li className="mb-2">
-                  <Link
-                    href="/why"
-                    className="text-white-50 text-decoration-none"
-                  >
-                    WHY?
-                  </Link>
-                </li>
+                {[
+                  { label: "Home", href: "/" },
+                  { label: "Why???", href: "/why" },
+                ].map((l) => (
+                  <li key={l.label} className="mb-3">
+                    <Link
+                      href={l.href}
+                      className="text-white-50 text-decoration-none d-flex align-items-center"
+                      style={{ transition: "all 0.3s ease" }}
+                      onMouseOver={(e) => {
+                        e.currentTarget.style.color = "#fff";
+                        e.currentTarget.style.paddingLeft = "10px";
+                      }}
+                      onMouseOut={(e) => {
+                        e.currentTarget.style.color = "";
+                        e.currentTarget.style.paddingLeft = "0";
+                      }}
+                    >
+                      <i className="bi bi-chevron-right me-2"></i>
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
 
-          {/* Divider */}
-          <hr className="my-4 border-secondary" />
+          <hr className="border-secondary my-4 opacity-25" />
 
-          {/* Bottom Footer */}
-          <div className="d-flex flex-column flex-md-row justify-content-between align-items-center">
-            <p className="mb-2 mb-md-0 text-white-50 small">
-              &copy; {new Date().getFullYear()} {brand}. All rights reserved.
-            </p>
+          {/* Bottom */}
+          <div className="row">
+            <div className="col-md-6 text-center text-md-start">
+              <p className="text-white-50 small mb-0">
+                &copy; {new Date().getFullYear()} {brand}. All rights reserved.
+              </p>
+            </div>
           </div>
         </div>
       </footer>

@@ -1,14 +1,13 @@
-'use client';
-import Link from 'next/link';
-import SidebarLinks from '../(components)/(commoncomponents)/(sidebarlinks)/sbl';
-import { useEffect, useState } from 'react';
-import filterSubjects from '../(components)/(commoncomponents)/filterSubjects';
+"use client";
+import Link from "next/link";
+import SidebarLinks from "../(components)/(commoncomponents)/(sidebarlinks)/sbl";
+import { useEffect, useState } from "react";
+import filterSubjects from "../(components)/(commoncomponents)/filterSubjects";
 
 export default function Year({ params }) {
   const [filteredSubject, setFilteredSubject] = useState([]);
   const { year } = params;
-  const [brand, setBrand] = useState('');
-  
+  const [brand, setBrand] = useState("");
 
   useEffect(() => {
     const filteredSubjects = filterSubjects.filter((e) => e.year === year);
@@ -16,56 +15,52 @@ export default function Year({ params }) {
     setBrand(process.env.NEXT_PUBLIC_WEBSITE_NAME);
   }, [year]);
 
-
   return (
     <>
       {/* Header */}
-      <div
-        className="text-center py-4 mb-5"
-        style={{ backgroundImage: 'linear-gradient(to right, #764ba2, #667eea)' }}
-      >
-        <h1 className="text-white">{brand} | {year?.toUpperCase()}</h1>
+      <div className="text-center py-5 mb-5 bg-white border-bottom">
+        <h1 className="fw-bold mb-2">
+          {brand} <span className="text-primary">| {year?.toUpperCase()}</span>
+        </h1>
+        <p className="text-muted mb-0">
+          Subjects and resources aligned with university syllabus
+        </p>
       </div>
 
       {/* Content */}
       <div className="container mb-5">
-        <div className="row justify-content-between">
-          {/* Subject Cards */}
-          <div className="col-lg-8" style={{marginBottom:"10px !important",padding:0}}>
-            <div className="bg-white rounded p-3">
-              <div className="row g-3">
-                {filteredSubject.map((s, index) => (
-                  <div key={index} className="col-6 col-sm-4 col-md-3">
-                    <Link className="text-decoration-none" href={`/${year}/${s.sub}`}>
-                      <div
-                        className="text-white text-center p-3 d-flex flex-column align-items-center justify-content-center shadow"
-                        style={{
-                          background: 'linear-gradient(135deg, #667eea, #764ba2)',
-                          borderRadius: '16px',
-                          aspectRatio: '1 / 1',
-                          cursor: 'pointer',
-                          transition: 'transform 0.2s ease-in-out',
-                        }}
-                        onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
-                        onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-                      >
-                        <i className="bi bi-book" style={{ fontSize: '2rem' }}></i>
-                        <div className="mt-2">{s.label}</div>
-                      </div>
-                    </Link>
+  <div className="row justify-content-between">
+
+    {/* SUBJECT CARDS */}
+    <div className="col-lg-8 mb-3 px-0">
+      <div className="bg-white rounded border p-3">
+        <div className="row g-3">
+          {filteredSubject.map((s, index) => (
+            <div key={index} className="col-6 col-sm-4 col-md-3">
+              <Link
+                href={`/${year}/${s.sub}`}
+                className="text-decoration-none"
+              >
+                <div className="card h-100 text-center shadow-sm border subject-card">
+                  <div className="card-body d-flex flex-column justify-content-center align-items-center p-3">
+                    <i className="bi bi-book fs-3 text-primary mb-2"></i>
+                    <span className="fw-semibold text-dark small text-center">
+                      {s.label}
+                    </span>
                   </div>
-                ))}
-              </div>
+                </div>
+              </Link>
             </div>
-          </div>
-
-          {/* Sidebar */}
-          
-          <SidebarLinks/>
-
+          ))}
         </div>
       </div>
-      
+    </div>
+
+    {/* SIDEBAR */}
+    <SidebarLinks />
+  </div>
+</div>
+
     </>
   );
 }

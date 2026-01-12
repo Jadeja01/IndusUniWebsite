@@ -4,6 +4,9 @@ import Footer from "./(components)/(commoncomponents)/Footer";
 import Script from "next/script";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,7 +37,7 @@ export default function RootLayout({ children }) {
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2684436410242774"
-     crossorigin="anonymous"></script>
+     crossOrigin="anonymous"></script>
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
@@ -64,7 +67,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className={inter.className} style={{ backgroundColor: "#e7e9eb" }}>
         <Navigation />
-        <main style={{ marginTop: "76px", minHeight: "calc(100vh - 60px)" }}>
+        <main style={{ minHeight: "calc(100vh - 60px)" }}>
           {children}
           <SpeedInsights />
         </main>

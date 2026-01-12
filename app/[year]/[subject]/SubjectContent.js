@@ -17,11 +17,10 @@ export default function SubjectContent({ subject }) {
   return (
     <>
       {/* Header */}
-      <div
-        className="text-center py-4"
-        style={{ background: "linear-gradient(45deg, #FF6B6B, #4ECDC4)" }}
-      >
-        <h1 className="text-white mb-3">{brand} | {formattedSubject}</h1>
+      <div className="text-center py-5 mb-5 bg-white border-bottom">
+        <h1 className="fw-bold mb-2">
+          {brand} <span className="text-primary">| {formattedSubject}</span>
+        </h1>
       </div>
 
       <div className="container-fluid">

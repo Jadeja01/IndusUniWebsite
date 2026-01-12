@@ -35,12 +35,10 @@ export default function AssignmnetsPage({ params }) {
   return (
     <>
       {/* Header */}
-      <div
-        className="text-center py-4"
-        style={{ background: "linear-gradient(45deg, #FF6B6B, #4ECDC4)" }}
-      >
-        <h1 className="text-white mb-3">
-          {brand} | {subject.toUpperCase()} - Assignments
+
+      <div className="text-center py-5 mb-5 bg-white border-bottom">
+        <h1 className="fw-bold mb-2">
+          {brand} <span className="text-primary">| {subject.toUpperCase()} - Assignments</span>
         </h1>
       </div>
 
@@ -49,13 +47,30 @@ export default function AssignmnetsPage({ params }) {
           {/* Main Content */}
           <div className="col-lg-9 py-4 order-1 order-lg-2">
             {/* Back Button */}
-            <div className="gap-3 mb-4">
+            <div className="mb-4">
               <Link
                 href={`/${year}/${subject}`}
-                className="btn btn-info text-white px-4"
-                style={{ backgroundColor: "#4ECDC4" }}
+                className="btn btn-light d-inline-flex align-items-center gap-2 px-4 py-2 fw-semibold shadow-sm"
+                style={{
+                  transition: "all 0.3s ease",
+                  border: "2px solid #4ECDC4",
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.backgroundColor = "#4ECDC4";
+                  e.currentTarget.style.color = "#fff";
+                  e.currentTarget.style.transform = "translateX(-5px)";
+                  e.currentTarget.style.boxShadow =
+                    "0 4px 15px rgba(78, 205, 196, 0.3)";
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.backgroundColor = "";
+                  e.currentTarget.style.color = "";
+                  e.currentTarget.style.transform = "translateX(0)";
+                  e.currentTarget.style.boxShadow = "";
+                }}
               >
-                Back
+                <i className="bi bi-arrow-left"></i>
+                Back to {subject.toUpperCase()}
               </Link>
             </div>
 
@@ -81,8 +96,19 @@ export default function AssignmnetsPage({ params }) {
                       <div key={index} className="col-md-4 mb-4">
                         <div
                           className="card shadow-sm h-100"
-                          style={{ cursor: "pointer" }}
+                          style={{ 
+                            cursor: "pointer",
+                            transition: "all 0.3s ease"
+                          }}
                           onClick={() => handleCardClick(assignment.fileUrl)}
+                          onMouseOver={(e) => {
+                            e.currentTarget.style.transform = "translateY(-8px)";
+                            e.currentTarget.style.boxShadow = "0 8px 20px rgba(0,0,0,0.15)";
+                          }}
+                          onMouseOut={(e) => {
+                            e.currentTarget.style.transform = "translateY(0)";
+                            e.currentTarget.style.boxShadow = "";
+                          }}
                         >
                           <div className="card-body d-flex flex-column justify-content-center align-items-center">
                             <h5 className="card-title text-center">

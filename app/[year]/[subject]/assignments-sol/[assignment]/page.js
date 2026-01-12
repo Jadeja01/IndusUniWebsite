@@ -23,13 +23,11 @@ export default function Year({ params }) {
 
   return (
     <>
-      <div
-        className="text-center py-4"
-        style={{ background: "linear-gradient(45deg, #FF6B6B, #4ECDC4)" }}
-      >
-        <h1 className="text-white mb-3">
-          {brand} | {formattedSubject}-
-          {assignment.charAt(0).toUpperCase() + assignment.slice(1)}
+
+       <div className="text-center py-5 mb-5 bg-white border-bottom">
+        <h1 className="fw-bold mb-2">
+          {brand} <span className="text-primary">| {formattedSubject}-
+          {assignment.charAt(0).toUpperCase() + assignment.slice(1)}</span>
         </h1>
       </div>
 
