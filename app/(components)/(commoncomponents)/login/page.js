@@ -1,8 +1,17 @@
 "use client";
 
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function GoogleLoginButton() {
+  const { data: session, status } = useSession();
+const router = useRouter();
+
+useEffect(() => {
+  if (status === "authenticated") {
+    router.replace("/profile");
+  }
+}, [status, router]);
   return (
     <div className="d-flex justify-content-center align-items-center min-vh-100 bg-light">
       <div
