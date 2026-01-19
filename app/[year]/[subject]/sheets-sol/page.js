@@ -1,28 +1,38 @@
-'use client';
-import Link from 'next/link';
-import Image from 'next/image';
-import SidebarLinks from '@/app/(components)/(commoncomponents)/(sidebarlinks)/sbl';
-import { useParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+"use client";
+import Link from "next/link";
+import SidebarLinks from "@/app/(components)/(commoncomponents)/(sidebarlinks)/sbl";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
 
 export default function EGSheetsSolution() {
-    const { year, subject } = useParams(); 
-    const formattedSubject = subject.toUpperCase();
-    
-    const [brand,setBrand] = useState('');
-    useEffect(()=>{
-        setBrand(process.env.NEXT_PUBLIC_WEBSITE_NAME);
-    },[])
+  const { year, subject } = useParams();
+  const formattedSubject = subject.toUpperCase();
+  const { status } = useSession();
+  const [brand, setBrand] = useState("");
+
+  useEffect(() => {
+    setBrand(process.env.NEXT_PUBLIC_WEBSITE_NAME);
+  }, []);
+
+  if (status === "loading") {
+    return (
+      <div className="min-vh-100 d-flex align-items-center justify-content-center">
+        <span className="text-muted">Loading...</span>
+      </div>
+    );
+  }
+
 
   return (
-    <>      {/* Header */}
-
+    <>
+      {/* Header */}
       <div className="text-center py-5 mb-5 bg-white border-bottom">
         <h1 className="fw-bold mb-2">
-          {brand} <span className="text-primary">| {formattedSubject}-Sheets</span>
+          {brand}{" "}
+          <span className="text-primary">| {formattedSubject}-Sheets</span>
         </h1>
       </div>
-
       <div className="container-fluid">
         <div className="row" style={{ minHeight: "calc(100vh - 160px)" }}>
           {/* Main Content */}
@@ -54,23 +64,24 @@ export default function EGSheetsSolution() {
                 Back to {subject.toUpperCase()}
               </Link>
             </div>
-           <div className="row g-4">
+            <div className="row g-4">
               {/* Sheet 1-8 */}
               {[1, 2, 3, 4, 5, 6, 7, 8].map((sheetNumber) => (
                 <div key={sheetNumber} className="col-md-4 col-sm-6">
-                  <Link 
-                    href={`/1st-year/eg/sheets-sol/sheet${sheetNumber}`} 
+                  <Link
+                    href={`/1st-year/eg/sheets-sol/sheet${sheetNumber}`}
                     className="text-decoration-none"
                   >
-                    <div 
+                    <div
                       className="card shadow-sm h-100 sheet-card"
                       style={{
                         transition: "all 0.3s ease",
-                        cursor: "pointer"
+                        cursor: "pointer",
                       }}
                       onMouseOver={(e) => {
                         e.currentTarget.style.transform = "translateY(-8px)";
-                        e.currentTarget.style.boxShadow = "0 8px 20px rgba(0,0,0,0.15)";
+                        e.currentTarget.style.boxShadow =
+                          "0 8px 20px rgba(0,0,0,0.15)";
                       }}
                       onMouseOut={(e) => {
                         e.currentTarget.style.transform = "translateY(0)";
@@ -78,18 +89,25 @@ export default function EGSheetsSolution() {
                       }}
                     >
                       <div className="card-body text-center d-flex flex-column justify-content-center align-items-center py-5">
-                        <div 
+                        <div
                           className="rounded-circle d-flex align-items-center justify-content-center mb-3"
                           style={{
                             width: "100px",
                             height: "100px",
-                            background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-                            boxShadow: "0 4px 15px rgba(102, 126, 234, 0.3)"
+                            background:
+                              "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                            boxShadow: "0 4px 15px rgba(102, 126, 234, 0.3)",
                           }}
                         >
-                          <i className="bi bi-file-earmark-text text-white" style={{ fontSize: "3rem" }}></i>
+                          <i
+                            className="bi bi-file-earmark-text text-white"
+                            style={{ fontSize: "3rem" }}
+                          ></i>
                         </div>
-                        <h5 className="card-title mb-2" style={{ color: "#667eea", fontWeight: "600" }}>
+                        <h5
+                          className="card-title mb-2"
+                          style={{ color: "#667eea", fontWeight: "600" }}
+                        >
                           Sheet {sheetNumber}
                         </h5>
                         <p className="text-muted small mb-0">
@@ -104,9 +122,9 @@ export default function EGSheetsSolution() {
             </div>
           </div>
           {/* Sidebar */}
-          <SidebarLinks/>
+          <SidebarLinks />
         </div>
       </div>
     </>
   );
-} 
+}

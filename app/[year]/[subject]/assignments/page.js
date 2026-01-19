@@ -3,17 +3,26 @@ import { useEffect, useState } from "react";
 import { useSubject } from "@/app/(components)/context/SubjectContext";
 import Link from "next/link";
 import SidebarLinks from "@/app/(components)/(commoncomponents)/(sidebarlinks)/sbl";
+import { useSession } from "next-auth/react";
 
 export default function AssignmnetsPage({ params }) {
   const { year, subject } = params;
   const { data, loading } = useSubject();
   const [selectedPdf, setSelectedPdf] = useState(null);
   const [brand, setBrand] = useState("");
+  const { status } = useSession();
 
   useEffect(() => {
     setBrand(process.env.NEXT_PUBLIC_WEBSITE_NAME);
   }, []);
 
+  if (status === "loading") {
+    return (
+      <div className="min-vh-100 d-flex align-items-center justify-content-center">
+        <span className="text-muted">Loading...</span>
+      </div>
+    );
+  }
   const handleCardClick = (fileUrl) => {
     setSelectedPdf(fileUrl);
     setTimeout(() => {
@@ -25,7 +34,7 @@ export default function AssignmnetsPage({ params }) {
   const handleCloseModal = () => {
     setTimeout(() => {
       const myModal = bootstrap.Modal.getInstance(
-        document.getElementById("pdfModal")
+        document.getElementById("pdfModal"),
       );
       myModal.hide();
       setSelectedPdf(null);
@@ -38,7 +47,10 @@ export default function AssignmnetsPage({ params }) {
 
       <div className="text-center py-5 mb-5 bg-white border-bottom">
         <h1 className="fw-bold mb-2">
-          {brand} <span className="text-primary">| {subject.toUpperCase()} - Assignments</span>
+          {brand}{" "}
+          <span className="text-primary">
+            | {subject.toUpperCase()} - Assignments
+          </span>
         </h1>
       </div>
 
@@ -84,7 +96,7 @@ export default function AssignmnetsPage({ params }) {
                 (() => {
                   const validAssignments =
                     data.files?.[0]?.assignments?.filter(
-                      (a) => a?.fileUrl?.trim() !== ""
+                      (a) => a?.fileUrl?.trim() !== "",
                     ) || [];
 
                   return validAssignments.length === 0 ? (
@@ -96,14 +108,16 @@ export default function AssignmnetsPage({ params }) {
                       <div key={index} className="col-md-4 mb-4">
                         <div
                           className="card shadow-sm h-100"
-                          style={{ 
+                          style={{
                             cursor: "pointer",
-                            transition: "all 0.3s ease"
+                            transition: "all 0.3s ease",
                           }}
                           onClick={() => handleCardClick(assignment.fileUrl)}
                           onMouseOver={(e) => {
-                            e.currentTarget.style.transform = "translateY(-8px)";
-                            e.currentTarget.style.boxShadow = "0 8px 20px rgba(0,0,0,0.15)";
+                            e.currentTarget.style.transform =
+                              "translateY(-8px)";
+                            e.currentTarget.style.boxShadow =
+                              "0 8px 20px rgba(0,0,0,0.15)";
                           }}
                           onMouseOut={(e) => {
                             e.currentTarget.style.transform = "translateY(0)";

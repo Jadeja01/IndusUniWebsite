@@ -195,7 +195,7 @@ a {
 /* ---------- HERO(Landing Page) ---------- */
 .hero-section {
   padding: 200px 0;
-  background-image: url("../public/HomeBG/books-9984908_1920.png");
+  /* background-image: url("../public/HomeBG/books-9984908_1920.png"); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -482,3 +482,33 @@ a {
   transform: translateY(-5px);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
+
+
+/* hover profile style  */
+.profile-hover-wrapper {
+  position: relative;
+}
+
+.profile-hover-card {
+  position: absolute;
+  top: 42px;
+  right: 0;
+  min-width: 200px;
+  background: #fff;
+  border-radius: 8px;
+  padding: 10px 12px;
+  border: 1px solid #e9ecef;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-5px);
+  transition: all 0.2s ease;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.profile-hover-wrapper:hover .profile-hover-card {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+

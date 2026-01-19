@@ -3,18 +3,24 @@ import { useEffect, useState } from "react";
 import { useSubject } from "@/app/(components)/context/SubjectContext";
 import Link from "next/link";
 import SidebarLinks from "@/app/(components)/(commoncomponents)/(sidebarlinks)/sbl";
+import { useSession } from "next-auth/react";
 
 export default function TutorialsPage({ params }) {
   const { year, subject } = params;
   const [brand, setBrand] = useState('');
-  const { data, loading } = useSubject();
+      const { status } = useSession();
 
   useEffect(() => {
     setBrand(process.env.NEXT_PUBLIC_WEBSITE_NAME);
-  }, [])
+  }, []);
+  
+   if (status === "loading") {
+    return <div className="min-vh-100 d-flex align-items-center justify-content-center">
+      <span className="text-muted">Loading...</span>
+    </div>;
+  }
 
-  if (loading || !data)
-    return <div className="text-center py-5">Loading Tutorials...</div>;
+
 
   return (
     <><div className="text-center py-5 mb-5 bg-white border-bottom">

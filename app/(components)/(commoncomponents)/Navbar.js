@@ -1,8 +1,11 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import { useSession } from "next-auth/react";
+import Image from "next/image";
 
 export default function Navigation() {
+  const { data: session } = useSession();
   const [searchQuery, setSearchQuery] = useState("");
 
   const sidebarLinks = [
@@ -172,7 +175,7 @@ export default function Navigation() {
   // Filter subjects based on search
   const filteredLinks = searchQuery
     ? sidebarLinks.filter((link) =>
-        link.label.toLowerCase().includes(searchQuery.toLowerCase())
+        link.label.toLowerCase().includes(searchQuery.toLowerCase()),
       )
     : null;
 
@@ -181,7 +184,10 @@ export default function Navigation() {
       <nav className="navbar navbar-expand-lg fixed-top bg-white border-bottom shadow-sm">
         <div className="container-fluid px-3 px-lg-4">
           {/* BRAND with enhanced styling */}
-          <Link href="/" className="navbar-brand fw-bold text-dark d-flex align-items-center">
+          <Link
+            href="/"
+            className="navbar-brand fw-bold text-dark d-flex align-items-center"
+          >
             <i className="bi bi-mortarboard-fill text-primary fs-5 me-2"></i>
             <span className="fs-4">{brand}</span>
           </Link>
@@ -235,8 +241,7 @@ export default function Navigation() {
                   {/* Search box inside dropdown */}
                   <div className="p-3 border-bottom bg-light">
                     <div className="input-group input-group-sm">
-                      <span className="input-group-text bg-white border-end-0">
-                      </span>
+                      <span className="input-group-text bg-white border-end-0"></span>
                       <input
                         type="text"
                         className="form-control border-start-0 ps-0"
@@ -250,8 +255,7 @@ export default function Navigation() {
                           className="btn btn-sm btn-link text-muted p-0 px-2"
                           onClick={() => setSearchQuery("")}
                           type="button"
-                        >
-                        </button>
+                        ></button>
                       )}
                     </div>
                   </div>
@@ -290,7 +294,10 @@ export default function Navigation() {
                         ([category, links]) => (
                           <div key={category}>
                             <div className="dropdown-header d-flex align-items-center fw-bold text-primary bg-primary  sticky-top py-2 px-3">
-                              <span style={{color : 'black'}} className="flex-grow-1 text-truncate">
+                              <span
+                                style={{ color: "black" }}
+                                className="flex-grow-1 text-truncate"
+                              >
                                 {category}
                               </span>
                             </div>
@@ -309,7 +316,7 @@ export default function Navigation() {
                               <hr className="dropdown-divider my-0" />
                             )}
                           </div>
-                        )
+                        ),
                       )
                     )}
                   </div>
@@ -357,14 +364,39 @@ export default function Navigation() {
 
               {/* Login/Sign up  */}
 
-              <li className="nav-item">
-                <Link
-                  className="nav-link fw-medium text-dark px-3 py-2 rounded hover-bg-light"
-                  href="/login"
-                >
-                  Login / Sign up
-                </Link>
-              </li>
+              {/* Login / Profile */}
+              <li className="nav-item position-relative">
+  {session ? (
+    <div className="profile-hover-wrapper">
+      <Link
+        href="/profile"
+        className="nav-link px-2 py-1 rounded d-flex align-items-center hover-bg-light"
+      >
+        <Image
+          src={session.user.image}
+          alt="Profile"
+          width={32}
+          height={32}
+          className="rounded-circle"
+        />
+      </Link>
+
+      {/* Hover Card */}
+      <div className="profile-hover-card shadow-sm">
+        <div className="fw-semibold">{session.user.name}</div>
+        <div className="text-muted small">{session.user.email}</div>
+      </div>
+    </div>
+  ) : (
+    <Link
+      href="/login"
+      className="nav-link fw-medium text-dark px-3 py-2 rounded hover-bg-light"
+    >
+      Login
+    </Link>
+  )}
+</li>
+
             </ul>
           </div>
         </div>

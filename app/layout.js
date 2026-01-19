@@ -6,6 +6,7 @@ import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import Provider from "./(components)/Provider";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -17,6 +18,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
+    <Provider>
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
@@ -77,6 +79,6 @@ export default function RootLayout({ children }) {
           strategy="afterInteractive"
         />
       </body>
-    </html>
+    </html></Provider>
   );
 }

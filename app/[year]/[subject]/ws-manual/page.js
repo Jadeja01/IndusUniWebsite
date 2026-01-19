@@ -3,15 +3,23 @@ import { useEffect, useState } from "react";
 import { useSubject } from "@/app/(components)/context/SubjectContext";
 import Link from "next/link";
 import SidebarLinks from "@/app/(components)/(commoncomponents)/(sidebarlinks)/sbl";
+import { useSession } from "next-auth/react";
 
 export default function PYQsPage({ params }) {
   const { year, subject } = params;
   const { data, loading } = useSubject();
   const [selectedPdf, setSelectedPdf] = useState(null);
   const [brand, setBrand] = useState("");
+   const { status } = useSession();
   useEffect(() => {
     setBrand(process.env.NEXT_PUBLIC_WEBSITE_NAME);
   }, []);
+
+    if (status === "loading") {
+    return <div className="min-vh-100 d-flex align-items-center justify-content-center">
+      <span className="text-muted">Loading...</span>
+    </div>;
+  }
 
   const handleCardClick = (fileUrl) => {
     setSelectedPdf(fileUrl);

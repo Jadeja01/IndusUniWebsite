@@ -1,30 +1,36 @@
-'use client';
-import Link from 'next/link';
-import Image from 'next/image';
-import SidebarLinks from '@/app/(components)/(commoncomponents)/(sidebarlinks)/sbl';
-import { useParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+"use client";
+import Link from "next/link";
+import Image from "next/image";
+import SidebarLinks from "@/app/(components)/(commoncomponents)/(sidebarlinks)/sbl";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
 
 export default function EGAssignmentsSolution() {
-    const { year, subject } = useParams(); 
-    const formattedSubject = subject.toUpperCase();
-     const [brand,setBrand] = useState('');
-        useEffect(()=>{
-            setBrand(process.env.NEXT_PUBLIC_WEBSITE_NAME);
-        },[])
+  const { year, subject } = useParams();
+  const formattedSubject = subject.toUpperCase();
+  const [brand, setBrand] = useState("");
+  const { status } = useSession();
+  useEffect(() => {
+    setBrand(process.env.NEXT_PUBLIC_WEBSITE_NAME);
+  }, []);
+
+  if (status === "loading") {
+    return <div className="min-vh-100 d-flex align-items-center justify-content-center">
+      <span className="text-muted">Loading...</span>
+    </div>;
+  }
   return (
     <>
-
-    <div className="text-center py-5 mb-5 bg-white border-bottom">
+      <div className="text-center py-5 mb-5 bg-white border-bottom">
         <h1 className="fw-bold mb-2">
-          {brand} <span className="text-primary">| {formattedSubject}-Assignments</span>
+          {brand}{" "}
+          <span className="text-primary">| {formattedSubject}-Assignments</span>
         </h1>
       </div>
 
       <div className="container-fluid">
         <div className="row" style={{ minHeight: "calc(100vh - 160px)" }}>
-
-          
           {/* Main Content */}
           <div className="col-lg-9 py-4 order-1 order-lg-2">
             {/* Back Button */}
@@ -55,23 +61,24 @@ export default function EGAssignmentsSolution() {
               </Link>
             </div>
             {/* Assignmnets */}
-           <div className="row g-4">
+            <div className="row g-4">
               {/* Assignment 1-8 */}
               {[1, 2, 3, 4, 5, 6, 7, 8].map((assignmentNumber) => (
                 <div key={assignmentNumber} className="col-md-4 col-sm-6">
-                  <Link 
-                    href={`/1st-year/eg/assignments-sol/assignment${assignmentNumber}`} 
+                  <Link
+                    href={`/1st-year/eg/assignments-sol/assignment${assignmentNumber}`}
                     className="text-decoration-none"
                   >
-                    <div 
+                    <div
                       className="card shadow-sm h-100"
                       style={{
                         transition: "all 0.3s ease",
-                        cursor: "pointer"
+                        cursor: "pointer",
                       }}
                       onMouseOver={(e) => {
                         e.currentTarget.style.transform = "translateY(-8px)";
-                        e.currentTarget.style.boxShadow = "0 8px 20px rgba(0,0,0,0.15)";
+                        e.currentTarget.style.boxShadow =
+                          "0 8px 20px rgba(0,0,0,0.15)";
                       }}
                       onMouseOut={(e) => {
                         e.currentTarget.style.transform = "translateY(0)";
@@ -79,18 +86,25 @@ export default function EGAssignmentsSolution() {
                       }}
                     >
                       <div className="card-body text-center d-flex flex-column justify-content-center align-items-center py-5">
-                        <div 
+                        <div
                           className="rounded-circle d-flex align-items-center justify-content-center mb-3"
                           style={{
                             width: "100px",
                             height: "100px",
-                            background: "linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%)",
-                            boxShadow: "0 4px 15px rgba(78, 205, 196, 0.3)"
+                            background:
+                              "linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%)",
+                            boxShadow: "0 4px 15px rgba(78, 205, 196, 0.3)",
                           }}
                         >
-                          <i className="bi bi-clipboard-check text-white" style={{ fontSize: "3rem" }}></i>
+                          <i
+                            className="bi bi-clipboard-check text-white"
+                            style={{ fontSize: "3rem" }}
+                          ></i>
                         </div>
-                        <h5 className="card-title mb-2" style={{ color: "#4ECDC4", fontWeight: "600" }}>
+                        <h5
+                          className="card-title mb-2"
+                          style={{ color: "#4ECDC4", fontWeight: "600" }}
+                        >
                           Assignment {assignmentNumber}
                         </h5>
                         <p className="text-muted small mb-0">
@@ -105,9 +119,9 @@ export default function EGAssignmentsSolution() {
             </div>
           </div>
           {/* Sidebar */}
-          <SidebarLinks/>
+          <SidebarLinks />
         </div>
       </div>
     </>
   );
-} 
+}
