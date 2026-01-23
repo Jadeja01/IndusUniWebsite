@@ -1,13 +1,14 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 export default function SetProfilePage() {
   const [step, setStep] = useState(1);
   const { data: session } = useSession();
   const router = useRouter();
+  const { update } = useSession();
 
   // Form state
   const [form, setForm] = useState({
@@ -65,6 +66,7 @@ export default function SetProfilePage() {
     const data = await res.json();
 
     if (data.success) {
+      await update()
       router.push("/profile");
     }
   };
@@ -343,3 +345,7 @@ export default function SetProfilePage() {
     </div>
   );
 }
+
+
+// What I learned
+// 1. Use case of update() from useSession to refresh session data after profile update.

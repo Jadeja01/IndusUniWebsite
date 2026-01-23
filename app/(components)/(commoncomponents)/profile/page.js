@@ -1,10 +1,16 @@
 "use client";
 
-import { signOut, useSession } from "next-auth/react";
+import { getSession, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
+import { useEffect } from "react";
 
 export default function ProfilePage() {
   const { data: session, status } = useSession();
+  useEffect(() => {
+  getSession();
+}, []);
+
+
 
   const profileCompleted = session?.user?.profileCompleted;
   const accessPercent = session?.user?.accessPercent || 70;

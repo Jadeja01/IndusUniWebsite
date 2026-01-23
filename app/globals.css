@@ -17,10 +17,15 @@
     --foreground: #ededed;
   }
 }
-
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+}
 body {
   background-color: var(--bg-light);
   color: var(--text-muted);
+    max-width: 100%;
+  overflow-x: hidden;
 }
 
 h1,

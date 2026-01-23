@@ -179,6 +179,29 @@ export default function Navigation() {
       )
     : null;
 
+  const closeNavbar = () => {
+    if (typeof window === "undefined") return;
+
+    const navbar = document.getElementById("navbarContent");
+    if (navbar && navbar.classList.contains("show")) {
+      const bsCollapse =
+        window.bootstrap?.Collapse.getInstance(navbar) ||
+        new window.bootstrap.Collapse(navbar);
+      bsCollapse.hide();
+    }
+
+    const openDropdown = document.querySelector(".dropdown-menu.show");
+    if (openDropdown) {
+      const dropdownToggle = openDropdown.previousElementSibling;
+      if (dropdownToggle) {
+        const bsDropdown =
+          window.bootstrap?.Dropdown.getInstance(dropdownToggle) ||
+          new window.bootstrap.Dropdown(dropdownToggle);
+        bsDropdown.hide();
+      }
+    }
+  };
+
   return (
     <>
       <nav className="navbar navbar-expand-lg fixed-top bg-white border-bottom shadow-sm">
@@ -213,6 +236,7 @@ export default function Navigation() {
                 <Link
                   className="nav-link fw-medium text-dark px-3 py-2 rounded hover-bg-light"
                   href="/"
+                  onClick={closeNavbar}
                 >
                   <span className="d-lg-inline">Home</span>
                 </Link>
@@ -271,6 +295,7 @@ export default function Navigation() {
                               key={index}
                               className="dropdown-item py-2 px-3 d-flex align-items-start align-items-sm-center hover-bg-light"
                               href={`/${link.year}/${link.sub}`}
+                              onClick={closeNavbar}
                             >
                               <div className="flex-grow-1 min-w-0">
                                 <div className="fw-medium text-truncate">
@@ -306,6 +331,7 @@ export default function Navigation() {
                                 key={index}
                                 className="dropdown-item py-2 px-3 d-flex align-items-center hover-bg-light"
                                 href={`/${link.year}/${link.sub}`}
+                                onClick={closeNavbar}
                               >
                                 <span className="text-truncate">
                                   {link.label}
@@ -327,6 +353,7 @@ export default function Navigation() {
                       <div className="col-6">
                         <Link
                           href="/1st-year"
+                          onClick={closeNavbar}
                           className="btn btn-sm btn-outline-primary w-100 d-flex align-items-center justify-content-center py-2"
                         >
                           <span className="d-none d-sm-inline">1st Year</span>
@@ -336,6 +363,7 @@ export default function Navigation() {
                       <div className="col-6">
                         <Link
                           href="/2nd-year"
+                          onClick={closeNavbar}
                           className="btn btn-sm btn-outline-success w-100 d-flex align-items-center justify-content-center py-2"
                         >
                           <span className="d-none d-sm-inline">2nd Year</span>
@@ -352,6 +380,7 @@ export default function Navigation() {
                 <Link
                   className="nav-link fw-medium text-dark px-3 py-2 rounded hover-bg-light"
                   href="/why"
+                    onClick={closeNavbar}
                 >
                   <span className="d-lg-inline">Why???</span>
                 </Link>
@@ -366,37 +395,40 @@ export default function Navigation() {
 
               {/* Login / Profile */}
               <li className="nav-item position-relative">
-  {session ? (
-    <div className="profile-hover-wrapper">
-      <Link
-        href="/profile"
-        className="nav-link px-2 py-1 rounded d-flex align-items-center hover-bg-light"
-      >
-        <Image
-          src={session.user.image}
-          alt="Profile"
-          width={32}
-          height={32}
-          className="rounded-circle"
-        />
-      </Link>
+                {session ? (
+                  <div className="profile-hover-wrapper">
+                    <Link
+                      href="/profile"
+                      onClick={closeNavbar}
+                      className="nav-link px-2 py-1 rounded d-flex align-items-center hover-bg-light"
+                    >
+                      <Image
+                        src={session.user.image}
+                        alt="Profile"
+                        width={32}
+                        height={32}
+                        className="rounded-circle"
+                      />
+                    </Link>
 
-      {/* Hover Card */}
-      <div className="profile-hover-card shadow-sm">
-        <div className="fw-semibold">{session.user.name}</div>
-        <div className="text-muted small">{session.user.email}</div>
-      </div>
-    </div>
-  ) : (
-    <Link
-      href="/login"
-      className="nav-link fw-medium text-dark px-3 py-2 rounded hover-bg-light"
-    >
-      Login
-    </Link>
-  )}
-</li>
-
+                    {/* Hover Card */}
+                    <div className="profile-hover-card shadow-sm">
+                      <div className="fw-semibold">{session.user.name}</div>
+                      <div className="text-muted small">
+                        {session.user.email}
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <Link
+                    href="/login"
+                    onClick={closeNavbar}
+                    className="nav-link fw-medium text-dark px-3 py-2 rounded hover-bg-light"
+                  >
+                    Login
+                  </Link>
+                )}
+              </li>
             </ul>
           </div>
         </div>
