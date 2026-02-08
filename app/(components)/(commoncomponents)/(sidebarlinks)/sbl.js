@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function SidebarLinks() {
   const sidebarLinks = [
-    // 1st Year
+    // 1st Year (16 subjects)
     { sub: "es", year: "1st-year", label: "Environmental Science" },
     { sub: "calculus", year: "1st-year", label: "Engineering Calculus" },
     { sub: "ec", year: "1st-year", label: "Engineering Chemistry" },
@@ -28,7 +28,7 @@ export default function SidebarLinks() {
     { sub: "acdc", year: "1st-year", label: "Introduction to AC-DC Machine" },
     { sub: "bac", year: "1st-year", label: "Basics of AC Circuits" },
 
-    // 2nd Year
+    // 2nd Year(11 subjects)
     {
       sub: "psnm",
       year: "2nd-year",

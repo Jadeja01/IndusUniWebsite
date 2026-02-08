@@ -11,18 +11,26 @@ const UserSchema = new mongoose.Schema(
       type: String,
       default: "google",
     },
-
     profileCompleted: {
       type: Boolean,
       default: false,
     },
+    role :{
+      type: String,
+      enum: ["user", "admin"],
+      default: "user",
+    },
 
     accessPercent: {
       type: Number,
-      default: 70, // login unlock
+      default: 70, 
+    },
+    tokens: {
+      type: Number,
+      default: 0,
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
-export default mongoose.models.Users || mongoose.model("Users", UserSchema);
+export default mongoose.models.User || mongoose.model("User", UserSchema);

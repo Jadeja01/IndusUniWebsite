@@ -156,8 +156,15 @@ export default function PYQsPage({ params }) {
                           >
                             <div className="card-body d-flex flex-column justify-content-center align-items-center">
                               <h5 className="card-title text-center">
-                                {pyq.title} - {pyq.year}
+                                {pyq.title.toUpperCase()} - {pyq.year}
                               </h5>
+                             {/* By + approved date */}
+                        <small className="text-muted">
+                          By {pyq.uploader || "Anonymous"} |{" "}
+                          {pyq.approvedAt
+                            ? new Date(pyq.approvedAt).toLocaleDateString()
+                            : "Unknown date"}
+                        </small>
                             </div>
                           </div>
                         </div>

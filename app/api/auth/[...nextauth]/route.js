@@ -47,6 +47,7 @@ export const authOptions = {
             provider: "google",
             profileCompleted: false,
             accessPercent: 70,
+            role : 'user'
           });
 
           // Create empty profile in database
@@ -64,23 +65,31 @@ export const authOptions = {
 
     // Attach DB fields to JWT
     async jwt({ token }) {
-      if (!token.email) return token;
-      await connectDB();
-      const dbUser = await User.findOne({ email: token.email });
-      if (dbUser) {
-        token.userId = dbUser._id;
-        token.uName = dbUser.name;
-        token.uEmail = dbUser.email;
-        token.profileCompleted = dbUser.profileCompleted;
-        token.accessPercent = dbUser.accessPercent;
+      try {
+        if (!token.email) return token;
+
+        await connectDB();
+        const dbUser = await User.findOne({ email: token.email });
+
+        if (dbUser) {
+          token.userId = dbUser._id;
+          token.profileCompleted = dbUser.profileCompleted;
+          token.accessPercent = dbUser.accessPercent;
+          token.role = dbUser.role;
+        }
+
+        return token;
+      } catch (err) {
+        console.error("JWT callback error:", err);
+        return token;
       }
-      return token;
     },
     async session({ session, token }) {
-      if (token) {
+      if (token && session.user) {
         session.user.id = token.userId;
         session.user.profileCompleted = token.profileCompleted;
         session.user.accessPercent = token.accessPercent;
+        session.user.role = token.role;
       }
       return session;
     },

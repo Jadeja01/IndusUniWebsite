@@ -3,14 +3,13 @@
 import { getSession, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useEffect } from "react";
+import UserContributions from "./userContributions";
 
 export default function ProfilePage() {
   const { data: session, status } = useSession();
   useEffect(() => {
-  getSession();
-}, []);
-
-
+    getSession();
+  }, []);
 
   const profileCompleted = session?.user?.profileCompleted;
   const accessPercent = session?.user?.accessPercent || 70;
@@ -40,6 +39,12 @@ export default function ProfilePage() {
           </Link>
         </div>
 
+        {/* Contributions */}
+        <div className="container py-4">
+          <h2 className="fw-bold mb-4">My Contributions</h2>
+          <UserContributions />
+        </div>
+
         {/* Profile Status */}
         <div
           className={`alert ${
@@ -64,8 +69,8 @@ export default function ProfilePage() {
 
             <div className="small text-muted mb-2">
               Login unlocks <strong>70%</strong> of academic resources.
-              Completing your profile unlocks an{" "}
-              <strong>additional 20%</strong>.
+              Completing your profile unlocks an <strong>additional 20%</strong>
+              .
             </div>
 
             <div className="progress mb-2" style={{ height: "8px" }}>
@@ -92,8 +97,8 @@ export default function ProfilePage() {
 
             {!profileCompleted && (
               <div className="alert alert-warning small mt-3 mb-0">
-                Complete your profile to unlock{" "}
-                <strong>90%</strong> of all available content.
+                Complete your profile to unlock <strong>90%</strong> of all
+                available content.
               </div>
             )}
           </div>
@@ -111,8 +116,8 @@ export default function ProfilePage() {
                     Complete Your Profile
                   </h6>
                   <p className="text-muted small">
-                    Add academic details like year, branch, and interests.
-                    This helps personalize resources for you.
+                    Add academic details like year, branch, and interests. This
+                    helps personalize resources for you.
                   </p>
 
                   <Link
@@ -159,8 +164,7 @@ export default function ProfilePage() {
 
             <ul className="small text-muted mb-0 ps-3">
               <li>
-                Access to{" "}
-                <strong>{profileCompleted ? "90%" : "~70%"}</strong>{" "}
+                Access to <strong>{profileCompleted ? "90%" : "~70%"}</strong>{" "}
                 academic resources
               </li>
               <li>Personalized subject recommendations</li>

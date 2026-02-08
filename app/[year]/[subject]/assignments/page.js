@@ -128,6 +128,13 @@ export default function AssignmnetsPage({ params }) {
                             <h5 className="card-title text-center">
                               {assignment.title || "Untitled Assignment"}
                             </h5>
+                            {/* By + approved date */}
+                        <small className="text-muted">
+                          By {assignment.uploader || "Anonymous"} |{" "}
+                          {assignment.approvedAt
+                            ? new Date(assignment.approvedAt).toLocaleDateString()
+                            : "Unknown date"}
+                        </small>
                           </div>
                         </div>
                       </div>

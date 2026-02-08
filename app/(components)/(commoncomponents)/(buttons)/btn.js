@@ -4,10 +4,13 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useSession } from "next-auth/react";
 import LockedButton from "./LockedButtons";
+import ContributeModal from "../../ContributeModal";
+import { useState } from "react";
 
 export default function Buttons() {
   const { year, subject } = useParams();
   const { data: session, status } = useSession();
+  const [showModal, setShowModal] = useState(false);
 
   const isLoggedIn = status === "authenticated";
   const profileCompleted = session?.user?.profileCompleted;
@@ -15,7 +18,8 @@ export default function Buttons() {
   const commonButtons = [
     { info: "pyqs", label: "PYQs" },
     { info: "assignments", label: "Assignments" },
-    { info: "tutorials", label: "Tutorials" },
+    { info: "notes", label: "Notes" },
+    { info: "practicals", label: "Practicals" },
   ];
 
   if (status === "loading") return null;
@@ -101,6 +105,35 @@ export default function Buttons() {
           </Link>
         </LockedButton>
       )}
+
+      {/* CONTRIBUTE BUTTON */}
+      <button
+        className="btn fw-semibold d-flex align-items-center gap-2"
+        onClick={() => {
+          if (!isLoggedIn) {
+            router.push("/login");
+          } else {
+            setShowModal(true);
+          }
+        }}
+        style={{
+          minWidth: "200px",
+          padding: "0.6rem 1.6rem",
+          background: "linear-gradient(135deg, #0d6efd, #0a58ca)",
+          color: "#fff",
+          border: "none",
+          boxShadow: "0 6px 18px rgba(13,110,253,0.35)",
+        }}
+      >
+        <span style={{ fontSize: "1.1rem" }}>＋</span>
+        <span>Contribute Material</span>
+      </button>
+
+      <ContributeModal
+        show={showModal}
+        onClose={() => setShowModal(false)}
+        defaultSubject={subject}
+      />
     </div>
   );
 }

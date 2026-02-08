@@ -6,13 +6,13 @@ import { useEffect } from "react";
 
 export default function GoogleLoginButton() {
   const { data: session, status } = useSession();
-const router = useRouter();
+  const router = useRouter();
 
-useEffect(() => {
-  if (status === "authenticated") {
-    router.replace("/profile");
-  }
-}, [status, router]);
+  useEffect(() => {
+    if (status === "authenticated") {
+      router.replace("/profile");
+    }
+  }, [status, router]);
   return (
     <div className="d-flex justify-content-center align-items-center min-vh-100 bg-light">
       <div
