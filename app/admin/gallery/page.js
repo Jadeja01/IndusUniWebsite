@@ -1,9 +1,16 @@
 "use client";
 
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { getServerSession } from "next-auth";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-export default function AdminGalleryPage() {
+export default async function AdminGalleryPage() {
+    const session = await getServerSession(authOptions);
+  
+    if (!session || session.user.role !== "admin") {
+      redirect("/");
+    }
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [processingId, setProcessingId] = useState(null);
