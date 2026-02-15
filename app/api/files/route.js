@@ -11,7 +11,6 @@ export async function GET(req) {
     const url = new URL(req.url);
     const subject = url.searchParams.get("subject");
     const year = url.searchParams.get("year");
-    console.log("year(api)",year);
     
 
     if (!subject || !year) {

@@ -8,7 +8,7 @@ import sheetsData from "@/egcontent/sheetscontent";
 import { useSession } from "next-auth/react";
 
 export default function Year() {
-  const { year, subject,sheet } = useParams();
+  const { year, subject, sheet } = useParams();
   const [sheetData, setSheetData] = useState([]);
   const formattedSubject = subject.toUpperCase();
   const { status } = useSession();
@@ -21,9 +21,11 @@ export default function Year() {
   }, [sheet]);
 
   if (status === "loading") {
-    return <div className="min-vh-100 d-flex align-items-center justify-content-center">
-      <span className="text-muted">Loading...</span>
-    </div>;
+    return (
+      <div className="min-vh-100 d-flex align-items-center justify-content-center">
+        <span className="text-muted">Loading...</span>
+      </div>
+    );
   }
 
   return (
@@ -43,34 +45,34 @@ export default function Year() {
           {/* Main Content */}
           <div className="col-lg-9 py-4 order-1 order-lg-2">
             {/* Back Button */}
-           
+
             <div className="mb-4">
-                                      <Link
-                                        href={`/${year}/${subject}/sheets-sol`}
-                                        className="btn btn-light d-inline-flex align-items-center gap-2 px-4 py-2 fw-semibold shadow-sm"
-                                        style={{
-                                          transition: "all 0.3s ease",
-                                          border: "2px solid #4ECDC4",
-                                        }}
-                                        onMouseOver={(e) => {
-                                          e.currentTarget.style.backgroundColor = "#4ECDC4";
-                                          e.currentTarget.style.color = "#fff";
-                                          e.currentTarget.style.transform = "translateX(-5px)";
-                                          e.currentTarget.style.boxShadow =
-                                            "0 4px 15px rgba(78, 205, 196, 0.3)";
-                                        }}
-                                        onMouseOut={(e) => {
-                                          e.currentTarget.style.backgroundColor = "";
-                                          e.currentTarget.style.color = "";
-                                          e.currentTarget.style.transform = "translateX(0)";
-                                          e.currentTarget.style.boxShadow = "";
-                                        }}
-                                      >
-                                        <i className="bi bi-arrow-left"></i>
-                                        Back to EG-Sheets
-                                      </Link>
-                                    </div>
-            
+              <Link
+                href={`/${year}/${subject}/sheets-sol`}
+                className="btn btn-light d-inline-flex align-items-center gap-2 px-4 py-2 fw-semibold shadow-sm"
+                style={{
+                  transition: "all 0.3s ease",
+                  border: "2px solid #4ECDC4",
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.backgroundColor = "#4ECDC4";
+                  e.currentTarget.style.color = "#fff";
+                  e.currentTarget.style.transform = "translateX(-5px)";
+                  e.currentTarget.style.boxShadow =
+                    "0 4px 15px rgba(78, 205, 196, 0.3)";
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.backgroundColor = "";
+                  e.currentTarget.style.color = "";
+                  e.currentTarget.style.transform = "translateX(0)";
+                  e.currentTarget.style.boxShadow = "";
+                }}
+              >
+                <i className="bi bi-arrow-left"></i>
+                Back to EG-Sheets
+              </Link>
+            </div>
+
             <div className="card shadow">
               <div className="card-body">
                 {sheetData[0]?.questions.map((data, index) => (

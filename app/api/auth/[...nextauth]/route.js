@@ -51,7 +51,7 @@ export const authOptions = {
           profileCompleted: false,
           accessPercent: 70,
           role: "user",
-          tokens: 0, // IMPORTANT: default value
+          tokens: 0, 
         });
 
         await Profile.create({
@@ -80,7 +80,7 @@ export const authOptions = {
         token.profileCompleted = dbUser.profileCompleted;
         token.accessPercent = dbUser.accessPercent;
         token.role = dbUser.role;
-        token.tokens = dbUser.tokens; // 🔥 FIXED HERE
+        token.tokens = dbUser.tokens; 
       }
 
       return token;

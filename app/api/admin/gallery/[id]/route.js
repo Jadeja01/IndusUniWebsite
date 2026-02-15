@@ -17,7 +17,6 @@ export async function PATCH(req, context) {
       );
     }
 
-    // ✅ unwrap params
     const { id } = await context.params;
 
     const { status } = await req.json();

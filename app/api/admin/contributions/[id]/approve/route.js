@@ -99,7 +99,11 @@ export async function POST(req, { params }) {
   } else if (documentType === "assignment") {
     TOKENS = 5;
   } else {
-    console.warn("Unknown document type for token assignment:", documentType);
+    console.error("Unknown document type for token assignment:", documentType);
+    return NextResponse.json(
+      { error: "Unknown document type for token assignment" },
+      { status: 500 },
+    );
   }
 
   const user = await User.findById(contribution.uploaderId);
