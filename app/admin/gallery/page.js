@@ -1,21 +1,24 @@
 "use client";
 
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import { getServerSession } from "next-auth";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default async function AdminGalleryPage() {
-    const session = await getServerSession(authOptions);
-  
-    if (!session || session.user.role !== "admin") {
-      redirect("/");
-    }
+  const { data: session, status } = useSession();
+  const router = useRouter();
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [processingId, setProcessingId] = useState(null);
 
+  useEffect(() => {
+    if (status === "loading") return;
+
+    if (!session || session.user.role !== "admin") {
+      router.push("/");
+    }
+  }, [session, status, router]);
   const fetchPending = async () => {
     setLoading(true);
     const res = await fetch("/api/admin/gallery");
