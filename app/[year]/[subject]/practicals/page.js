@@ -5,9 +5,10 @@ import { useSubject } from "@/app/(components)/context/SubjectContext";
 import Link from "next/link";
 import SidebarLinks from "@/app/(components)/(commoncomponents)/(sidebarlinks)/sbl";
 import { useSession } from "next-auth/react";
+import { useParams } from "next/navigation";
 
-export default function PracticalsPage({ params }) {
-  const { year, subject } = params;
+export default function PracticalsPage() {
+  const { year, subject } = useParams();
   const { data, loading } = useSubject();
   const [selectedPdf, setSelectedPdf] = useState(null);
   const [brand, setBrand] = useState("");
@@ -88,42 +89,34 @@ export default function PracticalsPage({ params }) {
                 </div>
               ) : (
                 validNotes.map((prtcls, index) => (
-                  <div key={index} className="col-md-4 mb-4">
-                    <div
-                      className="card shadow-sm h-100"
-                      style={{
-                        cursor: "pointer",
-                        transition: "all 0.3s ease",
-                      }}
-                      onClick={() =>
-                        handleCardClick(prtcls.fileUrl)
-                      }
-                      onMouseOver={(e) => {
-                        e.currentTarget.style.transform =
-                          "translateY(-8px)";
-                        e.currentTarget.style.boxShadow =
-                          "0 8px 20px rgba(0,0,0,0.15)";
-                      }}
-                      onMouseOut={(e) => {
-                        e.currentTarget.style.transform =
-                          "translateY(0)";
-                        e.currentTarget.style.boxShadow = "";
-                      }}
-                    >
-                      <div className="card-body d-flex flex-column justify-content-center align-items-center text-center">
-                        <h5 className="card-title">
-                          {prtcls.title.toUpperCase() || "Practicals"}
-                        </h5>
-                        {/* By + approved date */}
-                        <small className="text-muted">
-                          By {prtcls.uploader || "Anonymous"} |{" "}
-                          {prtcls.approvedAt
-                            ? new Date(prtcls.approvedAt).toLocaleDateString()
-                            : "Unknown date"}
-                        </small>
-                      </div>
-                    </div>
-                  </div>
+                  <div key={index} className="col-12 col-sm-6 col-lg-4 mb-4">
+  <div
+    className="card shadow-sm h-100 border-0 document-card"
+    onClick={() => handleCardClick(prtcls.fileUrl)}
+  >
+    <div className="card-body d-flex flex-column justify-content-between text-center">
+
+      {/* Title */}
+      <h6 className="fw-semibold text-dark mb-3 text-wrap">
+        {prtcls.title?.toUpperCase() || "PRACTICALS"}
+      </h6>
+
+      {/* Meta Info */}
+      <div className="small text-muted mt-auto">
+        <div className="text-truncate">
+          By {prtcls.uploader || "Anonymous"}
+        </div>
+        <div>
+          {prtcls.approvedAt
+            ? new Date(prtcls.approvedAt).toLocaleDateString()
+            : "Unknown date"}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
                 ))
               )}
             </div>

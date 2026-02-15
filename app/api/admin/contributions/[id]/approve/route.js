@@ -21,12 +21,12 @@ export async function POST(req, { params }) {
   await connectDB();
 
   const contribution = await Contribution.findById(params.id);
-  if (contribution.documentType === "course_file") {
+  if (contribution.documentType === "syllabus") {
     const existing = await Contribution.findOne({
       subject: contribution.subject,
       documentClgYear: contribution.documentClgYear,
       branch: contribution.branch,
-      documentType: "course_file",
+      documentType: "syllabus",
       status: "approved",
     });
 
@@ -88,7 +88,7 @@ export async function POST(req, { params }) {
 
   // Mint tokens ONLY AFTER successful move
   let TOKENS;
-  if (documentType === "course_file") {
+  if (documentType === "syllabus") {
     TOKENS = 1;
   } else if (documentType === "notes") {
     TOKENS = 2;

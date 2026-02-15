@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useSubject } from "@/app/(components)/context/SubjectContext";
 import SidebarLinks from "@/app/(components)/(commoncomponents)/(sidebarlinks)/sbl";
 import Buttons from "@/app/(components)/(commoncomponents)/(buttons)/btn";
@@ -6,13 +6,13 @@ import { useEffect, useState } from "react";
 
 export default function SubjectContent({ subject }) {
   const { data } = useSubject();
-  const [brand, setBrand] = useState('');
+  const [brand, setBrand] = useState("");
 
   const isLoading = !data;
   const formattedSubject = subject.toUpperCase();
-  useEffect(()=>{
-    setBrand(process.env.NEXT_PUBLIC_WEBSITE_NAME)
-  },[])
+  useEffect(() => {
+    setBrand(process.env.NEXT_PUBLIC_WEBSITE_NAME);
+  }, []);
 
   return (
     <>
@@ -28,20 +28,29 @@ export default function SubjectContent({ subject }) {
           {/* Main Content */}
           <div className="col-lg-9 py-4 order-1 order-lg-2">
             {/* Buttons */}
-            <Buttons/>
+            <Buttons />
 
             {/* Syllabus */}
-            <div className="d-flex justify-content-center align-items-center mb-4">
+            <div className="d-flex flex-column align-items-center mb-4">
               {isLoading ? (
                 <div className="text-center py-5">Loading...</div>
-              ) : data.files && data.files[0]?.syllabus ? (
-                <iframe
-                  src={data.files[0].syllabus}
-                  style={{ width: "95%", height: "900px", border: "none" }}
-                  title="Syllabus PDF"
-                />
+              ) : data.files?.[0]?.syllabus?.fileUrl ? (
+                <>
+
+                  <iframe
+                    src={data.files[0].syllabus.fileUrl}
+                    style={{
+                      width: "95%",
+                      height: "900px",
+                      border: "none",
+                    }}
+                    title="Syllabus PDF"
+                  />
+                </>
               ) : (
-                <div className="text-center py-5">No syllabus available</div>
+                <div className="text-center py-5 text-muted">
+                  No syllabus available
+                </div>
               )}
             </div>
           </div>

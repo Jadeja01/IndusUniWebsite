@@ -386,6 +386,17 @@ export default function Navigation() {
                 </Link>
               </li>
 
+              {/* campus gallery  */}
+              <li className="nav-item">
+                <Link
+                  className="nav-link fw-medium text-dark px-3 py-2 rounded hover-bg-light"
+                  href="/gallery"
+                    onClick={closeNavbar}
+                >
+                  <span className="d-lg-inline">Gallery</span>
+                </Link>
+              </li>
+
               {/* Divider for desktop */}
               <li className="nav-item d-none d-lg-block">
                 <div className="vr mx-2" style={{ height: "24px" }}></div>

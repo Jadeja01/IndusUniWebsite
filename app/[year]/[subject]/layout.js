@@ -1,10 +1,10 @@
+"use client";
 import { SubjectProvider } from "@/app/(components)/context/SubjectContext";
+import { useParams } from "next/navigation";
 
-export default function SubjectLayout({ children,params }) {
-  const { subject } = params;
-  return (
-    <SubjectProvider subject={subject}>
-      {children}
-    </SubjectProvider>
-  );
+export default function SubjectLayout({ children }) {
+  const params = useParams();
+  const subject = params.subject;
+  const year = params.year;
+  return <SubjectProvider subject={subject} year={year}>{children}</SubjectProvider>;
 }

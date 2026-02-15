@@ -4,23 +4,25 @@ import { useSubject } from "@/app/(components)/context/SubjectContext";
 import Link from "next/link";
 import SidebarLinks from "@/app/(components)/(commoncomponents)/(sidebarlinks)/sbl";
 import { useSession } from "next-auth/react";
+import { useParams } from "next/navigation";
 
-export default function PYQsPage({ params }) {
-  const { year, subject } = params;
+export default function PYQsPage() {
+  const { year, subject } = useParams();
   const { data, loading } = useSubject();
   const [selectedPdf, setSelectedPdf] = useState(null);
   const [brand, setBrand] = useState("");
-     const { status } = useSession();
+  const { status } = useSession();
 
   useEffect(() => {
     setBrand(process.env.NEXT_PUBLIC_WEBSITE_NAME);
   }, []);
 
-
-    if (status === "loading") {
-    return <div className="min-vh-100 d-flex align-items-center justify-content-center">
-      <span className="text-muted">Loading...</span>
-    </div>;
+  if (status === "loading") {
+    return (
+      <div className="min-vh-100 d-flex align-items-center justify-content-center">
+        <span className="text-muted">Loading...</span>
+      </div>
+    );
   }
 
   const handleCardClick = (fileUrl) => {
@@ -34,7 +36,7 @@ export default function PYQsPage({ params }) {
   const handleCloseModal = () => {
     setTimeout(() => {
       const myModal = bootstrap.Modal.getInstance(
-        document.getElementById("pdfModal")
+        document.getElementById("pdfModal"),
       );
       myModal.hide();
       setSelectedPdf(null);
@@ -85,14 +87,14 @@ export default function PYQsPage({ params }) {
             </div>
 
             {/* PYQs Section */}
-           <div className="row mb-4">
+            <div className="row mb-4">
               {loading || !data ? (
                 <div className="text-center py-5 w-100">Loading PYQs...</div>
               ) : (
                 (() => {
                   const validPYQs =
                     data.files?.[0]?.pyqs?.filter(
-                      (pyq) => pyq?.fileUrl?.trim() !== ""
+                      (pyq) => pyq?.fileUrl?.trim() !== "",
                     ) || [];
 
                   return validPYQs.length === 0 ? (
@@ -111,11 +113,13 @@ export default function PYQsPage({ params }) {
                             style={{
                               cursor: "pointer",
                               backgroundColor: "#f0f9ff",
-                              transition: "all 0.3s ease"
+                              transition: "all 0.3s ease",
                             }}
                             onMouseOver={(e) => {
-                              e.currentTarget.style.transform = "translateY(-8px)";
-                              e.currentTarget.style.boxShadow = "0 8px 20px rgba(0,0,0,0.15)";
+                              e.currentTarget.style.transform =
+                                "translateY(-8px)";
+                              e.currentTarget.style.boxShadow =
+                                "0 8px 20px rgba(0,0,0,0.15)";
                             }}
                             onMouseOut={(e) => {
                               e.currentTarget.style.transform = "translateY(0)";
@@ -137,37 +141,39 @@ export default function PYQsPage({ params }) {
                   ) : (
                     <>
                       {validPYQs.map((pyq, index) => (
-                        <div key={index} className="col-md-4 mb-4">
-                          <div
-                            className="card shadow-sm h-100"
-                            style={{ 
-                              cursor: "pointer",
-                              transition: "all 0.3s ease"
-                            }}
-                            onClick={() => handleCardClick(pyq.fileUrl)}
-                            onMouseOver={(e) => {
-                              e.currentTarget.style.transform = "translateY(-8px)";
-                              e.currentTarget.style.boxShadow = "0 8px 20px rgba(0,0,0,0.15)";
-                            }}
-                            onMouseOut={(e) => {
-                              e.currentTarget.style.transform = "translateY(0)";
-                              e.currentTarget.style.boxShadow = "";
-                            }}
-                          >
-                            <div className="card-body d-flex flex-column justify-content-center align-items-center">
-                              <h5 className="card-title text-center">
-                                {pyq.title.toUpperCase()} - {pyq.year}
-                              </h5>
-                             {/* By + approved date */}
-                        <small className="text-muted">
-                          By {pyq.uploader || "Anonymous"} |{" "}
-                          {pyq.approvedAt
-                            ? new Date(pyq.approvedAt).toLocaleDateString()
-                            : "Unknown date"}
-                        </small>
-                            </div>
-                          </div>
-                        </div>
+                        <div key={index} className="col-12 col-sm-6 col-lg-4 mb-4">
+  <div
+    className="card shadow-sm h-100 position-relative border-0 document-card"
+    onClick={() => handleCardClick(pyq.fileUrl)}
+  >
+    {/* Year Badge */}
+    <span className="badge bg-primary position-absolute top-0 end-0 m-2">
+      {pyq.year || "N/A"}
+    </span>
+
+    <div className="card-body d-flex flex-column justify-content-between text-center">
+
+      {/* Title */}
+      <h6 className="fw-semibold text-dark mb-3 text-wrap">
+        {pyq.title?.toUpperCase() || "PYQ"}
+      </h6>
+
+      {/* Footer Meta */}
+      <div className="small text-muted mt-auto">
+        <div className="text-truncate">
+          By {pyq.uploader || "Anonymous"}
+        </div>
+        <div>
+          {pyq.approvedAt
+            ? new Date(pyq.approvedAt).toLocaleDateString()
+            : "Unknown date"}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
                       ))}
 
                       {/* Extra link card */}
@@ -182,11 +188,13 @@ export default function PYQsPage({ params }) {
                             style={{
                               cursor: "pointer",
                               backgroundColor: "#f0f9ff",
-                              transition: "all 0.3s ease"
+                              transition: "all 0.3s ease",
                             }}
                             onMouseOver={(e) => {
-                              e.currentTarget.style.transform = "translateY(-8px)";
-                              e.currentTarget.style.boxShadow = "0 8px 20px rgba(0,0,0,0.15)";
+                              e.currentTarget.style.transform =
+                                "translateY(-8px)";
+                              e.currentTarget.style.boxShadow =
+                                "0 8px 20px rgba(0,0,0,0.15)";
                             }}
                             onMouseOut={(e) => {
                               e.currentTarget.style.transform = "translateY(0)";

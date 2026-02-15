@@ -4,9 +4,10 @@ import { useSubject } from "@/app/(components)/context/SubjectContext";
 import Link from "next/link";
 import SidebarLinks from "@/app/(components)/(commoncomponents)/(sidebarlinks)/sbl";
 import { useSession } from "next-auth/react";
+import { useParams } from "next/navigation";
 
-export default function AssignmnetsPage({ params }) {
-  const { year, subject } = params;
+export default function AssignmnetsPage() {
+  const { year, subject } = useParams();
   const { data, loading } = useSubject();
   const [selectedPdf, setSelectedPdf] = useState(null);
   const [brand, setBrand] = useState("");
@@ -105,36 +106,34 @@ export default function AssignmnetsPage({ params }) {
                     </div>
                   ) : (
                     validAssignments.map((assignment, index) => (
-                      <div key={index} className="col-md-4 mb-4">
+                      <div
+                        key={index}
+                        className="col-12 col-sm-6 col-lg-4 mb-4"
+                      >
                         <div
-                          className="card shadow-sm h-100"
-                          style={{
-                            cursor: "pointer",
-                            transition: "all 0.3s ease",
-                          }}
+                          className="card shadow-sm h-100 border-0 document-card"
                           onClick={() => handleCardClick(assignment.fileUrl)}
-                          onMouseOver={(e) => {
-                            e.currentTarget.style.transform =
-                              "translateY(-8px)";
-                            e.currentTarget.style.boxShadow =
-                              "0 8px 20px rgba(0,0,0,0.15)";
-                          }}
-                          onMouseOut={(e) => {
-                            e.currentTarget.style.transform = "translateY(0)";
-                            e.currentTarget.style.boxShadow = "";
-                          }}
                         >
-                          <div className="card-body d-flex flex-column justify-content-center align-items-center">
-                            <h5 className="card-title text-center">
-                              {assignment.title || "Untitled Assignment"}
-                            </h5>
-                            {/* By + approved date */}
-                        <small className="text-muted">
-                          By {assignment.uploader || "Anonymous"} |{" "}
-                          {assignment.approvedAt
-                            ? new Date(assignment.approvedAt).toLocaleDateString()
-                            : "Unknown date"}
-                        </small>
+                          <div className="card-body d-flex flex-column justify-content-between text-center">
+                            {/* Title */}
+                            <h6 className="fw-semibold text-dark mb-3 text-wrap">
+                              {assignment.title?.toUpperCase() ||
+                                "UNTITLED ASSIGNMENT"}
+                            </h6>
+
+                            {/* Meta Info */}
+                            <div className="small text-muted mt-auto">
+                              <div className="text-truncate">
+                                By {assignment.uploader || "Anonymous"}
+                              </div>
+                              <div>
+                                {assignment.approvedAt
+                                  ? new Date(
+                                      assignment.approvedAt,
+                                    ).toLocaleDateString()
+                                  : "Unknown date"}
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>

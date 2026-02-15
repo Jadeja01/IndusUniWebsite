@@ -26,6 +26,7 @@ body {
   color: var(--text-muted);
     max-width: 100%;
   overflow-x: hidden;
+  font-family: 'Inter', sans-serif;
 }
 
 h1,
@@ -517,6 +518,16 @@ a {
   transform: translateY(0);
 }
 
+.hover-card {
+  transition: all 0.2s ease-in-out;
+}
+
+.hover-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+
 
 /* Modal smooth entrance */
 .modal-smooth {
@@ -560,6 +571,397 @@ a {
 .btn-loading {
   pointer-events: none;
   opacity: 0.85;
+}
+
+.toggle-wrapper {
+  display: inline-flex;
+  background: #f1f3f5;
+  padding: 5px;
+  border-radius: 50px;
+  gap: 5px;
+}
+
+.toggle-btn {
+  border: none;
+  background: transparent;
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-weight: 500;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.toggle-btn.active {
+  background: #111;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.toggle-btn:not(.active):hover {
+  background: rgba(0,0,0,0.05);
+}
+
+.modal-content {
+  animation: modalFade 0.25s ease;
+}
+
+@keyframes modalFade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+
+/* ---------------- responsive cards(assignment,pyq,notes,practical) --------------- */
+
+.document-card {
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.document-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+}
+
+
+/* -------------userContrubution styles -------------- */
+
+.contribution-card {
+  transition: all 0.2s ease-in-out;
+}
+
+.contribution-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+.history-wrapper {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+.history-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, white);
+}
+
+.fade-item {
+  animation: fadeSlide 0.4s ease;
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* useMemory style */
+.memory-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.memory-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.history-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.history-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, white);
+}
+
+.fade-item {
+  animation: fadeSlide 0.4s ease;
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+/* -----------corrier-toolkit ---------- */
+
+.toolkit-card {
+  transition: all 0.2s ease-in-out;
+}
+
+.toolkit-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+
+/* -------gallery ------------- */
+/* Fade In */
+.fade-in {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Masonry */
+.yearbook-grid {
+  column-count: 3;
+  column-gap: 25px;
+}
+
+@media (max-width: 992px) {
+  .yearbook-grid { column-count: 2; }
+}
+
+@media (max-width: 576px) {
+  .yearbook-grid { column-count: 1; }
+}
+
+.yearbook-card {
+  break-inside: avoid;
+  margin-bottom: 25px;
+  transition: all 0.3s ease;
+}
+
+.yearbook-card:hover {
+  transform: rotate(0deg) scale(1.03) !important;
+}
+
+/* Image */
+.image-card {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+.image-card img {
+  width: 100%;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.image-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Overlay */
+.image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 15px;
+  background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .image-card:hover .image-overlay {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 767px) {
+  .image-overlay {
+    opacity: 1;
+    position: static;
+    background: white;
+    color: black;
+  }
+}
+
+/* Thought */
+.thought-bg-0 { background: #fef6e4; }   /* soft yellow */
+.thought-bg-1 { background: #e3f6f5; }   /* mint */
+.thought-bg-2 { background: #fce1e4; }   /* soft pink */
+.thought-bg-3 { background: #e0f2fe; }   /* light blue */
+.thought-bg-4 { background: #f3e8ff; }   /* lavender */
+.thought-bg-5 { background: #ecfccb; }   /* soft green */
+.thought-bg-6 { background: #ffe4e6; }   /* blush */
+
+.thought-card {
+  position: relative;
+  border-radius: 18px;
+  padding: 35px 25px 25px 25px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.thought-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 35px rgba(0,0,0,0.1);
+}
+
+/* Quote Mark */
+.quote-mark {
+  position: absolute;
+  top: 10px;
+  left: 18px;
+  font-size: 4rem;
+  line-height: 1;
+  opacity: 0.08;
+  font-family: serif;
+  pointer-events: none;
+}
+
+/* Thought Text */
+.thought-text {
+  position: relative;
+  z-index: 1;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  margin-top: 15px;
+}
+
+
+/* gallery header style  */
+.gallery-hero {
+  padding: 60px 20px;
+  border-radius: 20px;
+  background: linear-gradient(
+    135deg,
+    #f8fafc,
+    #eef2ff
+  );
+  box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+}
+
+.hero-badge span {
+  display: inline-block;
+  padding: 6px 14px;
+  font-size: 0.8rem;
+  border-radius: 50px;
+  background: #111;
+  color: white;
+  letter-spacing: 0.5px;
+}
+
+.hero-btn {
+  transition: all 0.25s ease;
+}
+
+/* .hero-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+} */
+
+/* Caption (Image Memory Caption) */
+.memory-caption {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.6;
+  word-break: break-word;      /* breaks long words */
+  overflow-wrap: anywhere;     /* handles no-space text */
+  white-space: normal;         /* allows wrapping */
+}
+
+
+/* Username + Date */
+.memory-meta {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+/* feedback card style  */
+.feedback-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: fadeIn 0.3s ease;
+}
+
+.feedback-card {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+  animation: scaleIn 0.3s ease;
+}
+
+.feedback-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  color: white;
+}
+
+.success-card .feedback-icon {
+  background: #28a745;
+}
+
+.error-card .feedback-icon {
+  background: #dc3545;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 

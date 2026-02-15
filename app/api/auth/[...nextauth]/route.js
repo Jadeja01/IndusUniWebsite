@@ -26,74 +26,84 @@ export const authOptions = {
   },
 
   callbacks: {
-    // Runs on Google login
-    async signIn({ user }) {
-      try {
-        await connectDB();
 
-        const email = user.email;
+  // Google Login Validation
+  async signIn({ user }) {
+    try {
+      await connectDB();
 
-        if (!email.endsWith("@iite.indusuni.ac.in")) {
-          return false;
-        }
-        let dbUser = await User.findOne({ email: user.email });
+      const email = user.email;
 
-        // First-time login
-        if (!dbUser) {
-          dbUser = await User.create({
-            name: user.name,
-            email: user.email,
-            image: user.image,
-            provider: "google",
-            profileCompleted: false,
-            accessPercent: 70,
-            role : 'user'
-          });
-
-          // Create empty profile in database
-          await Profile.create({
-            userId: dbUser._id,
-          });
-        }
-
-        return true;
-      } catch (err) {
-        console.error("SignIn error:", err);
+      // Restrict domain
+      if (!email.endsWith("@iite.indusuni.ac.in")) {
         return false;
       }
-    },
 
-    // Attach DB fields to JWT
-    async jwt({ token }) {
-      try {
-        if (!token.email) return token;
+      let dbUser = await User.findOne({ email });
 
-        await connectDB();
-        const dbUser = await User.findOne({ email: token.email });
+      // First-time login
+      if (!dbUser) {
+        dbUser = await User.create({
+          name: user.name,
+          email: user.email,
+          image: user.image,
+          provider: "google",
+          profileCompleted: false,
+          accessPercent: 70,
+          role: "user",
+          tokens: 0, // IMPORTANT: default value
+        });
 
-        if (dbUser) {
-          token.userId = dbUser._id;
-          token.profileCompleted = dbUser.profileCompleted;
-          token.accessPercent = dbUser.accessPercent;
-          token.role = dbUser.role;
-        }
-
-        return token;
-      } catch (err) {
-        console.error("JWT callback error:", err);
-        return token;
+        await Profile.create({
+          userId: dbUser._id,
+        });
       }
-    },
-    async session({ session, token }) {
-      if (token && session.user) {
-        session.user.id = token.userId;
-        session.user.profileCompleted = token.profileCompleted;
-        session.user.accessPercent = token.accessPercent;
-        session.user.role = token.role;
-      }
-      return session;
-    },
+
+      return true;
+    } catch (err) {
+      console.error("SignIn error:", err);
+      return false;
+    }
   },
+
+  // Attach fresh DB fields to JWT (runs on every session check)
+  async jwt({ token }) {
+    try {
+      if (!token.email) return token;
+
+      await connectDB();
+
+      const dbUser = await User.findOne({ email: token.email });
+
+      if (dbUser) {
+        token.userId = dbUser._id.toString();
+        token.profileCompleted = dbUser.profileCompleted;
+        token.accessPercent = dbUser.accessPercent;
+        token.role = dbUser.role;
+        token.tokens = dbUser.tokens; // 🔥 FIXED HERE
+      }
+
+      return token;
+    } catch (err) {
+      console.error("JWT callback error:", err);
+      return token;
+    }
+  },
+
+  // Attach JWT fields to session
+  async session({ session, token }) {
+    if (token && session.user) {
+      session.user.id = token.userId;
+      session.user.profileCompleted = token.profileCompleted;
+      session.user.accessPercent = token.accessPercent;
+      session.user.role = token.role;
+      session.user.tokens = token.tokens; // 🔥 FIXED HERE
+    }
+
+    return session;
+  },
+},
+
 };
 
 const handler = NextAuth(authOptions);

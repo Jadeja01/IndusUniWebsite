@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function ContributeModal({ show, onClose, defaultSubject }) {
   const [docType, setDocType] = useState("");
@@ -14,6 +14,12 @@ export default function ContributeModal({ show, onClose, defaultSubject }) {
   const [error, setError] = useState("");
   const [subject, setSubject] = useState(defaultSubject || "");
 
+  useEffect(() => {
+    if (docType === "syllabus") {
+      setDocClgYear("");
+    }
+  }, [docType]);
+
   if (!show) return null;
 
   const handleSubmit = async () => {
@@ -22,7 +28,8 @@ export default function ContributeModal({ show, onClose, defaultSubject }) {
     if (!docYear) return setError("Document year is required");
     if (!subject) return setError("Select subject");
     if (!docType) return setError("Select document type");
-    if (!docClgYear) return setError("Select document college year");
+    if (docType !== "syllabus" && !docClgYear)
+      return setError("Select document college year");
     if (!branch) return setError("Select branch");
     if (!file) return setError("PDF file is required");
     if (!confirmRights) return setError("You must confirm upload rights");
@@ -102,7 +109,9 @@ export default function ContributeModal({ show, onClose, defaultSubject }) {
 
             {/* Document Year */}
             <div className="mb-3">
-              <label className="form-label fw-semibold">Document Year (Which year is this document for?)*</label>
+              <label className="form-label fw-semibold">
+                Document Year (Which year is this document for?)*
+              </label>
               <select
                 className="form-select"
                 value={docYear}
@@ -138,14 +147,20 @@ export default function ContributeModal({ show, onClose, defaultSubject }) {
                 <option value="tcss">Technical Communication</option>
                 <option value="iks">Indian Knowledge System</option>
                 <option value="automobile">Automobile Engineering</option>
-                <option value="dela">Differential Equations & Linear Algebra</option>
+                <option value="dela">
+                  Differential Equations & Linear Algebra
+                </option>
                 <option value="ep">Engineering Physics</option>
-                <option value="bcps">Business Communication & Presentation Skills</option>
+                <option value="bcps">
+                  Business Communication & Presentation Skills
+                </option>
                 <option value="workshop">Workshop Practice</option>
                 <option value="bst">Bharatiya Science & Technology</option>
                 <option value="acdc">Introduction to AC-DC Machine</option>
                 <option value="bac">Basics of AC Circuits</option>
-                <option value="psnm">Probability, Statistics & Numerical Methods</option>
+                <option value="psnm">
+                  Probability, Statistics & Numerical Methods
+                </option>
                 <option value="ict">ICT Tools & Technology</option>
                 <option value="de">Digital Electronics</option>
                 <option value="oocu">Object Oriented Concept with UML</option>
@@ -155,7 +170,9 @@ export default function ContributeModal({ show, onClose, defaultSubject }) {
                 <option value="os">Operating System</option>
                 <option value="mfe">Management for Engineers</option>
                 <option value="cjp">Core Java Programming</option>
-                <option value="coa">Computer Organization and Architecture</option>
+                <option value="coa">
+                  Computer Organization and Architecture
+                </option>
               </select>
             </div>
 
@@ -171,7 +188,7 @@ export default function ContributeModal({ show, onClose, defaultSubject }) {
                 <option value="pyqs">Question Paper</option>
                 <option value="notes">Notes</option>
                 <option value="practicals">Practicals</option>
-                <option value="course_file">Course File</option>
+                <option value="syllabus">Syllabus</option>
                 <option value="assignment">Assignment</option>
               </select>
             </div>
@@ -179,9 +196,7 @@ export default function ContributeModal({ show, onClose, defaultSubject }) {
             {/* Year & Branch */}
             <div className="row g-3 mb-3">
               <div className="col-md-6">
-                <label className="form-label fw-semibold">
-                  Year *
-                </label>
+                <label className="form-label fw-semibold">Year *</label>
                 <select
                   className="form-select"
                   value={docClgYear}
@@ -197,7 +212,7 @@ export default function ContributeModal({ show, onClose, defaultSubject }) {
 
               <div className="col-md-6">
                 <label className="form-label fw-semibold">
-                  Branch (Which branch is this document for?)*
+                  Branch (Which branch is this document for?) *
                 </label>
                 <select
                   className="form-select"
@@ -211,7 +226,6 @@ export default function ContributeModal({ show, onClose, defaultSubject }) {
                 </select>
               </div>
             </div>
-
 
             {/* File Upload */}
             <label className="form-label fw-semibold">Upload PDF *</label>

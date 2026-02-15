@@ -4,15 +4,25 @@ import { getSession, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useEffect } from "react";
 import UserContributions from "./userContributions";
+import UserMemories from "./userMemories";
 
 export default function ProfilePage() {
   const { data: session, status } = useSession();
+
   useEffect(() => {
     getSession();
   }, []);
 
   const profileCompleted = session?.user?.profileCompleted;
-  const accessPercent = session?.user?.accessPercent || 70;
+  const userTokens = session?.user?.tokens || 0;
+  console.log(userTokens);
+  
+
+  let accessPercent = 70;
+  if (profileCompleted) accessPercent += 20;
+  if (userTokens >= 10) accessPercent += 10;
+
+  const hasFullAccess = accessPercent >= 100;
 
   if (status === "loading") {
     return (
@@ -22,161 +32,145 @@ export default function ProfilePage() {
     );
   }
 
-  return (
-    <div className="min-vh-100 bg-light py-4">
-      <div className="container">
-        {/* Header */}
-        <div className="d-flex align-items-center justify-content-between mb-4">
-          <div>
-            <h4 className="fw-bold mb-1">Your Profile</h4>
-            <p className="text-muted mb-0">
-              Manage your account and unlock academic features
-            </p>
-          </div>
+return (
+  <div className="min-vh-100 bg-light py-5">
+    <div className="container" style={{ maxWidth: "900px" }}>
 
-          <Link href="/" className="btn btn-sm btn-outline-secondary">
-            ← Home
-          </Link>
-        </div>
+      {/* PROFILE HEADER */}
+      <div className="card border-0 shadow-lg mb-4 overflow-hidden">
+        <div className="bg-primary bg-gradient p-4 text-white">
+          <div className="d-flex align-items-center justify-content-between">
 
-        {/* Contributions */}
-        <div className="container py-4">
-          <h2 className="fw-bold mb-4">My Contributions</h2>
-          <UserContributions />
-        </div>
-
-        {/* Profile Status */}
-        <div
-          className={`alert ${
-            profileCompleted ? "alert-success" : "alert-info"
-          } small mb-4`}
-        >
-          <strong>Profile Status:</strong>{" "}
-          {profileCompleted ? "Completed" : "Incomplete"}
-          <br />
-          {profileCompleted
-            ? "Your academic profile is complete."
-            : "Complete your profile to unlock full access and visibility."}
-        </div>
-
-        {/* Access Progress */}
-        <div className="card border-0 shadow-sm mb-4">
-          <div className="card-body">
-            <h6 className="fw-semibold mb-2">
-              <i className="bi bi-bar-chart-steps me-2"></i>
-              Content Access Progress
-            </h6>
-
-            <div className="small text-muted mb-2">
-              Login unlocks <strong>70%</strong> of academic resources.
-              Completing your profile unlocks an <strong>additional 20%</strong>
-              .
-            </div>
-
-            <div className="progress mb-2" style={{ height: "8px" }}>
+            <div className="d-flex align-items-center gap-3">
+              {/* Avatar */}
               <div
-                className={`progress-bar ${
-                  profileCompleted ? "bg-primary" : "bg-success"
-                }`}
-                role="progressbar"
-                style={{ width: `${accessPercent}%` }}
-                aria-valuenow={accessPercent}
-                aria-valuemin="0"
-                aria-valuemax="100"
-              ></div>
-            </div>
-
-            <div className="d-flex justify-content-between small text-muted">
-              <span>
-                Current Access: <strong>{accessPercent}%</strong>
-              </span>
-              <span>
-                Full Access: <strong>90%</strong>
-              </span>
-            </div>
-
-            {!profileCompleted && (
-              <div className="alert alert-warning small mt-3 mb-0">
-                Complete your profile to unlock <strong>90%</strong> of all
-                available content.
+                className="rounded-circle bg-white text-primary fw-bold d-flex align-items-center justify-content-center"
+                style={{ width: "60px", height: "60px", fontSize: "22px" }}
+              >
+                {session?.user?.name?.charAt(0)}
               </div>
-            )}
+
+              <div>
+                <h4 className="fw-bold mb-1">
+                  {session?.user?.name}
+                </h4>
+                <small className="opacity-75">
+                  Academic Access Level
+                </small>
+              </div>
+            </div>
+
+            <div className="text-end">
+              <div className="fs-4 fw-bold">
+                {accessPercent}%
+              </div>
+              <span
+                className={`badge px-3 py-2 ${
+                  hasFullAccess ? "bg-success" : "bg-warning text-dark"
+                }`}
+              >
+                {hasFullAccess ? "Full Access" : "Limited Access"}
+              </span>
+            </div>
+
           </div>
         </div>
 
-        {/* Action Cards */}
-        <div className="row g-3">
-          {/* Set Profile (ONLY if incomplete) */}
-          {!profileCompleted && (
-            <div className="col-12 col-md-6">
-              <div className="card h-100 shadow-sm border-0">
-                <div className="card-body">
-                  <h6 className="fw-semibold">
-                    <i className="bi bi-person-lines-fill me-2"></i>
-                    Complete Your Profile
-                  </h6>
-                  <p className="text-muted small">
-                    Add academic details like year, branch, and interests. This
-                    helps personalize resources for you.
-                  </p>
+        {/* Progress Section */}
+        <div className="p-4">
+          <div className="progress mb-2" style={{ height: "10px" }}>
+            <div
+              className={`progress-bar ${
+                hasFullAccess ? "bg-success" : "bg-primary"
+              }`}
+              style={{ width: `${accessPercent}%` }}
+            ></div>
+          </div>
 
-                  <Link
-                    href="/profile/setProfile"
-                    className="btn btn-primary btn-sm mt-2"
-                  >
-                    Set Profile
-                  </Link>
-                </div>
-              </div>
+          {!hasFullAccess && (
+            <div className="small text-muted">
+              Earn <strong>{Math.max(0, 10 - userTokens)}</strong> more tokens
+              to unlock <strong>100% academic access</strong>.
             </div>
           )}
+        </div>
+      </div>
 
-          {/* Logout */}
-          <div className="col-12 col-md-6">
-            <div className="card h-100 shadow-sm border-0">
+      {/* CONTRIBUTIONS */}
+      <div className="card border-0 shadow-sm mb-4">
+        <div className="card-body">
+          <h5 className="fw-bold mb-4 text-primary border-bottom pb-2">
+            My Contributions
+          </h5>
+          <UserContributions />
+        </div>
+      </div>
+
+      {/* MEMORY CONTRIBUTIONS */}
+<div className="card border-0 shadow-sm mb-4">
+  <div className="card-body">
+    <h5 className="fw-bold mb-4 text-primary border-bottom pb-2">
+      My Memory Contributions
+    </h5>
+    <UserMemories />
+  </div>
+</div>
+
+
+      {/* ACTION SECTION */}
+      <div className="row g-4">
+
+        {!profileCompleted && (
+          <div className="col-md-6">
+            <div className="card h-100 border-0 shadow-sm hover-card">
               <div className="card-body">
-                <h6 className="fw-semibold text-danger">
-                  <i className="bi bi-box-arrow-right me-2"></i>
-                  Logout
+                <h6 className="fw-semibold text-primary mb-2">
+                  Complete Your Profile
                 </h6>
-                <p className="text-muted small">
-                  Securely sign out from your account on this device.
+                <p className="text-muted small mb-3">
+                  Add academic details to unlock premium resources and full access.
                 </p>
-
-                <button
-                  onClick={() => signOut({ callbackUrl: "/login" })}
-                  className="btn btn-outline-danger btn-sm mt-2"
+                <Link
+                  href="/profile/setProfile"
+                  className="btn btn-primary btn-sm px-4"
                 >
-                  Logout
-                </button>
+                  Complete Now
+                </Link>
               </div>
+            </div>
+          </div>
+        )}
+
+        <div className="col-md-6">
+          <div className="card h-100 border-0 shadow-sm hover-card">
+            <div className="card-body">
+              <h6 className="fw-semibold text-danger mb-2">
+                Logout
+              </h6>
+              <p className="text-muted small mb-3">
+                Securely sign out from this device.
+              </p>
+              <button
+                onClick={() => signOut({ callbackUrl: "/login" })}
+                className="btn btn-outline-danger btn-sm px-4"
+              >
+                Logout
+              </button>
             </div>
           </div>
         </div>
 
-        {/* What You Unlock */}
-        <div className="card border-0 shadow-sm mt-4">
-          <div className="card-body">
-            <h6 className="fw-semibold mb-2">
-              <i className="bi bi-unlock me-2"></i>
-              What You Unlock
-            </h6>
-
-            <ul className="small text-muted mb-0 ps-3">
-              <li>
-                Access to <strong>{profileCompleted ? "90%" : "~70%"}</strong>{" "}
-                academic resources
-              </li>
-              <li>Personalized subject recommendations</li>
-              <li>
-                Dedicated student profile{" "}
-                {profileCompleted ? "(enabled)" : "(future visibility)"}
-              </li>
-              <li>Early access to tools, notes, and updates</li>
-            </ul>
-          </div>
-        </div>
       </div>
+
+      {/* Back Home */}
+      <div className="text-center mt-5">
+        <Link href="/" className="btn btn-outline-secondary btn-sm px-4">
+          ← Back to Home
+        </Link>
+      </div>
+
     </div>
-  );
+  </div>
+);
+
 }

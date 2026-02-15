@@ -4,9 +4,10 @@ import { useSubject } from "@/app/(components)/context/SubjectContext";
 import Link from "next/link";
 import SidebarLinks from "@/app/(components)/(commoncomponents)/(sidebarlinks)/sbl";
 import { useSession } from "next-auth/react";
+import { useParams } from "next/navigation";
 
-export default function PYQsPage({ params }) {
-  const { year, subject } = params;
+export default function ManualPage() {
+  const { year, subject } = useParams();
   const { data, loading } = useSubject();
   const [selectedPdf, setSelectedPdf] = useState(null);
   const [brand, setBrand] = useState("");

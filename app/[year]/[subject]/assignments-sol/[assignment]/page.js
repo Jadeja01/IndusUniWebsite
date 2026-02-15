@@ -7,9 +7,8 @@ import { useParams } from "next/navigation";
 import assignmentsData from "@/egcontent/assignmentscontent";
 import { useSession } from "next-auth/react";
 
-export default function Year({ params }) {
-  const { year, subject } = useParams();
-  const { assignment } = params;
+export default function Year() {
+  const { year, subject,assignment } = useParams();
   const [assignmentData, setAssignmentData] = useState([]);
   const formattedSubject = subject.toUpperCase();
   const [brand, setBrand] = useState("");

@@ -64,18 +64,6 @@ export default function Home() {
                 </span>
               </div>
 
-{/* Direct access search
-<div className="d-flex justify-content-center mb-5">
-  <div className="w-100" style={{ maxWidth: "64%" }}>
-    <input
-      type="text"
-      className="form-control form-control-lg rounded-pill px-4 shadow-sm"
-      placeholder="Search subjects, notes, assignments..."
-      aria-label="Search academic resources"
-    />
-  </div>
-</div> */}
-
               {/* CTA buttons */}
               <div className="d-flex flex-column flex-sm-row gap-3 justify-content-center">
                 <Link
@@ -159,6 +147,22 @@ export default function Home() {
                 icon: "2-circle-fill",
                 color: "success",
               },
+              {
+                label: "3rd Year",
+                href: "/iknowurfuckedup",
+                desc: "Advanced engineering subjects and specialized topics",
+                badge: null,
+                icon: "3-circle-fill",
+                color: "warning",
+              },
+              {
+                label: "4th Year",
+                href: "/iknowurfuckedup",
+                desc: "Capstone projects and industry-relevant engineering applications",
+                badge: null,
+                icon: "4-circle-fill",
+                color: "danger",
+              }
             ].map((year, idx) => (
               <div key={idx} className="col-md-6 col-lg-5">
                 <Link href={year.href} className="text-decoration-none">

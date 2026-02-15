@@ -7,9 +7,8 @@ import { useParams } from "next/navigation";
 import sheetsData from "@/egcontent/sheetscontent";
 import { useSession } from "next-auth/react";
 
-export default function Year({ params }) {
-  const { year, subject } = useParams();
-  const { sheet } = params;
+export default function Year() {
+  const { year, subject,sheet } = useParams();
   const [sheetData, setSheetData] = useState([]);
   const formattedSubject = subject.toUpperCase();
   const { status } = useSession();

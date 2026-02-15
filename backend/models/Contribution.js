@@ -20,7 +20,7 @@ const ContributionSchema = new mongoose.Schema(
         "assignment",
         "notes",
         "practicals",
-        "course_file",
+        "syllabus",
       ],
     },
     documentClgYear: {
