@@ -963,5 +963,41 @@ a {
     transform: scale(1);
   }
 }
+.success-overlay {
+  position: fixed;
+  inset: 0;                 /* shorthand for top,left,right,bottom = 0 */
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px); /* modern glass effect */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+}
+
+.success-card {
+  background: white;
+  padding: 35px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  animation: modalPop 0.25s ease-out;
+}
+
+.success-icon {
+  font-size: 48px;
+  color: #22c55e;
+}
+
+@keyframes modalPop {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
 
 

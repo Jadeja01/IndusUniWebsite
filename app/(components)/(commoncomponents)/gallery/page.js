@@ -131,7 +131,28 @@ export default function GalleryPage() {
 
   //   RENDER
 
-  return (
+  return (<>
+            {/* {  // SUCCESS  } */}
+        {success && (
+          <div className="success-overlay">
+            <div className="success-card text-center">
+              <div className="success-icon">
+  <i className="bi bi-check-circle-fill"></i>
+</div>
+
+              <h5 className="fw-semibold">Submitted Successfully!</h5>
+              <p className="text-muted mb-3">
+                Your memory is waiting for admin approval.
+              </p>
+              <button
+                className="btn btn-outline-dark btn-sm"
+                onClick={() => setSuccess(false)}
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        )}
     <div className="min-vh-100 bg-light py-5">
       <div className="container" style={{ maxWidth: "1100px" }}>
         {/* HERO   */}
@@ -179,24 +200,7 @@ export default function GalleryPage() {
           <div className="alert alert-danger text-center">{galleryError}</div>
         )}
 
-        {/* {  // SUCCESS  } */}
-        {success && (
-          <div className="success-overlay">
-            <div className="success-card text-center">
-              <div className="success-icon mb-3">✓</div>
-              <h5 className="fw-semibold">Submitted Successfully!</h5>
-              <p className="text-muted mb-3">
-                Your memory is waiting for admin approval.
-              </p>
-              <button
-                className="btn btn-outline-dark btn-sm"
-                onClick={() => setSuccess(false)}
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        )}
+
 
         {/* {  // GRID  } */}
         {!loadingGallery && !galleryError && (
@@ -392,5 +396,6 @@ export default function GalleryPage() {
         </div>
       </div>
     </div>
+  </>
   );
 }
