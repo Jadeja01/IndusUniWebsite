@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export default async function AdminGalleryPage() {
+export default function AdminGalleryPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
   const [items, setItems] = useState([]);
