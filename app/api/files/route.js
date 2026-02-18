@@ -26,7 +26,7 @@ export async function GET(req) {
       status: "approved",
     })
       .select(
-        "documentType driveViewLink documentTitle documentYear approvedAt uploaderId"
+        "documentType driveViewLink documentTitle documentYear approvedAt uploaderId anonymous"
       )
       .populate("uploaderId", "name")
       .lean();
@@ -46,6 +46,7 @@ export async function GET(req) {
         year: c.documentYear || "Unknown",
         uploader: c.uploaderId?.name || "Anonymous",
         approvedAt: c.approvedAt,
+        anonymous: c.anonymous || false,
       };
 
       if (c.documentType === "syllabus") {

@@ -13,6 +13,7 @@ import { moveFileSafely } from "@/lib/googleDrive";
 
 export async function POST(req, { params }) {
   const session = await getServerSession(authOptions);
+  const { id } = await params;
 
   if (!session || session.user.role !== "admin") {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
@@ -20,7 +21,7 @@ export async function POST(req, { params }) {
 
   await connectDB();
 
-  const contribution = await Contribution.findById(params.id);
+  const contribution = await Contribution.findById(id);
   if (contribution.documentType === "syllabus") {
     const existing = await Contribution.findOne({
       subject: contribution.subject,

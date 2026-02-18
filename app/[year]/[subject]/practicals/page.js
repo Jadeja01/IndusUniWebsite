@@ -48,6 +48,7 @@ export default function PracticalsPage() {
     data?.files?.[0]?.practicals?.filter(
       (note) => note?.fileUrl?.trim() !== ""
     ) || [];
+    
 
   return (
     <>
@@ -104,7 +105,7 @@ export default function PracticalsPage() {
       {/* Meta Info */}
       <div className="small text-muted mt-auto">
         <div className="text-truncate">
-          By {prtcls.uploader || "Anonymous"}
+          By {prtcls.anonymous ? "Anonymous" :  prtcls.uploader || "Anonymous"}
         </div>
         <div>
           {prtcls.approvedAt
